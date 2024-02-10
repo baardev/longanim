@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#usage() { echo "Usage: $0 [-i <inout_dir>] [-o <outout_dir>]" 1>&2; exit 1; }
+
+while getopts ":i:o:" d; do
+    case "${d}" in
+        i)
+            istr="--input-directory ${OPTARG}"
+            ;;
+        o)
+            ostr="--output-directory ${OPTARG}"
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+
+source /home/jw/miniforge3/etc/profile.d/conda.sh
+conda activate ainodes
+
+cd /home/jw/src/ComfyUI
+/home/jw/bin/GPUMEMCLEAR
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+PYTHON_SCRIPTS_DIR="$PYTHON_DIR/Scripts;/home/jw/store/src/ComfyUI/custom_nodes/comfyui-reactor-node/"
+export PATH="$PYTHON_SCRIPTS_DIR:$PYTHON_LIB_DIR:$PYTHON_DIR:$PATH"
+
+echo "------------------------------------------------------------------------------"
+echo "python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr}"
+echo "------------------------------------------------------------------------------"
+
+python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr}
+

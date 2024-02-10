@@ -1,0 +1,21 @@
+#!/bin/bash
+#clear
+
+rm /tmp/abort.flag
+
+NAME="test_1"
+VER="256"
+CFG="/home/jw/src/sdc/settings/COMFY/256x144/${NAME}"
+./long_anim_v4.py --stage prep -D ${CFG}  --version ${VER}
+./long_anim_v4.py --stage anim -D ${CFG}  --version ${VER} --flatprompt
+./long_anim_v4.py --stage merge -D ${CFG} --version ${VER} #--experimental dot
+#
+#NAME="spagface"
+#CFG="/home/jw/src/sdc/settings/COMFY/960x540/${NAME}"
+#./long_anim_v4.py --stage prep -D ${CFG}
+#./long_anim_v4.py --stage anim -D ${CFG}   # --flatprompt
+#./long_anim_v4.py --stage merge -D ${CFG} #--experimental dot
+
+
+
+

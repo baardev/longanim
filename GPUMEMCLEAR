@@ -1,0 +1,4 @@
+#!/bin/bash
+
+nvidia-smi | grep 'python' | awk '{ print "kill "$5 }' |sh -x 
+nvidia-smi
