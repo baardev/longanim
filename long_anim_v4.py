@@ -306,7 +306,7 @@ def prCmd(cmd):
     """
     print Commands
     """
-    print(">>> "+Fore.LIGHTYELLOW_EX+cmd+Fore.RESET,flush=True)
+    print(">>> "+Fore.LIGHTCYAN_EX+cmd+Fore.RESET,flush=True)
 def prInfo(info):
     """
     print Information
@@ -356,6 +356,17 @@ def loadparam(key):
         val = json.load(f)
         return(val)
 
+def upscale(outdir,config):
+    files = get_sorted_files(f"{outdir}/*.{config['params']['imgfmt']}")
+    ct = len(files)
+    i = 1
+    for file in files:
+        cmd = f"./simple_upscale.sh {file} {config['params']['upscale']} {outdir}/out"
+        # prCmd(cmd)
+        print(f"{i}/{ct}",end="\r")
+        prunlive(cmd)
+        i+=1
+    print("\n")
 def showhelp():
     print("help")
     rs = """
@@ -367,6 +378,7 @@ def showhelp():
     -D, --projdir       project directory
     -F, --flatprompt    dump flat prompt and exit
     -V, --version
+    -u, --upscale
 
     -x, --experimental options
         'fswap'     use last frame of previous clip as seed image for following clip
@@ -388,7 +400,7 @@ if __name__ == "__main__":
     try:
         opts, args = getopt.getopt(
             argv,
-            "hv:ds:a:x:D:FV:",
+            "hv:ds:a:x:D:FV:u",
             [   'help',
                         'video=',
                         'debug',
@@ -398,6 +410,7 @@ if __name__ == "__main__":
                         'projdir=',
                         'flatprompt',
                         'version=',
+                        'upscale=',
                 ],
         )
     except Exception as e:
@@ -459,6 +472,7 @@ if __name__ == "__main__":
     flatprompt = False # debugging flag
     fswap = False # experimental flag
     dot = False # experimental flag
+    upscale_frames = False
 
     #! output from the START command
     hideSTDOUT = "2>&1 >> /tmp/START.log"
@@ -470,6 +484,7 @@ if __name__ == "__main__":
         if opt in ("-d", "--debug"):debug = True
         if opt in ("-a", "--atmpl"):anim_template_name = arg
         if opt in ("-F", "--flatprompt"):flatprompt = True
+        if opt in ("-u", "--upscale"):upscale_frames = True
         if opt in ("-x", "--experimental"):
             experimental_ary = arg.split(",")
             if "fswap" in experimental_ary:
@@ -710,6 +725,10 @@ if __name__ == "__main__":
             for filename in group:
                 shutil.move(filename,f"{tmpdir}/{k:04d}.{IMF}")
                 k += 1
+
+        if upscale_frames == True:
+            upscale(tmpdir,config)
+            tmpdir = f"{tmpdir}/out"
 
         cmd = f"ffmpeg  -y -loglevel warning  -hide_banner -hwaccel auto -y -framerate {fps} -pattern_type glob -i {tmpdir}/*.{IMF}  -r {fps} -vcodec libx264 -preset medium -crf 23 -vf minterpolate=mi_mode=blend,fifo -pix_fmt yuv420p  -movflags +faststart  {output_dir}/final.mp4"
         prunlive(cmd,debug=debug)
