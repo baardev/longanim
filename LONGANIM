@@ -1,21 +1,36 @@
 #!/bin/bash
-#clear
+# commandline ewxample;
+# clear && time ./LONGANIM -P -A -M &&  xsel -o > run.log
 
+#!@ wipe all stale state flags
 rm /tmp/abort.flag
 
-NAME="test_1"
-VER="256"
-CFG="/home/jw/src/sdc/settings/COMFY/256x144/${NAME}"
-./long_anim_v4.py --stage prep -D ${CFG}  --version ${VER}
-./long_anim_v4.py --stage anim -D ${CFG}  --version ${VER} --flatprompt
-./long_anim_v4.py --stage merge -D ${CFG} --version ${VER} #--experimental dot
-#
-#NAME="spagface"
-#CFG="/home/jw/src/sdc/settings/COMFY/960x540/${NAME}"
-#./long_anim_v4.py --stage prep -D ${CFG}
-#./long_anim_v4.py --stage anim -D ${CFG}   # --flatprompt
-#./long_anim_v4.py --stage merge -D ${CFG} #--experimental dot
+NAME="spagvik"
+CFG="/home/jw/src/sdc/settings/COMFY/${NAME}"
+VER=`./getcval.py -c ${CFG} -k version`
 
+prep () {
+  rm /tmp/fgroups.json;
+  rm /tmp/fgroups_ct.json;
+  ./long_anim_v4.py --stage prep -D ${CFG}  --version ${VER} --flatprompt;
+}
 
+anim () {
+  ./long_anim_v4.py --stage anim -D ${CFG}  --version ${VER} --flatprompt;
+}
 
+merge () {
+  ./long_anim_v4.py --stage merge -D ${CFG} --version ${VER} #--experimental ; # fswap;
+}
+
+# make sure V is first
+while getopts 'PAM' option ; do
+    case "${option}" in
+    P) prep  ;;
+    A) anim  ;;
+    M) merge ;;
+    *) echo "NO OPTS!?" ;;
+    esac
+done
+shift $(( OPTIND - 1 ))
 

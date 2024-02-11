@@ -1,0 +1,71 @@
+name    = "spagvik"
+
+#version = "256"
+#w       = 256
+#h       = 144
+
+version = "512"
+w       = 512
+h       = 288
+#
+#version = "960"
+#w       = 960
+#h       = 540
+
+[loc]
+# loacation of TOML, images, videos, etc.
+settings_dir = "/home/jw/src/sdc/settings/COMFY/spagvik"
+
+# get appended with 'version' => output_256
+output_dir = "output_"
+input_dir = "output_"
+
+
+# Don;t use /tmp as the app wipes everything in this folder
+tmpdir = "/fstmp"
+
+[files]
+# The length of the video and fps determines the length of the animation and number of groups
+anim_template_name= "1_anim_API.json"
+prep_template_name= "1_prep_API.json"
+
+video =             "spaceclouds_hole2.mp4"
+IP_images = [
+            "viking",
+#            "spagmon",
+            "angel",
+            ]
+
+[specs]
+# this must be a file spec that ONLY sees project related MP4s
+# The app automatically numbers output clip files with  zero padded
+# 5-digit numbers. This spec is prefixed by the project.name (above)
+mp4_output_wc = "_?????.mp4"
+
+[params]
+debug     = true
+groupsize = 48
+interpx   = 20 # For transitions, NOT for FILM interpolation
+overlap   = 0 # Don't use - deprecated
+fps       = 8
+maxloops  = 99  # max numner of loops (fgroups) limit to 99 due to file having 2-place digits, i.e., HED_00
+steps     = 20
+imgfmt    = "png"
+start_at_fgroup = 0
+max_extracted_frames = 0 # 0 = no limit, this is used only for CN preprocessing
+runtime              = 300 # in seconds.  OVERIDES 'max_extracted_frames'. If not 0, calculates 'max_extracted_frames'
+# 300 = 5 min
+# 600 = 10 min
+# 900 = 15 min
+
+everynth             = "1/1" # extract 1 frame every 4 seconds = 1 frame every 8*4=32 frames (at 8 fps)
+
+
+
+[prep]
+# List all CNs used, and use the same names here as were used in the workflows (without the _ZZ or _00)
+# Any CN listed here assumes there is already a collection of frames in the input folder
+
+# cnets = ["HED","POSE","SEG","DEPTH"]
+cnets = ["DEPTH"]
+# cnets = ["HED"]

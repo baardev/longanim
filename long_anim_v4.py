@@ -20,6 +20,7 @@ import time
 import toml
 import re
 import traceback
+from playsound import playsound
 
 init()
 server_address = "127.0.0.1:8188"
@@ -142,17 +143,19 @@ def get_video_frames(video, config, **kwargs):
 
     if max_extracted_frames == 0:
         prInfo(f"Extracting [ALL] frames at [{fps}] from [{video}] to [{tmpdir}]")
-        cmd = f"ffmpeg -y -loglevel warning -hwaccel cuda -i {video} -vf \"fps=8/1,scale={config['params']['w']}:{config['params']['h']}\"/  {tmpdir}/%04d.{IMF}"
+        cmd = f"ffmpeg -y -loglevel warning -hwaccel cuda -i {video} -vf \"fps=8/1,scale={config['w']}:{config['h']}\"/  {tmpdir}/%04d.{IMF}"
     else:
         prInfo(f"Extracting [{max_extracted_frames}] frames from [{video}] to [{tmpdir}]")
-        cmd = f"ffmpeg -y -loglevel warning -hwaccel cuda -i {video} -vf \"fps=8/1,scale={config['params']['w']}:{config['params']['h']}\" -vframes {max_extracted_frames} {tmpdir}/%04d.png"
+        cmd = f"ffmpeg -y -loglevel warning -hwaccel cuda -i {video} -vf \"fps=8/1,scale={config['w']}:{config['h']}\" -vframes {max_extracted_frames} {tmpdir}/%04d.png"
 
     #! max_extracted_frames override
     #! calculate the number of frames to extract
     if config['params']['runtime'] > 0:
-        max_extracted_frames = int((fps * groupsize) + (interpx * (config['params']['runtime'] / groupsize) - groupsize))
-        prInfo(f"OVERIDING mex_extracted_framnes' with runrime calculation of [{config['params']['runtime']}] secs = [{max_extracted_frames}] frames")
-        cmd = f"ffmpeg -y -loglevel warning -hwaccel cuda -i {video} -vf \"fps={nth},scale={config['params']['w']}:{config['params']['h']}\" -vframes {max_extracted_frames} {tmpdir}/%04d.png"
+        max_extracted_frames = fps * config['params']['runtime']
+        # prInfo(f"max_extracted_frames ({max_extracted_frames}) = int(({fps} * {groupsize}) + ({interpx} * ({config['params']['runtime']} / {groupsize}) - {groupsize}))")
+        prInfo(f"OVERIDING max_extracted_frames' with runtime calculation of [{config['params']['runtime']}] secs = [{max_extracted_frames}] frames")
+        cmd = f"ffmpeg -y -loglevel warning -hwaccel cuda -i {video} -vf \"fps={nth},scale={config['w']}:{config['h']}\" -vframes {max_extracted_frames} {tmpdir}/%04d.png"
+        # procexit()
 
     prCmd(cmd)
     prunlive(cmd, debug = debug)
@@ -198,7 +201,7 @@ def createInterps(last,first,**kwargs):
     prunlive(cmd,debug=debug)
 
     files = get_sorted_files(f"{outdir}/*.{IMF}")
-    if dot != False:
+    if dot == True:
         prInfo(f"Adding red dot to interpolates transition frames")
         #! for debugging, mark interp images with icon
         from PIL import Image, ImageDraw, ImageFilter
@@ -209,7 +212,7 @@ def createInterps(last,first,**kwargs):
             back_im1.paste(im2, (10,10))
             back_im1.save(file, quality=95)
 
-    return files
+    return files, len(files)
 def extract_video(video):
     """
     Extracts the frames from the generated video clips in subfolder specific to the video
@@ -220,8 +223,8 @@ def extract_video(video):
     cmd = f"ffmpeg -y -loglevel panic -i {video}  -r {fps}/1 {exdir}/%04d.{IMF}"
     prunlive(cmd, debug=True)
 
-    files = get_sorted_files(f"{exdir}/*.{IMF}")
-    return files
+    files_ary = get_sorted_files(f"{exdir}/*.{IMF}")
+    return files_ary
 def wait_until_finished(prompt_id):
     history = {}
     while(len(history)==0):
@@ -234,52 +237,58 @@ def save_prompt(prompt,str,n):
     data = json.dumps(prompt, indent=4)
     with open(f"/home/jw/src/ComfyUI/output/__{str}_{n}.json", "w") as f:
         f.write(data)
-def bytesave_prompt(txt,stage):
-    with open(f"/home/jw/src/ComfyUI/output/prompt_{stage}_bytes.txt", "wb") as f:
-        f.write(txt.encode())
-    prInfo(f"SAVED PROMPT: [/home/jw/src/ComfyUI/output/prompt_{stage}_bytes.txt]")
+def save_workflow(dir):
+    swfile = f"{config['loc']['settings_dir']}/[01]_*"
+    cmd = f"cp {swfile} {dir} "
+    prCmd(cmd)
+    os.system(cmd)
+def bytesave_prompt(txt,stage,config):
+    saveto = f"{config['loc']['settings_dir']}/{config['loc']['output_dir']}{config['version']}/prompt_{stage}_flat.txt"
+    with open(saveto, "wb") as f:
+            f.write(txt.encode())
+    prInfo(f"SAVED PROMPT: [{saveto}]")
 def update_template(prompt_text, i,config,stage):
-    cnets = config['prep']['cnets']
-    for cnet in cnets:
-        prompt_text = prompt_text.replace(f"{cnet}_00", f"{cnet}_{i:02d}")
-    # prompt_text = prompt_text.replace("POSE_00", f"POSE_{i:02d}")
-    # prompt_text = prompt_text.replace("SEG_00", f"SEG_{i:02d}")
+    IMF=config['params']['imgfmt']
+    w = config['w']
+    h = config['h']
 
-        #! for prep dir names, which has the dirname slug 'p_ZZ'
-        prompt_text = prompt_text.replace("ZZ", f"{i:02d}")
-        prompt_text = prompt_text.replace("OUTPUTVIDEONAME", f"{projname}")
+    if stage == "anim":
+        cnets = config['prep']['cnets']
+        for cnet in cnets:
+            prompt_text = prompt_text.replace(f"{cnet}_00", f"{cnet}_{i:02d}")
 
-        #! the values in the search terms act as the default values must match those set in
-        #! the prep-API.json or anim.json_API workflow
+        prompt_text = prompt_text.replace("OUTPUTVIDEONAME", f"{config['name']}")
+
+        #! the values in the search terms act as the default values must match those set in the prep-API.json or anim.json_API workflow
         prompt_text = prompt_text.replace("\"batch_size\": 48,", f"\"image_load_cap\": {config['params']['groupsize']},")
         prompt_text = prompt_text.replace("\"image_load_cap\": 48,", f"\"image_load_cap\": {config['params']['groupsize']},")
         prompt_text = prompt_text.replace("\"frame_rate\": 8,", f"\"frame_rate\": {config['params']['fps']},")
-
         prompt_text = re.sub("\"steps\": 20,", f"\"steps\": {config['params']['steps']},",prompt_text)
-        prompt_text = re.sub("\"width\": 256, \"height\": 144,", f"\"width\": {config['params']['w']}, \"height\": {config['params']['h']},", prompt_text)
-        # prompt_text = re.sub("256x144", f"{config['params']['w']}x{config['params']['h']}", prompt_text)
+        prompt_text = re.sub("\"width\": 256, \"height\": 144,", f"\"width\": {w}, \"height\": {h},", prompt_text)
 
-        #! For all the base IP images, rename to correct res:.  If the slug name is 'IMAGE00.png" in teh JSON file
-        #! and viking.png' in the TOML file, and the w/h params are 256/144, the new name is
+        # ! changes just for prep
+    if stage == "prep":
+        # ! for prep dir names, which has the dirname slug '*_ZZ'
+        prompt_text = prompt_text.replace("ZZ", f"{i:02d}")
+
+        # ! make sure the CN 'resolution' is a multiple of 64, min 256, max 2880,
+        cnres = int(config['w']/64)*64
+        prompt_text = re.sub("\"resolution\": 256,", f"\"resolution\": {cnres},", prompt_text)
+
+        #! For all the base IP images, rename to correct res:.  If the slug name is 'IMAGE00.png" in the JSON file
+        #! and 'viking.png' in the TOML file, and the w/h params are 256/144, the new name is
         #! IPIMAGE00.png => 256x144_viking.png
         #! IPIMAGE01.png => 256x144_spagmin.png
-        #! etc...
 
+        #!!! THE STUBS 'IPIMAGE_00.png' NEED TO BE MANUALLY EDITED IN THE JSON FILE !!!
+
+        #! etc...
         for i in range(len(config['files']['IP_images'])):
-            w=config['params']['w']
-            h=config['params']['h']
-            img = config['files']['IP_images'][i]  #  base names: 'viking.png','spagmon.png'
-            newname = f"{config['params']['w']}x{config['params']['h']}_{img}"
+            img = f"{config['files']['IP_images'][i]}.{IMF}"  #  base names: 'viking.png','spagmon.png'
+            newname = f"{w}x{h}_{img}"
             prInfo(f"UPDATING IMAGE NAME: [IPIMAGE{i:02d}.{IMF}] => [{newname}] in {stage} template")
             prompt_text = re.sub(f"\"image\": \"IPIMAGE{i:02d}.{IMF}\",", f"\"image\": \"{newname}\",", prompt_text)
 
-
-        #! removed 'image' key from toml file
-        # prompt_text = re.sub("\"image\": \"IP-Image.png\",", f"\"image\": \"{config['files']['image']}\",", prompt_text)
-    # "image": "mandala_960x536.png
-    # prompt['9']['inputs']['batch_size'] = groupsize
-    # prompt['133']['inputs']['image_load_cap'] = groupsize
-    # prompt['119']['inputs']['frame_rate'] = fps
 
     jsonprompt = json.loads(prompt_text)
     for k in ["batch_size","image_load_cap","frame_rate","steps","image",]:
@@ -297,32 +306,33 @@ def prCmd(cmd):
     """
     print Commands
     """
-    print(">>> "+Fore.LIGHTYELLOW_EX+cmd+Fore.RESET)
+    print(">>> "+Fore.LIGHTYELLOW_EX+cmd+Fore.RESET,flush=True)
 def prInfo(info):
     """
     print Information
     """
-    print(">>> "+Fore.LIGHTGREEN_EX+info+Fore.RESET)
+    print(">>> "+Fore.LIGHTMAGENTA_EX+info+Fore.RESET,flush=True)
 def prErr(err):
     """
     print Errors
     """
     print(">>> "+Fore.RED+err+Fore.RESET)
-    print(">>> "+Fore.RED+"Abort Flag Set"+Fore.RESET)
+    print(">>> "+Fore.RED+"Abort Flag Set"+Fore.RESET,flush=True)
     traceback.print_stack()
     abort_flag(1)
+    playsound("error.wav")
     exit()
 def prAnn(ann):
     """
     print Announcements
     """
-    print(">>> "+Fore.LIGHTCYAN_EX + ann + Fore.RESET)
+    print(">>> "+Fore.LIGHTCYAN_EX + ann + Fore.RESET,flush=True)
 
 def prSub(sub):
     """
     print Subsustem Output
     """
-    print(Fore.LIGHTBLUE_EX + sub + Fore.RESET)
+    print(Fore.LIGHTBLUE_EX + sub + Fore.RESET,flush=True)
 
 def is_abort():
     if os.path.isfile("/tmp/abort.flag"):
@@ -331,11 +341,20 @@ def is_abort():
         return False
 def abort_flag(stat):
     if stat == 0:
-        if os.path.isfile("/tmp/abort.flag"):
-            os.unlink("/tmp/abort.flag")
+        if os.path.isfile("/tmp/abort.flag"): os.unlink("/tmp/abort.flag")
     else:
         os.system("touch /tmp/abort.flag")
+        exit()
 
+def procexit():
+    abort_flag(1)
+def saveparam(key,val):
+    with open(f'/tmp/{key}.json', 'w') as f:
+        f.write(json.dumps(val))
+def loadparam(key):
+    with open(f'/tmp/{key}.json', 'r') as f:
+        val = json.load(f)
+        return(val)
 
 def showhelp():
     print("help")
@@ -353,132 +372,148 @@ def showhelp():
         'fswap'     use last frame of previous clip as seed image for following clip
         'dot'       add red dot in corner of all interpolated images
     """
-    exit()
+    print(rs)
+    procexit()
 
 # v ────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-argv = sys.argv[1:]
-
-projdir = False
-try:
-    opts, args = getopt.getopt(
-        argv,
-        "hv:ds:a:x:D:FV:",
-        [   'help',
-                    'video=',
-                    'debug',
-                    'stage=',
-                    'atmpl=',
-                    'experimental=',
-                    'projdir=',
-                    'flatprompt',
-                    'version=',
-            ],
-    )
-except Exception as e:
-    print(str(e))
-
-stage = False
-experimental_ary = []
-version = False
-for opt, arg in opts:
-    if opt in ("-h", "--help"):showhelp()
-    if opt in ("-D", "--projdir"):projdir = arg
-    if opt in ("-s", "--stage"):stage = arg
-    if opt in ("-V", "--version"):version = arg
-
-if stage == False:
-    print("-s, --stage missing")
-    showhelp()
-if projdir == False:
-    print("-D, --projdir missing")
-    showhelp()
-if version == False:
-    print("-V, --version missing")
-    showhelp()
-
-
-#! from TOML
-# with open(f"{projdir}/{version}_anim.toml", 'r') as f:  config = toml.load(f)
-with open(f"{projdir}/anim.toml", 'r') as f:  config = toml.load(f)
-
-os.environ["TMPDIR"] = config['loc']['tmpdir']
-debug = config['params']['debug']
-projname = config['project']['name']
-anim_template_name = config['files']['anim_template_name'] # "workflow_api.json"
-prep_template_name = config['files']['prep_template_name'] #"stitcher_prep_stage_960_API.json"
-mp4_output_wc = f"{projname}{config['specs']['mp4_output_wc']}" #"mandala_flower_?????.mp4"
-groupsize = config['params']['groupsize'] # anim
-interpx = config['params']['interpx'] # merge
-extract_count = config['params']['extract_count']  # 0 = all
-overlap = config['params']['overlap'] # deprecated
-fps = config['params']['fps']
-IMF = config['params']['imgfmt']
-
-settings_dir = f"{config['loc']['settings_dir']}"
-prInfo(f"settings_dir = [{settings_dir}]")
-
-output_dir = testpath(f"{settings_dir}/{config['loc']['output_dir']}")
-prInfo(f"output_dir = [{output_dir}]")
-
-input_dir = testpath(f"{settings_dir}/{config['loc']['input_dir']}")
-prInfo(f"input_dir = [{input_dir}]")
-
-# videoname = f"{config['params']['w']}x{config['params']['h']}_{config['files']['video']}"
-video = f"{settings_dir}/{config['files']['video']}"
-
-flatprompt = False
-
-
-#! output from the START command
-hideSTDOUT = "2>&1 >> /tmp/START.log"
-if debug == True:
-    hideSTDOUT = ""
-
-for opt, arg in opts:
-    if opt in ("-v", "--video"):video = arg
-    if opt in ("-d", "--debug"):debug = True
-    if opt in ("-a", "--atmpl"):anim_template_name = arg
-    if opt in ("-F", "--flatprompt"):flatprompt = True
-    if opt in ("-x", "--experimental"): experimental_ary = arg.split(",")
-
-
-if stage == False:
-    print("-s, --stage missing")
-    showhelp()
-
-#----------------------------------------------------------------------------------------
-
 
 if __name__ == "__main__":
     if is_abort():
         print("Abort Flag: Terminating")
-        exit()
+        procexit()
+
+    argv = sys.argv[1:]
+
+    projdir = False
+    try:
+        opts, args = getopt.getopt(
+            argv,
+            "hv:ds:a:x:D:FV:",
+            [   'help',
+                        'video=',
+                        'debug',
+                        'stage=',
+                        'atmpl=',
+                        'experimental=',
+                        'projdir=',
+                        'flatprompt',
+                        'version=',
+                ],
+        )
+    except Exception as e:
+        print(str(e))
+
+    stage = False
+    experimental_ary = []
+    version = False
+    for opt, arg in opts:
+        if opt in ("-h", "--help"):showhelp()
+        if opt in ("-D", "--projdir"):projdir = arg
+        if opt in ("-s", "--stage"):stage = arg
+        if opt in ("-V", "--version"):version = arg
+
+    if stage == False:
+        print("-s, --stage missing")
+        showhelp()
+    if projdir == False:
+        print("-D, --projdir missing")
+        showhelp()
+    if version == False:
+        print("-V, --version missing")
+        showhelp()
+
+
+    #! from TOML
+    # with open(f"{projdir}/{version}_anim.toml", 'r') as f:  config = toml.load(f)
+    with open(f"{projdir}/0_anim.toml", 'r') as f:  config = toml.load(f)
+
+    os.environ["TMPDIR"] = config['loc']['tmpdir']
+    w = config['w']
+    h = config['h']
+    debug = config['params']['debug']
+    projname = config['name']
+    projver = config['version']
+    anim_template_name = config['files']['anim_template_name'] # "workflow_api.json"
+    prep_template_name = config['files']['prep_template_name'] #"stitcher_prep_stage_960_API.json"
+    mp4_output_wc = f"{projname}{config['specs']['mp4_output_wc']}" #"mandala_flower_?????.mp4"
+    groupsize = config['params']['groupsize'] # anim
+    interpx = config['params']['interpx'] # merge
+    overlap = config['params']['overlap'] # deprecated
+    fps = config['params']['fps']
+    IMF = config['params']['imgfmt']
+    start_at_fgroup = config['params']['start_at_fgroup']
+
+    settings_dir = f"{config['loc']['settings_dir']}"
+    prInfo(f"settings_dir = [{settings_dir}]")
+
+    output_dir = testpath(f"{settings_dir}/{config['loc']['output_dir']}{projver}")
+    prInfo(f"output_dir = [{output_dir}]")
+
+    input_dir = testpath(f"{settings_dir}/{config['loc']['input_dir']}{projver}")
+    prInfo(f"input_dir = [{input_dir}]")
+
+    # xvideoname = f"{config['w']}x{config['h']}_{config['files']['video']}"
+    video = f"{settings_dir}/{w}x{h}_{config['files']['video']}"
+    prInfo(f"INPUT VIDEO = [{video}]")
+
+    flatprompt = False # debugging flag
+    fswap = False # experimental flag
+    dot = False # experimental flag
+
+    #! output from the START command
+    hideSTDOUT = "2>&1 >> /tmp/START.log"
+    if debug == True:
+        hideSTDOUT = ""
+
+    for opt, arg in opts:
+        if opt in ("-v", "--video"):video = arg
+        if opt in ("-d", "--debug"):debug = True
+        if opt in ("-a", "--atmpl"):anim_template_name = arg
+        if opt in ("-F", "--flatprompt"):flatprompt = True
+        if opt in ("-x", "--experimental"):
+            experimental_ary = arg.split(",")
+            if "fswap" in experimental_ary:
+                fswap = True
+            if "dot" in experimental_ary:
+                dot = True
+
+
+    if stage == False:
+        print("-s, --stage missing")
+        showhelp()
+
+    #----------------------------------------------------------------------------------------
 
     timestamp = get_timestamp()
     cleandir(f"{os.environ['TMPDIR']}/*")
+    fgroups_ct = 0
+
+    #! save copies of the workflows in the output dir
+    save_workflow(output_dir)
 
     #! pre-loop setup
     if stage == "prep":
         prInfo(f"Extracting [{config['params']['fps']}] fps frames from [{video}]")
         files = get_video_frames(video, config)
-        tdirs = []
 
-        prInfo(f"frames = {len(files)}")
+        prInfo(f"Extracted [{len(files)}] from [{video}]")
         prInfo(f"groupsize = {groupsize}")
         fgratio = len(files) / groupsize
-        prInfo(f"fg ratio = {fgratio}")
+        prInfo(f"fgratio = {fgratio}")
 
         # ! make sure there are at least 2 groups
         if int(fgratio) < 2:
             prErr(f"ER:00 - There are not enough frames for more than 1 group (fg-ratio: {fgratio})")
-            new_groupsize = (int(len(files) / 2))
-            prErr(f"ER:01 - Lowering groupsize to {new_groupsize}")
-            groupsize = new_groupsize
+            # new_groupsize = (int(len(files) / 2))
+            # prErr(f"ER:01 - Lowering groupsize to {new_groupsize}")
+            # groupsize = new_groupsize
+
 
         # ! now split into groups
-        fgroups = list(more_itertools.chunked(files, groupsize))
+        fgroups = list(more_itertools.chunked(files[:(groupsize*int(fgratio))], groupsize)) #! limit array to not create 'fractional' groups
         fgroups_ct = len(fgroups)
+        saveparam("fgroups_ct",fgroups_ct)
+        saveparam("fgroups",fgroups)
 
         # ! manually increase fgroups_ct
         # fgroups_ct = 10
@@ -491,8 +526,13 @@ if __name__ == "__main__":
         #! only clean output_dir when prepping
         prInfo(f"Cleaning [{output_dir}/*]")
         cleandir(f"{output_dir}/*")
+    else:
+        fgroups_ct = loadparam("fgroups_ct")
+        fgroups = loadparam("fgroups")
 
     if stage == "anim":
+        tdirs = [] # stub ary to hold group folder names; 00, 01, 02
+
         #! delete previous output FILES (not dirs) that start with project_name in output_dir
         ftypes = ["mp4","png","jpg"]
         for t in ftypes:
@@ -527,10 +567,10 @@ if __name__ == "__main__":
 
     #! fgroupod determines how many clips are made and is calulated by the CN frames.
     #! Manully override by
+    prInfo(f"CREATING [{fgroups_ct}] GROUPS")
 
-    for i in range(0, fgroups_ct):
+    for i in range(start_at_fgroup, fgroups_ct):
         if stage == "prep":
-            # prInfo(f"PREP LOOP: [{i}/{ fgroups_ct - 1}]")
             print(Fore.YELLOW + f"═════════════════════════════════════════════════[ PREP {i}/{fgroups_ct}]════" + Fore.RESET)
 
             #! Save fgropups to dir/file
@@ -547,7 +587,7 @@ if __name__ == "__main__":
             prompt_text = Path(f"{settings_dir}/{prep_template_name}").read_text()
             prompt_flat = flatten_json(prompt_text)
             if flatprompt == True:
-                bytesave_prompt(prompt_flat,stage)
+                bytesave_prompt(prompt_flat,stage,config)
             prompt = update_template(prompt_text,i,config,stage)
             prompt_id = queue_prompt(prompt)['prompt_id']
 
@@ -591,12 +631,12 @@ if __name__ == "__main__":
             prompt_text = Path(f"{settings_dir}/{anim_template_name}").read_text() #! load template
             prompt_flat = flatten_json(prompt_text)
             if flatprompt == True:
-                bytesave_prompt(prompt_flat,stage)
+                bytesave_prompt(prompt_flat,stage,config)
 
             prompt = update_template(prompt_flat,i,config,stage)
 
             #! this is where we assign the new seed image as the last image of the previous group
-            if "fswap" in set(experimental_ary) != False:
+            if fswap:
                 if i > 0:
                     newseed = f"{tdirs[i-1]}/{groupsize:03d}.{IMF}"
                     prompt['30']['inputs']['image']=newseed
@@ -620,41 +660,48 @@ if __name__ == "__main__":
         # cmd = f"cp  /home/jw/src/ComfyUI/output/{projname}_* {target_output}"
         # prCmd(cmd)
         # os.system(cmd)
-
+    #!end of loop
 
     if stage == "merge":
         print(Fore.YELLOW+f"═════════════════════════════════════════════════[ MERGE ]════"+Fore.RESET)
         allfiles = [] # stub for storage of all files
-        exdirimgs = [] # stub for storage of all clip files
+        exdirimgs_ary = [] # stub for storage of all clip files
 
-        clip_files = get_sorted_files(f"{output_dir}/{mp4_output_wc}")
-        prInfo(f"get_sorted_files({output_dir}/{mp4_output_wc})")
-        prInfo(f"{output_dir}/{mp4_output_wc}")
-        # exit()
+        #! get list if video clips in sorted order
+        vid_clips_ary = get_sorted_files(f"{output_dir}/{mp4_output_wc}")
+        prInfo(f"Loaded [{len(vid_clips_ary)}] clips")
 
-        if len(clip_files) < 2:
+        if len(vid_clips_ary) < 2:
             prErr(f"ER:02 - Only 1 clip exists")
             exit()
 
-        prInfo(f"Looping over [{len(clip_files)}] clips")
-        for clip in clip_files:
-            # print(file)
-            exdirimgs.append(extract_video(clip))
-        # exit()
-        # print(Fore.LIGHTGREEN+f"List of frames images from clips [{clip}]"+Fore.LIGHTGREEN)
-        # pprint(exdirimgs)
+        prInfo(f"Looping over [{len(vid_clips_ary)}] clips")
+        for clip in vid_clips_ary:
+            extracted_frames_ary = extract_video(clip)
+            prInfo(f"\tExtracted [{len(extracted_frames_ary)}] frames from [{clip}]")
+            exdirimgs_ary.append(extracted_frames_ary)
+        #! all files for a specific clip are now in one folder
+        for j in range(len(exdirimgs_ary)):
+            try:
+                #! add clip images to final 1D 'allfiles' ary
+                # print(len(exdirimgs_ary[j]))
+                allfiles.append(exdirimgs_ary[j])
+                prInfo(f"Added [{len(exdirimgs_ary[j])}] src files from clip [{j}]")
+                last = exdirimgs_ary[j][-1]
+                first = exdirimgs_ary[j+1][0]
 
-        for i in range(len(exdirimgs)-1):
-            allfiles.append(exdirimgs[i])
-            last = exdirimgs[i][-1]
-            first = exdirimgs[i+1][0]
+                prInfo(f"Interpolating: {last} <=> {first} {interpx}x")
+                newfiles_ary, newfiles_ct = createInterps(last,first, interpx=interpx,debug=debug,dot=dot)#"dot" in set(experimental_ary))
+                prInfo(f"Added [{newfiles_ct}] interp files")
+                #! add the new files to the end of ary
+                allfiles.append(newfiles_ary)
+            except:
+                pass
+        total_frames = 0
+        for k in allfiles:
+            total_frames += len(k)
 
-            prInfo(f"Interpolating: {last} <=> {first} {interpx}x")
-            newfiles_ary = createInterps(last,first, interpx=interpx,debug=debug,dot="dot" in set(experimental_ary))
-
-            #! add the new files to the end of ary
-            allfiles.append(newfiles_ary)
-        prInfo(f"TOTAL FRAMES: [{len(allfiles)}]")
+        prInfo(f"TOTAL FRAMES: [{total_frames}]")
 
         #! now rename in sequence
         tmpdir = maketmpname("FINAL",create=True)
@@ -667,6 +714,7 @@ if __name__ == "__main__":
         cmd = f"ffmpeg  -y -loglevel warning  -hide_banner -hwaccel auto -y -framerate {fps} -pattern_type glob -i {tmpdir}/*.{IMF}  -r {fps} -vcodec libx264 -preset medium -crf 23 -vf minterpolate=mi_mode=blend,fifo -pix_fmt yuv420p  -movflags +faststart  {output_dir}/final.mp4"
         prunlive(cmd,debug=debug)
         prAnn(f"FINAL VIDEO:\nmpv {output_dir}/final.mp4")
+        playsound("finished.wav")
 
     #! cleanup after loop
     #! remove all the copied mp4.

@@ -2,6 +2,8 @@
 
 #usage() { echo "Usage: $0 [-i <inout_dir>] [-o <outout_dir>]" 1>&2; exit 1; }
 
+#export TCLLIBPATH="/usr/lib/graphviz /usr/lib/expect5.45.4/ $TCLLIBPATH"
+
 while getopts ":i:o:" d; do
     case "${d}" in
         i)
