@@ -356,7 +356,7 @@ def loadparam(key):
         val = json.load(f)
         return(val)
 
-def upscale(outdir,config):
+def upscale_f(outdir,config):
     files = get_sorted_files(f"{outdir}/*.{config['params']['imgfmt']}")
     ct = len(files)
     i = 1
@@ -367,18 +367,23 @@ def upscale(outdir,config):
         prunlive(cmd)
         i+=1
     print("\n")
+def upscale_v(outdir,config):
+    video = f"{outdir}/final.mp4"
+    cmd = f"./simple_upscale_video.sh {video} {config['params']['upscale']} {outdir}/outv"
+    prCmd(cmd)
+    prunlive(cmd)
 def showhelp():
     print("help")
     rs = """
     -h, --help          show help
     -v, --video         src video for CN preprocessing
-    -d, --debug         
+    -d, --debug         flag
     -s, --stage         'prep'|'anim'|'merge'
     -x, --experimental  'fswap`|'dot'
     -D, --projdir       project directory
     -F, --flatprompt    dump flat prompt and exit
-    -V, --version
-    -u, --upscale
+    -V, --version       '256','512','960'...
+    -u, --upscale       flag
 
     -x, --experimental options
         'fswap'     use last frame of previous clip as seed image for following clip
@@ -472,7 +477,7 @@ if __name__ == "__main__":
     flatprompt = False # debugging flag
     fswap = False # experimental flag
     dot = False # experimental flag
-    upscale_frames = False
+    upscale_video = False
 
     #! output from the START command
     hideSTDOUT = "2>&1 >> /tmp/START.log"
@@ -484,7 +489,7 @@ if __name__ == "__main__":
         if opt in ("-d", "--debug"):debug = True
         if opt in ("-a", "--atmpl"):anim_template_name = arg
         if opt in ("-F", "--flatprompt"):flatprompt = True
-        if opt in ("-u", "--upscale"):upscale_frames = True
+        if opt in ("-u", "--upscale"):upscale_video = True
         if opt in ("-x", "--experimental"):
             experimental_ary = arg.split(",")
             if "fswap" in experimental_ary:
@@ -726,9 +731,13 @@ if __name__ == "__main__":
                 shutil.move(filename,f"{tmpdir}/{k:04d}.{IMF}")
                 k += 1
 
-        if upscale_frames == True:
-            upscale(tmpdir,config)
-            tmpdir = f"{tmpdir}/out"
+        #! upscalreing frames take 5x lonmger :/
+        # if upscale_frames == True:
+        #     upscale_f(tmpdir,config)
+        #     tmpdir = f"{tmpdir}/out"
+        if upscale_video == True:
+            upscale_v(tmpdir,config)
+            tmpdir = f"{tmpdir}/outv"
 
         cmd = f"ffmpeg  -y -loglevel warning  -hide_banner -hwaccel auto -y -framerate {fps} -pattern_type glob -i {tmpdir}/*.{IMF}  -r {fps} -vcodec libx264 -preset medium -crf 23 -vf minterpolate=mi_mode=blend,fifo -pix_fmt yuv420p  -movflags +faststart  {output_dir}/final.mp4"
         prunlive(cmd,debug=debug)
