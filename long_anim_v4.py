@@ -1,20 +1,23 @@
 #!/bin/env python
 
 from urllib import request
-import os, sys, getopt
+import requests
+import os
+import sys
+import getopt
 from glob import glob
 import tempfile as tmp
 import shutil
 from pathlib import Path
 import more_itertools
-from colorama import init, Fore, Back
+from colorama import init, Fore
 import subprocess
 import websocket #! NOTE: websocket-client (https://github.com/websocket-client/websocket-client)
 import uuid
 import json
 import urllib.request
 import urllib.parse
-from pprint import pprint
+# from pprint import pprint
 import calendar
 import time
 import toml
@@ -26,7 +29,8 @@ init()
 server_address = "127.0.0.1:8188"
 client_id = str(uuid.uuid4())
 
-def find_in_json(prompt,findkey):
+
+def find_in_json(prompt, findkey):
     rstr = []
     for l1_key in prompt:
         L2 = prompt[l1_key]
@@ -197,14 +201,14 @@ def createInterps(last,first,**kwargs):
     shutil.copy(first,indir+f"/2.{IMF}")
 
     #! call interp script (runs in conda env 'rife')
-    cmd = f"/home/jw/src/rife/simple_interp.sh {indir} {outdir} {interpx}"
+    cmd = f"/home/jw/src/rife/simple_interp_images.sh {indir} {interpx} {outdir}"
     prunlive(cmd,debug=debug)
 
     files = get_sorted_files(f"{outdir}/*.{IMF}")
     if dot == True:
         prInfo(f"Adding red dot to interpolates transition frames")
         #! for debugging, mark interp images with icon
-        from PIL import Image, ImageDraw, ImageFilter
+        from PIL import Image
         im2 = Image.open('/home/jw/share/dot512.png')
         for file in files:
             im1 = Image.open(file)
@@ -237,17 +241,40 @@ def save_prompt(prompt,str,n):
     data = json.dumps(prompt, indent=4)
     with open(f"/home/jw/src/ComfyUI/output/__{str}_{n}.json", "w") as f:
         f.write(data)
-def save_workflow(dir):
-    swfile = f"{config['loc']['settings_dir']}/[01]_*"
-    cmd = f"cp {swfile} {dir} "
+def save_workflow(output_dir,settings_dir,fileid):
+    newdir = f"{output_dir}/{fileid}"
+    #! this dir should never already exist, so no need to check
+    os.mkdir(newdir)
+    #! copy all files that start with 0_ or 1_
+    swfile = f"{settings_dir}/[01]_*"
+    cmd = f"cp {swfile} {newdir} "
     prCmd(cmd)
     os.system(cmd)
-def bytesave_prompt(txt,stage,config):
-    saveto = f"{config['loc']['settings_dir']}/{config['loc']['output_dir']}{config['version']}/prompt_{stage}_flat.txt"
+
+    #! copy all MP4s
+    swfile = f"{output_dir}/final.mp4"
+    cmd = f"cp {swfile} {newdir} "
+    prCmd(cmd)
+    os.system(cmd)
+
+
+def bytesave_prompt(prompt_text,stage,config):
+    prompt_flat = flatten_json(prompt_text)
+    saveto = f"{config['xoutput_dir']}/prompt_{stage}_flat.txt"
     with open(saveto, "wb") as f:
-            f.write(txt.encode())
+            f.write(prompt_flat.encode())
     prInfo(f"SAVED PROMPT: [{saveto}]")
+
+
+def vrep(tfrom, tto, txt):
+    txt = re.sub(tfrom, tto, txt)
+    prInfo(f"REPLACED: [{tfrom}] => [{tto}]")
+    return txt
+
+
 def update_template(prompt_text, i,config,stage):
+
+    prompt_text = flatten_json(prompt_text)
     IMF=config['params']['imgfmt']
     w = config['w']
     h = config['h']
@@ -260,11 +287,18 @@ def update_template(prompt_text, i,config,stage):
         prompt_text = prompt_text.replace("OUTPUTVIDEONAME", f"{config['name']}")
 
         #! the values in the search terms act as the default values must match those set in the prep-API.json or anim.json_API workflow
-        prompt_text = prompt_text.replace("\"batch_size\": 48,", f"\"image_load_cap\": {config['params']['groupsize']},")
-        prompt_text = prompt_text.replace("\"image_load_cap\": 48,", f"\"image_load_cap\": {config['params']['groupsize']},")
-        prompt_text = prompt_text.replace("\"frame_rate\": 8,", f"\"frame_rate\": {config['params']['fps']},")
-        prompt_text = re.sub("\"steps\": 20,", f"\"steps\": {config['params']['steps']},",prompt_text)
-        prompt_text = re.sub("\"width\": 256, \"height\": 144,", f"\"width\": {w}, \"height\": {h},", prompt_text)
+
+        prompt_text = vrep('"batch_size": 48,', f'"image_load_cap": {config["params"]["groupsize"]},',prompt_text)
+        prompt_text = vrep('"frame_rate": 8,', f'"frame_rate": {config["params"]["fps"]},',prompt_text)
+        prompt_text = vrep('"steps": 20,', f'"steps": {config["params"]["steps"]},',prompt_text)
+        prompt_text = vrep('"width": 256, "height": 144,', f'"width": {w}, "height": {h},', prompt_text)
+
+        for i in range(len(config['files']['IP_images'])):
+            img = f"{config['files']['IP_images'][i]}.{IMF}"  #  base names: 'viking.png','spagmon.png'
+            newname = f"{w}x{h}_{img}"
+            #!  FIX THIS... not sure which is correct
+            prompt_text = vrep(f'"image": "IPIMAGE{i:02d}.{IMF}",', f'"image": "{newname}",', prompt_text)
+            prompt_text = vrep(f'"image": "IPIMAGE_{i:02d}.{IMF}",', f'"image": "{newname}",', prompt_text)
 
         # ! changes just for prep
     if stage == "prep":
@@ -273,7 +307,10 @@ def update_template(prompt_text, i,config,stage):
 
         # ! make sure the CN 'resolution' is a multiple of 64, min 256, max 2880,
         cnres = int(config['w']/64)*64
-        prompt_text = re.sub("\"resolution\": 256,", f"\"resolution\": {cnres},", prompt_text)
+        # prompt_text = re.sub("\"resolution\": 256,", f"\"resolution\": {cnres},", prompt_text)
+        prompt_text = vrep('"resolution": 256,', f'"resolution": {cnres},', prompt_text)
+
+
 
         #! For all the base IP images, rename to correct res:.  If the slug name is 'IMAGE00.png" in the JSON file
         #! and 'viking.png' in the TOML file, and the w/h params are 256/144, the new name is
@@ -283,13 +320,13 @@ def update_template(prompt_text, i,config,stage):
         #!!! THE STUBS 'IPIMAGE_00.png' NEED TO BE MANUALLY EDITED IN THE JSON FILE !!!
 
         #! etc...
-        for i in range(len(config['files']['IP_images'])):
-            img = f"{config['files']['IP_images'][i]}.{IMF}"  #  base names: 'viking.png','spagmon.png'
-            newname = f"{w}x{h}_{img}"
-            prInfo(f"UPDATING IMAGE NAME: [IPIMAGE{i:02d}.{IMF}] => [{newname}] in {stage} template")
-            prompt_text = re.sub(f"\"image\": \"IPIMAGE{i:02d}.{IMF}\",", f"\"image\": \"{newname}\",", prompt_text)
+        # for i in range(len(config['files']['IP_images'])):
+        #     img = f"{config['files']['IP_images'][i]}.{IMF}"  #  base names: 'viking.png','spagmon.png'
+        #     newname = f"{w}x{h}_{img}"
+        #     prInfo(f"UPDATING IMAGE NAME: [IPIMAGE{i:02d}.{IMF}] => [{newname}] in {stage} template")
+        #     prompt_text = re.sub(f"\"image\": \"IPIMAGE{i:02d}.{IMF}\",", f"\"image\": \"{newname}\",", prompt_text)
 
-
+    # bytesave_prompt(prompt_text,"test",config)
     jsonprompt = json.loads(prompt_text)
     for k in ["batch_size","image_load_cap","frame_rate","steps","image",]:
         rs = find_in_json(jsonprompt,k)
@@ -330,7 +367,7 @@ def prAnn(ann):
 
 def prSub(sub):
     """
-    print Subsustem Output
+    print Subsystem Output
     """
     print(Fore.LIGHTBLUE_EX + sub + Fore.RESET,flush=True)
 
@@ -345,14 +382,25 @@ def abort_flag(stat):
     else:
         os.system("touch /tmp/abort.flag")
         exit()
+def increment_counter(config):
+    sdir = f"{config['xsettings_dir']}"
+    cval = 0
+    cfile = f"{config['xsettings_dir']}/counter.json"
+    if os.path.exists(cfile):
+        cval = loadparam("counter",dir=sdir)
+    cval +=1
+    saveparam("counter",cval,dir=sdir)
+    return cval
 
 def procexit():
     abort_flag(1)
-def saveparam(key,val):
-    with open(f'/tmp/{key}.json', 'w') as f:
+def saveparam(key,val,**kwargs):
+    dir = tryit(kwargs,"dir","/tmp")
+    with open(f'{dir}/{key}.json', 'w') as f:
         f.write(json.dumps(val))
-def loadparam(key):
-    with open(f'/tmp/{key}.json', 'r') as f:
+def loadparam(key,**kwargs):
+    dir = tryit(kwargs,"dir","/tmp")
+    with open(f'{dir}/{key}.json', 'r') as f:
         val = json.load(f)
         return(val)
 
@@ -361,7 +409,7 @@ def upscale_f(outdir,config):
     ct = len(files)
     i = 1
     for file in files:
-        cmd = f"./simple_upscale.sh {file} {config['params']['upscale']} {outdir}/out"
+        cmd = f"./simple_upscale_image.sh {file} {config['params']['upscale']} {outdir}/upscaled"
         # prCmd(cmd)
         print(f"{i}/{ct}",end="\r")
         prunlive(cmd)
@@ -369,9 +417,24 @@ def upscale_f(outdir,config):
     print("\n")
 def upscale_v(outdir,config):
     video = f"{outdir}/final.mp4"
-    cmd = f"./simple_upscale_video.sh {video} {config['params']['upscale']} {outdir}/outv"
+    cmd = f"./simple_upscale_video.sh {video} {config['params']['upscale']} {outdir}/upscaled"
     prCmd(cmd)
     prunlive(cmd)
+def wait_for_server():
+    state = False
+    while state != True:
+        try:
+            state = requests.head("http://127.0.0.1:8188/")
+            # state = urllib.request.urlopen("http://127.0.0.1:8188/").getcode()
+        except:
+            pass
+        prAnn(f"SERVER STATE: {state}")
+        time.sleep(1)
+        if f"{state}" == "<Response [200]>":
+            state = True
+
+
+
 def showhelp():
     print("help")
     rs = """
@@ -379,15 +442,18 @@ def showhelp():
     -v, --video         src video for CN preprocessing
     -d, --debug         flag
     -s, --stage         'prep'|'anim'|'merge'
-    -x, --experimental  'fswap`|'dot'
+    -x, --experimental  'fswap'|'dot'
     -D, --projdir       project directory
     -F, --flatprompt    dump flat prompt and exit
     -V, --version       '256','512','960'...
     -u, --upscale       flag
 
+Notes:
     -x, --experimental options
         'fswap'     use last frame of previous clip as seed image for following clip
         'dot'       add red dot in corner of all interpolated images
+    -F, --flatprompt     wite a non-indented JSON file of the workflow to the output directory    
+        
     """
     print(rs)
     procexit()
@@ -400,7 +466,7 @@ if __name__ == "__main__":
         procexit()
 
     argv = sys.argv[1:]
-
+    opts = False
     projdir = False
     try:
         opts, args = getopt.getopt(
@@ -415,7 +481,7 @@ if __name__ == "__main__":
                         'projdir=',
                         'flatprompt',
                         'version=',
-                        'upscale=',
+                        'upscale',
                 ],
         )
     except Exception as e:
@@ -461,17 +527,22 @@ if __name__ == "__main__":
     IMF = config['params']['imgfmt']
     start_at_fgroup = config['params']['start_at_fgroup']
 
-    settings_dir = f"{config['loc']['settings_dir']}"
+    #! constructed vars, saved in 'config'
+    settings_dir = f"{config['loc']['settings_dir']}/{projname}"
+    config['xsettings_dir']=settings_dir
     prInfo(f"settings_dir = [{settings_dir}]")
 
     output_dir = testpath(f"{settings_dir}/{config['loc']['output_dir']}{projver}")
+    config['xoutput_dir']=output_dir
     prInfo(f"output_dir = [{output_dir}]")
 
     input_dir = testpath(f"{settings_dir}/{config['loc']['input_dir']}{projver}")
+    config['xinput_dir']=input_dir
     prInfo(f"input_dir = [{input_dir}]")
 
     # xvideoname = f"{config['w']}x{config['h']}_{config['files']['video']}"
     video = f"{settings_dir}/{w}x{h}_{config['files']['video']}"
+    config['xvideo']=video
     prInfo(f"INPUT VIDEO = [{video}]")
 
     flatprompt = False # debugging flag
@@ -508,9 +579,6 @@ if __name__ == "__main__":
     cleandir(f"{os.environ['TMPDIR']}/*")
     fgroups_ct = 0
 
-    #! save copies of the workflows in the output dir
-    save_workflow(output_dir)
-
     #! pre-loop setup
     if stage == "prep":
         prInfo(f"Extracting [{config['params']['fps']}] fps frames from [{video}]")
@@ -524,10 +592,6 @@ if __name__ == "__main__":
         # ! make sure there are at least 2 groups
         if int(fgratio) < 2:
             prErr(f"ER:00 - There are not enough frames for more than 1 group (fg-ratio: {fgratio})")
-            # new_groupsize = (int(len(files) / 2))
-            # prErr(f"ER:01 - Lowering groupsize to {new_groupsize}")
-            # groupsize = new_groupsize
-
 
         # ! now split into groups
         fgroups = list(more_itertools.chunked(files[:(groupsize*int(fgratio))], groupsize)) #! limit array to not create 'fractional' groups
@@ -535,13 +599,7 @@ if __name__ == "__main__":
         saveparam("fgroups_ct",fgroups_ct)
         saveparam("fgroups",fgroups)
 
-        # ! manually increase fgroups_ct
-        # fgroups_ct = 10
-
         prInfo(f"Created [{fgroups_ct}] groups of [{groupsize}] from [{len(files)}] frames")
-
-        # target_input = f"/home/jw/src/ComfyUI/INPUTS/{projname}-input"
-        # target_output = f"/home/jw/src/ComfyUI/output/{projname}"
 
         #! only clean output_dir when prepping
         prInfo(f"Cleaning [{output_dir}/*]")
@@ -550,9 +608,8 @@ if __name__ == "__main__":
         fgroups_ct = loadparam("fgroups_ct")
         fgroups = loadparam("fgroups")
 
+    tdirs = []  # stub ary to hold group folder names; 00, 01, 02
     if stage == "anim":
-        tdirs = [] # stub ary to hold group folder names; 00, 01, 02
-
         #! delete previous output FILES (not dirs) that start with project_name in output_dir
         ftypes = ["mp4","png","jpg"]
         for t in ftypes:
@@ -566,29 +623,27 @@ if __name__ == "__main__":
         cmd = f"cp {settings_dir}/*.{IMF} {output_dir}"
         prCmd(cmd)
         os.system(cmd)
-    # if os.path.exists(target_input):
-        #     prInfo(f"[{target_input}] Exists... Deleting")
-        #     shutil.rmtree(target_input)
-        # os.mkdir(target_input)
-    #! symlink to 'inputs'
-    # if os.path.exists(config['loc']['input_dir']):
-    #     os.unlink(config['loc']['input_dir'])
-    # cmd = f"ln -fs {target_input}/ {config['loc']['input_dir']}"
-    # prCmd(cmd)
-    # os.system(cmd)
-    # exit()
 
-    #! MAIN LOOP -------------------------------------------------------------- start Comfy
-    if stage != "merge":  #! 'merge' does not use/need Comfy.
-        cmd = f"/home/jw/src/ComfyUI/START  -i {input_dir} -o {output_dir}  {hideSTDOUT} &"
-        prCmd(cmd)
-        os.system(cmd)
-        time.sleep(20) #! hardcoded as I don't know how to test for when ready
+
+    # if stage != "merge":  #! 'merge' does not use/need Comfy.
+    #     cmd = f"/home/jw/src/ComfyUI/START  -i {input_dir} -o {output_dir}  {hideSTDOUT} &"
+    #     prCmd(cmd)
+    #     os.system(cmd)
+    #     time.sleep(20) #! hardcoded as I don't know how to test for when ready
 
     #! fgroupod determines how many clips are made and is calulated by the CN frames.
     #! Manully override by
     prInfo(f"CREATING [{fgroups_ct}] GROUPS")
 
+    prInfo("Restarting Server")
+    cmd = f"./START  -i {input_dir} -o {output_dir} {hideSTDOUT} &"
+    prCmd(cmd)
+    os.system(cmd)
+    # ! wait for server to be up
+    wait_for_server()
+
+    #! MAIN LOOP -------------------------------------------------------------- start Comfy
+    prInfo("Entering MAIN LOOP")
     for i in range(start_at_fgroup, fgroups_ct):
         if stage == "prep":
             print(Fore.YELLOW + f"═════════════════════════════════════════════════[ PREP {i}/{fgroups_ct}]════" + Fore.RESET)
@@ -605,11 +660,14 @@ if __name__ == "__main__":
 
             #! load and run prep template prompt,  This creates the ControNet input images in 'output_dir'
             prompt_text = Path(f"{settings_dir}/{prep_template_name}").read_text()
-            prompt_flat = flatten_json(prompt_text)
+            # prompt_flat = flatten_json(prompt_text)
             if flatprompt == True:
-                bytesave_prompt(prompt_flat,stage,config)
+                bytesave_prompt(prompt_text,stage,config)
+            prInfo("Updating Template in 'prep'")
             prompt = update_template(prompt_text,i,config,stage)
+            prInfo("Submitting PREP workflow")
             prompt_id = queue_prompt(prompt)['prompt_id']
+            prInfo(f"Prompt ID: [{prompt_id}]")
 
             #! WAIT FOR THE QUEUE TO COMLETE
             wait_until_finished(prompt_id)
@@ -627,10 +685,12 @@ if __name__ == "__main__":
         if stage == "anim":
             # prInfo(f"ANIM LOOP: [{i}/{ fgroups_ct - 1}]")
             # ! due to memory (or something) issues, need to restart Comfy for each iteration of the loop
-            cmd = f"/home/jw/src/ComfyUI/START  -i {input_dir} -o {output_dir} {hideSTDOUT} &"
+            cmd = f"./START  -i {input_dir} -o {output_dir} {hideSTDOUT} &"
             prCmd(cmd)
             os.system(cmd)
-            time.sleep(20) #! hardcoded as I don't know how to test for when ready
+
+            #! wait for server to be up
+            wait_for_server()
 
             print(Fore.YELLOW + f"═════════════════════════════════════════════════[ ANIM {i}/{fgroups_ct}]════" + Fore.RESET)
             #! create folder by group; 00, 01, 02, ...
@@ -649,11 +709,8 @@ if __name__ == "__main__":
 
             #! submit the prompt
             prompt_text = Path(f"{settings_dir}/{anim_template_name}").read_text() #! load template
-            prompt_flat = flatten_json(prompt_text)
-            if flatprompt == True:
-                bytesave_prompt(prompt_flat,stage,config)
 
-            prompt = update_template(prompt_flat,i,config,stage)
+            prompt = update_template(prompt_text,i,config,stage)
 
             #! this is where we assign the new seed image as the last image of the previous group
             if fswap:
@@ -663,11 +720,18 @@ if __name__ == "__main__":
                     if debug:
                         prInfo(f"Setting seed image to [{newseed}]")
 
-            # save_prompt(prompt_flat,stage,i)
-            # print(prompt_flat)
-            # exit()
+            #!  ?? for some reason, the server is not up at this point, even though it passed the previous gate
+            wait_for_server()
+            try:
+                prompt_id = queue_prompt(prompt)['prompt_id']
+                prInfo(f"Prompt ID: [{prompt_id}]")
+            except Exception as e:
+                print(str(e))
+                abort_flag(1)
 
-            prompt_id = queue_prompt(prompt)['prompt_id']
+
+
+
 
             #! WAIT FOR THE QUEUE TO COMLETE
             wait_until_finished(prompt_id)
@@ -675,6 +739,12 @@ if __name__ == "__main__":
             if i >= config['params']['maxloops']:
                 prInfo(f"[{i}] > [{config['params']['maxloops']}].....  Breaking Loop!")
                 break
+
+            # prompt_flat = flatten_json(prompt_text)
+            if flatprompt == True:
+                bytesave_prompt(prompt_text,stage,config)
+
+
         #! copy output files to project output folder.  They are copied, not moved, because Comfy needs to
         #! see which files already exist so as to name them correctly.
         # cmd = f"cp  /home/jw/src/ComfyUI/output/{projname}_* {target_output}"
@@ -684,6 +754,10 @@ if __name__ == "__main__":
 
     if stage == "merge":
         print(Fore.YELLOW+f"═════════════════════════════════════════════════[ MERGE ]════"+Fore.RESET)
+        #! get teh new counter ID here so as not to be in the anim loop
+        fileid = f"{increment_counter(config):02d}"
+        prInfo(f"Current file ID = [{fileid}]")
+
         allfiles = [] # stub for storage of all files
         exdirimgs_ary = [] # stub for storage of all clip files
 
@@ -731,17 +805,21 @@ if __name__ == "__main__":
                 shutil.move(filename,f"{tmpdir}/{k:04d}.{IMF}")
                 k += 1
 
-        #! upscalreing frames take 5x lonmger :/
-        # if upscale_frames == True:
-        #     upscale_f(tmpdir,config)
-        #     tmpdir = f"{tmpdir}/out"
-        if upscale_video == True:
-            upscale_v(tmpdir,config)
-            tmpdir = f"{tmpdir}/outv"
 
         cmd = f"ffmpeg  -y -loglevel warning  -hide_banner -hwaccel auto -y -framerate {fps} -pattern_type glob -i {tmpdir}/*.{IMF}  -r {fps} -vcodec libx264 -preset medium -crf 23 -vf minterpolate=mi_mode=blend,fifo -pix_fmt yuv420p  -movflags +faststart  {output_dir}/final.mp4"
         prunlive(cmd,debug=debug)
         prAnn(f"FINAL VIDEO:\nmpv {output_dir}/final.mp4")
+
+        playsound("finished.wav")
+
+        if upscale_video == True:
+            upscale_v(output_dir,config)
+            prAnn(f"FINAL UPSCALED VIDEO:\nmpv {output_dir}/upscaled/final.mp4")
+
+        # ! save copies of the workflows in the output dir
+        save_workflow(output_dir, settings_dir, fileid)
+
+        playsound("finished.wav")
         playsound("finished.wav")
 
     #! cleanup after loop

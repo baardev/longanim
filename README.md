@@ -44,12 +44,12 @@ h       = 288
 # loacation of TOML, images, videos, etc.
 settings_dir = "/home/jw/src/sdc/settings/COMFY/spagvik"
 
-# get appended with 'version' => output_256
+# gets appended with 'version' => output_256
 output_dir = "output_"
 input_dir = "output_"
 
 
-# Don;t use /tmp as the app wipes everything in this folder
+# Don't use /tmp as the app wipes everything in this folder
 tmpdir = "/fstmp"
 
 [files]
@@ -203,7 +203,7 @@ If upscaling is enabled:
 
 The merge stage extracts the above video and creates interpolated images between the last frame of the previous video and the first frame of the following video.  The number of interpolated frames created is determined by  `interpx` in the TOML file.
 
-*Note: The interpolation is performed externally `simple_interp.sh`.  Upscaling is performed externally by `simply_upscale_video.sh` *
+*Note: The interpolation is performed externally `simple_interp.sh`.  Upscaling is performed externally by `simple_upscale_video.sh`* 
 
 *merge* extracts all the videos, then inserts the interpolated frames, then reassembles the video to the final form, which is saved in the project output folder.
 
@@ -224,7 +224,14 @@ or better
 clear && time unbuffer ./LONGANIM -P -A -M | tee run.log  
 ```
 
-*Note:  'unbuffer' allows for ANSI codes to be sent to the screen while using 'tee'.*
+### Notes:
+
+- 'unbuffer' allows for ANSI codes to be sent to the screen while using 'tee'.
+
+  - On error, the file `/tmp/abort.flag` is created, which stops all further processing.  This file is delete when running `LONGANIM`.
+
+  - Data is passed between processes with the JSON files ` /tmp/fgroups.json` and `/tmp/fgroups_ct.json`.  These are deleted when running `LONGANIM -P`
+  - If running a new process using the same CN input files from a previous run, skip the `-P` argument of `LONGANIM`.
 
 
 ### Bugs
@@ -232,3 +239,5 @@ clear && time unbuffer ./LONGANIM -P -A -M | tee run.log
 - yes
 
   
+
+For more details, read comment in `0_anim.toml` and `long_anim_v4.py`.

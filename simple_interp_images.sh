@@ -1,8 +1,8 @@
 #!/bin/bash
 
 INPUT_FILE_LOC=$1
-OUTPUT_FILE_LOC=$2
-INTERPX=$3
+INTERPX=$2
+OUTPUT_FILE_LOC=$3
 
 source /home/jw/miniforge3/etc/profile.d/conda.sh
 conda activate Rife

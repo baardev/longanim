@@ -1,11 +1,14 @@
 #!/bin/bash
 # commandline ewxample;
-# clear && time ./LONGANIM -P -A -M &&  xsel -o > run.log
+# clear && time unbuffer ./LONGANIM -P -A -M | tee run.log
 
 #!@ wipe all stale state flags
 rm /tmp/abort.flag
 
-NAME="spagvik"
+
+#NAME="spagvik"
+#CFG="/home/jw/src/sdc/settings/COMFY/${NAME}"
+NAME="flowers"
 CFG="/home/jw/src/sdc/settings/COMFY/${NAME}"
 VER=`./getcval.py -c ${CFG} -k version`
 
@@ -20,12 +23,20 @@ anim () {
 }
 
 merge () {
-  ./long_anim_v4.py --stage merge -D ${CFG} --version ${VER} #--experimental ; # fswap;
+  ./long_anim_v4.py --stage merge -D ${CFG} --version ${VER} --upscale #--experimental ; # fswap;
 }
 
-# make sure V is first
-while getopts 'PAM' option ; do
+
+
+# make sure N is first in argument list on the command line
+while getopts 'N:PAM' option ; do
+
     case "${option}" in
+    N)
+      NAME=${OPTARG}
+      CFG="/home/jw/src/sdc/settings/COMFY/${NAME}"
+      VER=`./getcval.py -c ${CFG} -k version`
+      ;;
     P) prep  ;;
     A) anim  ;;
     M) merge ;;
@@ -33,4 +44,6 @@ while getopts 'PAM' option ; do
     esac
 done
 shift $(( OPTIND - 1 ))
+
+
 

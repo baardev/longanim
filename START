@@ -21,8 +21,9 @@ done
 source /home/jw/miniforge3/etc/profile.d/conda.sh
 conda activate ainodes
 
+./GPUMEMCLEAR
+
 cd /home/jw/src/ComfyUI
-/home/jw/bin/GPUMEMCLEAR
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 PYTHON_SCRIPTS_DIR="$PYTHON_DIR/Scripts;/home/jw/store/src/ComfyUI/custom_nodes/comfyui-reactor-node/"
