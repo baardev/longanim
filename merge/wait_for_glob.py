@@ -6,7 +6,6 @@ import sys
 from glob import glob
 
 spec = sys.argv[1]
-print(f"Waiting for [{spec}]")
 found = False
 while found == False:
     files = glob(spec)
@@ -15,7 +14,7 @@ while found == False:
         print(f"Found [{spec}]")
         exit()
     else:
-        print(".",end="",flush=True)
+        print(f"Waiting for [{spec}]",flush=True)
 
     time.sleep(5)
 

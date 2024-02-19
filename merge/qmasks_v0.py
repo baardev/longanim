@@ -16,6 +16,9 @@ def frange(start, stop, step):
     return tnary
 
 #!==================================================================================
+p.prAnn("┌─────────────────────────────────────────────")
+p.prAnn("│ ENTERED 'qmasks_v0.py'")
+p.prAnn("└─────────────────────────────────────────────")
 
 argv = sys.argv[1:]
 opts = False
@@ -102,10 +105,14 @@ i1 = 0.0
 i2 = 1.0
 c = 0
 
+testcurve = [0,0.25,0.50,0.75,1]
 curve = [0,0.03,0.06,0.09,0.12,0.15,0.18,0.21,0.23,0.25,0.27,0.29,0.31,0.33,0.35,0.37,0.39,0.41,0.42,0.43,0.44,0.45,0.46,0.47,0.48,0.49,0.5,0.51,0.52,0.53,0.54,0.55,0.56,0.57,0.58,0.59,0.6,0.62,0.64,0.66,0.68,0.7,0.72,0.74,0.76,0.78,0.81,0.84,0.87,0.9,0.93,0.96,0.99,1]
 
+#! NOTE: is the last file is not  named "*_1.00-0.00_00001_.png" then tehg 'waitinf_for_glob.py" will not work and must be changed
+
 #for i in frange(0,1.01,0.01):
-for j in curve:
+# for j in curve:
+for j in testcurve:
     i = j*target_weight
     c = c + 1
     ni1 = round(i1+i,2)
@@ -133,3 +140,6 @@ for j in curve:
     #! submit prompt
     prompt_id = p.queue_prompt(prompt)['prompt_id']
 
+p.prInfo("┌─────────────────────────────────────────────")
+p.prInfo("│ EXITING 'qmasks_v0.py'")
+p.prInfo("└─────────────────────────────────────────────")

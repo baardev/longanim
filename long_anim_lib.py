@@ -429,7 +429,7 @@ def wait_for_server():
             # state = urllib.request.urlopen("http://127.0.0.1:8188/").getcode()
         except:
             pass
-        prAnn(f"SERVER STATE: {state}")
+        prAnn(f"Waiting for http://127.0.0.1:8188/ - SERVER STATE: {state}")
         time.sleep(1)
         if f"{state}" == "<Response [200]>":
             state = True

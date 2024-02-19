@@ -13,7 +13,9 @@ import tempfile
 from glob import glob
 from pprint import pprint
 #!==================================================================================
-
+p.prAnn("┌─────────────────────────────────────────────")
+p.prAnn("│ ENTERED 'interpolate_v0.py'")
+p.prAnn("└─────────────────────────────────────────────")
 argv = sys.argv[1:]
 opts = False
 image_01 = False
@@ -64,17 +66,17 @@ if lastclip == True:
     p.prInfo(f"Skipping [{skip_first_images}] files")
 # exit()
 #! output from the START command
-# hideSTDOUT = "2>&1 >> /tmp/START.log"
-# p.prInfo("Restarting Server")
-# if output_dir != False:
-#     cmd = f"~/src/longanim/START -i {input_dir} -o {output_dir} {hideSTDOUT} &"
-# else:
-#     p.cleandir(output_dir)
-    # cmd = f"./START {hideSTDOUT} &"
+hideSTDOUT = "2>&1 >> /tmp/START.log"
+p.prInfo("Restarting Server")
+if output_dir != False:
+    cmd = f"~/src/longanim/START -i {input_dir} -o {output_dir} {hideSTDOUT} &"
+else:
+    p.cleandir(output_dir)
+    cmd = f"./START {hideSTDOUT} &"
 
-# p.prCmd(cmd)
-# os.system(cmd)
-# p.wait_for_server()
+p.prCmd(cmd)
+os.system(cmd)
+p.wait_for_server()
 
 with open("interp_v0_API.json") as f:
     prompt = json.load(f)
@@ -89,10 +91,10 @@ prompt['5']['inputs']['interpolate'] = interpolate
 prompt['1']['inputs']['image_load_cap'] = image_load_cap
 prompt['1']['inputs']['directory'] = f"/home/jw/src/longanim/merge/{input_dir}"
 
-pprint(prompt)
+# pprint(prompt)
 
 from pprint import pprint
-pprint(prompt['1']['inputs'])
+# pprint(prompt['1']['inputs'])
 
 prompt['1']['inputs']['skip_first_images'] = skip_first_images
 
@@ -100,7 +102,7 @@ prompt['1']['inputs']['skip_first_images'] = skip_first_images
 cmd = f"GPUMEMCLEAR"
 p.prCmd(cmd)
 p.prunlive(cmd)
-cmd = f"~/src/longanim/START -o /home/jw/src/longanim/merge/stage_2 -i /home/jw/src/longanim/merge/{input_dir} &"
+cmd = f"~/src/longanim/START -o /home/jw/src/longanim/merge/{output_dir} -i /home/jw/src/longanim/merge/{input_dir} &"
 p.prAnn("********************************************************************")
 p.prCmd(cmd)
 p.prAnn("********************************************************************")
@@ -109,3 +111,6 @@ p.wait_for_server()
 
 prompt_id = p.queue_prompt(prompt)['prompt_id']
 
+p.prInfo("┌─────────────────────────────────────────────")
+p.prInfo("│ EXITING 'interpolate_v0.py'")
+p.prInfo("└─────────────────────────────────────────────")
