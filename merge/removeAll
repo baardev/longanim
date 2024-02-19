@@ -1,0 +1,5 @@
+#!/bin/bash
+/bin/rm -rf stage_1/*
+/bin/rm -rf stage_2/*
+/bin/rm -rf stage_3/*
+/bin/rm -rf stage_4/*

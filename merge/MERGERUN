@@ -1,0 +1,146 @@
+#!/bin/bash -x
+cd /home/jw/src/longanim/merge
+
+if [ -z "${3}" ]
+then
+  W=512
+else
+  W=${3}
+fi
+
+if [ -z "${4}" ]
+then
+  H=512
+else
+  H=${4}
+fi
+
+IMAGE1=${1}
+IMAGE2=${2}
+
+STUB=${IMAGE1}_${IMAGE2}
+NAME=${STUB}.mp4
+FPS="30"  #! bump the fps tp 30
+
+#^ uncomment to set self-loop mode
+#^ assumes original images are called 01.png.ORG and 02.png.ORG
+#if [ -f stage_1/${STUB}/0027_0.50-0.50_00001_.png ]
+#then
+#  cp stage_1/${STUB}/0027_0.50-0.50_00001_.png images/${IMAGE1}.png
+
+
+
+#-------------------------------------------------------------------------------------------
+#- Run 'mask_v0.json' workflow, which creates the interpolated frames
+#-------------------------------------------------------------------------------------------
+if test -f stage_1/${STUB}/*_1.00-0.00_00001_.png; then
+  echo "Using existing files in  [stage_1/${STUB}/]"
+else
+  #! create frames
+  mkdir stage_1/${STUB}
+  ./qmasks_v0.py \
+   --output_dir /home/jw/src/longanim/merge/stage_1/${STUB} \
+   --input_dir /home/jw/src/longanim/merge/images \
+   --images ${IMAGE1}.png,${IMAGE2}.png \
+   --res ${W}:${H} &
+  #^ set target_weight to 0.5 to end a middle of interp
+  #! need to wait for the que to finish by looking for the last filename created
+  ./wait_for_glob.py stage_1/${STUB}/*_1.00-0.00_00001_.png
+fi
+#-------------------------------------------------------------------------------------------
+#- Create main interps video
+#-------------------------------------------------------------------------------------------
+if test -f stage_2/${STUB}_00001.mp4; then
+  echo "Using existing files in [stage_1/${STUB}]"
+else
+  #rm stage_3/${STUB}.mp4
+  ./interpolate_v0.py \
+  --name ${STUB} \
+  --input_dir stage_1/${STUB}/ \
+  --frame_rate 8 \
+  --multiplier 2 \
+  --image_load_cap 1000 \
+  --interpolate 1
+
+  ./wait_for_glob.py stage_2/${STUB}_00001.mp4
+  #! if teh file is big, needs time to finish writing
+  sleep 15
+  ffmpeg -y -loglevel warning -i stage_2/${STUB}_00001.mp4 -filter:v fps=${FPS} stage_2/${FPS}_${STUB}_00001.mp4
+  #zip ${STUB}_MAIN.zip stage_2/*.png
+fi
+
+#^ skip the rest of not resolving to original images
+exit
+
+#-------------------------------------------------------------------------------------------
+#- Interp first first 2 'pre' frames only
+#-------------------------------------------------------------------------------------------
+if test -f stage_2/${STUB}_pre_00001.mp4; then
+  echo "Using exsiting file [stage_2/${STUB}1_00001.mp4]"
+else
+  #! add first frame from original images
+  cp images/${IMAGE1}.png stage_1/${STUB}/00000.png
+
+  ./interpolate_v0.py \
+  --name ${STUB}_pre \
+  --input_dir stage_1/${STUB} \
+  --frame_rate 8 \
+  --multiplier 10 \
+  --image_load_cap 2 \
+  --interpolate 1
+
+
+  ./wait_for_glob.py stage_2/${STUB}_pre_00001.mp4
+  sleep 15
+  #zip ${STUB}_FIRST.zip stage_2/*.png
+  rm stage_1/${STUB}/00000.png
+  ffmpeg -y -loglevel warning -i stage_2/${STUB}_pre_00001.mp4 -filter:v fps=${FPS} stage_2/${FPS}_${STUB}_pre_00001.mp4
+fi
+
+#-------------------------------------------------------------------------------------------
+#- Interp last  2 'post' frames only
+#-------------------------------------------------------------------------------------------
+if test -f stage_2/${STUB}_post_00001.mp4; then
+  echo "Using existing file [stage_2/${STUB}2_00001.mp4]"
+else
+  mkdir tmp123
+  cp  stage_1/${STUB}/0054*.png tmp123/1.png
+  cp images/${IMAGE2}.png tmp123/2.png
+
+  #! add last frame from original images
+  #cp ${IMAGE2}.png stage_1/99999.png
+
+  ./interpolate_v0.py \
+  --name ${STUB}_post \
+  --input_dir tmp123 \
+  --frame_rate 8 \
+  --multiplier 10 \
+  --image_load_cap 2 \
+  --interpolate 1
+  #--lastclip
+
+  ./wait_for_glob.py stage_2/${STUB}_post_00001.mp4
+  ffmpeg -y -loglevel warning -i stage_2/${STUB}_post_00001.mp4 -filter:v fps=${FPS} stage_2/${FPS}_${STUB}_post_00001.mp4
+  #sleep 15
+  #zip ${STUB}_LAST.zip stage_2/*.png
+  #rm -rf tmp123
+fi
+
+#-------------------------------------------------------------------------------------------
+#- Merge clips
+#-------------------------------------------------------------------------------------------
+
+
+echo "file 'stage_2/${FPS}_${STUB}_pre_00001.mp4" > list
+echo "file 'stage_2/${FPS}_${STUB}_00001.mp4" >> list
+echo "file 'stage_2/${FPS}_${STUB}_post_00001.mp4" >> list
+
+#! merge into 1 video
+#rm stage_3/${FPS}_${STUB}.mp4
+ffmpeg -y -loglevel warning -f concat -safe 0 -i list -c copy stage_3/${FPS}_${STUB}.mp4
+
+
+
+
+
+

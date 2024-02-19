@@ -1,0 +1,26 @@
+#!/bin/bash -x 
+
+# https://superuser.com/questions/1361306/ffmpeg-command-to-speedup-slowdown-a-video-to-a-specific-time
+
+INPUT_FILE=stage_4/00-11.mp4 && \
+OUTPUT_FILE=stage_4/00-11_60sec.mp4 && \
+OUTPUT_DURATION=60 && \
+CURRENT_DURATION=$(ffprobe -v error -show_format -show_streams -i "${INPUT_FILE}" | grep 'duration=' | head -n 1 | sed 's/duration=//') && \
+echo "Found current duration ${CURRENT_DURATION} seconds" && \
+#SPEEDUP=$(printf "%.2f" $(echo "scale=3; $CURRENT_DURATION / $OUTPUT_DURATION" | bc)) && \
+#echo "Processing conversion with speedup ${SPEEDUP}x" && \
+
+
+
+ffmpeg \
+    -hide_banner \
+    -v warning \
+    -i "${INPUT_FILE}" \
+    -filter:v "setpts=PTS/5" \
+    -filter:a "atempo=5" \
+    "${OUTPUT_FILE}" && \
+echo "Done! File written to ${OUTPUT_FILE}"
+
+#SPEEDUP=$(( $CURRENT_DURATION / $OUTPUT_DURATION )) && \
+#    -filter:v "setpts=PTS/${SPEEDUP}" \
+#    -filter:a "atempo=${SPEEDUP}" \

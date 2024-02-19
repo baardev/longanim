@@ -1,0 +1,5 @@
+export IMAGE1="aliencity"
+export IMAGE2="ancienthands"
+export NAME=${IMAGE1}_${IMAGE2}.mp4
+export STUB=${IMAGE1}_${IMAGE2}
+export FPS="30"

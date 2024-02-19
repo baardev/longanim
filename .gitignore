@@ -2,3 +2,10 @@
 *.log
 PUSH
 .directory
+*.png
+*.mp4
+TMP123
+__pycache__/
+archive
+images*
+*BAK

@@ -3,6 +3,7 @@ import math
 import os, sys, glob, getopt
 from colorama import init, Fore, Back
 from pprint import pprint
+sys.path.append("/home/jw/src/sdc")
 import proclib as p
 import math as m
 from tempfile import mktemp
