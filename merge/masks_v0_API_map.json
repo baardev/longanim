@@ -1,0 +1,8 @@
+cnames = {
+    'Empty_Latent_Image':'3',
+    'Load_Image_1':'12',
+    'Load_Image_2':'27',
+    'Apply_IPAdapter_2':'50',
+    'Apply_IPAdapter_1':'51',
+    'Save_Image':'59',
+}

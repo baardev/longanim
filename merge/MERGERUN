@@ -9,7 +9,8 @@ cd /home/jw/src/longanim/merge
 #H=512
 #PROJECT="X"
 #echo "xxxxx"
-while getopts ":w:h:p:f:t:" d; do
+CURVE="test"
+while getopts ":w:h:p:f:t:c:" d; do
     echo "[${d}]"
     case "${d}" in
         w)
@@ -27,25 +28,14 @@ while getopts ":w:h:p:f:t:" d; do
         t)
             IMAGE2=${OPTARG}
             ;;
+        c)
+            CURVE=${OPTARG}
+            ;;
         *)
             usage
             ;;
     esac
 done
-
-#if [ -z "${3}" ]
-#then
-#  W=512
-#else
-#  W=${3}
-#fi
-#
-#if [ -z "${4}" ]
-#then
-#  H=512
-#else
-#  H=${4}
-#fi
 
 STUB=${IMAGE1}_${IMAGE2}
 NAME=${STUB}.mp4
@@ -79,6 +69,7 @@ else
    --output_dir /home/jw/src/longanim/merge/stage_1/${PROJECT}/${STUB} \
    --input_dir /home/jw/src/longanim/merge/images \
    --images ${IMAGE1}.png,${IMAGE2}.png \
+   --curve ${CURVE} \
    --res ${W}:${H} &
   #^ set target_weight to 0.5 to end a middle of interp
   #! need to wait for the que to finish by looking for the last filename created

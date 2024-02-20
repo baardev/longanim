@@ -13,8 +13,8 @@ delin () {
 # rsync -avr spagvik/ spagvik_v5
 
 
-change name of project in 0_anim,toml in each new folder
-update 1_anim,json, 1_anim_API.json in each folder
+#change name of project in 0_anim,toml in each new folder
+#update 1_anim,json, 1_anim_API.json in each folder
 
 
 

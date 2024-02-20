@@ -41,6 +41,7 @@ def left_rotate_array(arr, d):
     return arr
 
 res = sys.argv[1]
+project = sys.argv[2]
 parts = res.split(":")
 W = parts[0]
 H = parts[1]
@@ -58,4 +59,4 @@ for i in range(len(files)):
     i2 = files2[j]
 
 
-    print("../MERGERUN "+p.split_path(files[j])['nameonly'],p.split_path(files2[j])['nameonly']+F" {W} {H}")
+    print(f"../MERGERUN -f {p.split_path(files[j])['nameonly']} -t {p.split_path(files2[j])['nameonly']} -w {W} -h {H} -p story_1")
