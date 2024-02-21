@@ -14,13 +14,13 @@ try:
     opts, args = getopt.getopt(
         argv, "hf:",
         [   'help',
-                    'filer=',
+                    'file=',
             ],
     )
 except Exception as e:
     print(str(e))
 
-filename = "/home/jw/store/src/longanim/merge/masks_v0_API.json"
+filename = "/home/jw/store/src/longanim/merge/qmasks_v0_API.json"
 for opt, arg in opts:
     if opt in ("-h", "--help"):p.showhelp()
     if opt in ("-f", "--file"):filename = arg
@@ -47,6 +47,10 @@ names = {
     '67': 'Load Advanced ControlNet Model',
     '74': 'AnimateDiff Loader (Legacy)',
     '75': 'Context Options Looped Uniform',
+    '76': 'ksampler_2',
+    '80': 'Load image as mask',
+    '81': 'Ksampler Adv. Efficient',
+    '83': 'Highres Fix Script',
 }
 
 
@@ -60,15 +64,18 @@ with open(filename,"r") as f:
 data = json.loads(rd)
 
 #! for just teh keys
-# for d in data:
-#     lev1 = Fore.LIGHTYELLOW_EX+f"['{d}']"+Fore.RESET
-#     print(f"'{d}':'',")
+for d in data:
+    lev1 = Fore.LIGHTYELLOW_EX+f"['{d}']"+Fore.RESET
+    print(f"'{d}':'',")
 
 for d in data:
     lev1 = Fore.LIGHTYELLOW_EX+f"['{d}']"+Fore.RESET
-    print(f"'{d}':{Fore.LIGHTRED_EX}'{names[d]}',{Fore.RESET}")
-    for e in data[d]['inputs']:
-        lev2 = f"['inputs']"+ Fore.LIGHTCYAN_EX + f"['{e}']" + Fore.RESET
-        lev2val = data[d]['inputs'][e]
-        pre = f"{lev1}{lev2}"
-        print(f"\t{pre:70s} = {lev2val}")
+    try:
+        print(f"'{d}':{Fore.LIGHTRED_EX}'{names[d]}',{Fore.RESET}")
+        for e in data[d]['inputs']:
+            lev2 = f"['inputs']"+ Fore.LIGHTCYAN_EX + f"['{e}']" + Fore.RESET
+            lev2val = data[d]['inputs'][e]
+            pre = f"{lev1}{lev2}"
+            print(f"\t{pre:70s} = {lev2val}")
+    except:
+        print(f"Add [{d}] to 'names' ")

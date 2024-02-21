@@ -17,7 +17,7 @@ def frange(start, stop, step):
     # print(tnary)
     return tnary
 def setval(prompt,idx,key,val):
-    p.prInfo(f"\t['{idx}']['inputs']['{key}'] = {val}")
+    p.prInfo(f"\t['{idx}']['inputs']['{key}'] = {val} ({type(val)})")
     try:
         prompt[idx]['inputs'][key] = val
     except Exception as e:
@@ -116,7 +116,7 @@ p.prCmd(cmd)
 os.system(cmd)
 p.wait_for_server()
 
-with open("masks_v0_API.json") as f:
+with open("qmasks_v0_API.json") as f:
     prompt = json.load(f)
 
 def showval(prompt,key):
@@ -145,12 +145,15 @@ for i in frange(0,1.01,0.01): curves['linear'].append(i)
 #! NOTE: is the last file is not  named "*_1.00-0.00_00001_.png" then tehg 'waitinf_for_glob.py" will not work and must be changed
 
 cnames = {
-    'Empty_Latent_Image':'3',
-    'Load_Image_1':'12',
-    'Load_Image_2':'27',
-    'Apply_IPAdapter_2':'50',
-    'Apply_IPAdapter_1':'51',
-    'Save_Image':'59',
+    'Empty_Latent_Image':   '3',
+    'Load_Image_1':         '12',
+    'Load_Image_2':         '27',
+    'Apply_IPAdapter_2':    '50',
+    'Apply_IPAdapter_1':    '51',
+    'Save_Image':           '59',
+    'Load_Image_As_Mask': '80',
+    'Ksampler_Adv_Efficient': '81',
+    'Highres_Fix_Script': '83',
 }
 
 
@@ -168,7 +171,7 @@ for j in applied_curve:
     p.prAnn("UPDATED VALUES:")
 
     setval(prompt,cnames['Empty_Latent_Image'],"width",width) #3
-    setval(prompt,cnames['Empty_Latent_Image'],"width",height) # 3
+    setval(prompt,cnames['Empty_Latent_Image'],"height",height) # 3
 
     setval(prompt,cnames['Load_Image_1'],"image",f"{image_01}") # 12
 
@@ -179,6 +182,8 @@ for j in applied_curve:
     setval(prompt,cnames['Apply_IPAdapter_1'],"weight",str(ni2)) # 51
 
     setval(prompt,cnames['Save_Image'],"filename_prefix",prefix) # 59
+    setval(prompt,cnames['Load_Image_As_Mask'],"image","/home/jw/store/src/longanim/merge/MASKS/mask2.png")  # 80
+
 
 
     #! submit prompt

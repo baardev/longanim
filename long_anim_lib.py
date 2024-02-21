@@ -344,33 +344,47 @@ def prCmd(cmd):
     """
     print Commands
     """
-    print(">>> "+Fore.LIGHTCYAN_EX+cmd+Fore.RESET,flush=True)
+    str = ">>> "+Fore.LIGHTCYAN_EX+cmd+Fore.RESET
+    print(str,flush=True)
+    os.system(f'webExecute.py "{str}"')
 def prInfo(info):
     """
     print Information
     """
-    print(">>> "+Fore.LIGHTMAGENTA_EX+info+Fore.RESET,flush=True)
+    str = ">>> "+Fore.LIGHTMAGENTA_EX+info+Fore.RESET
+    print(str,flush=True)
+    os.system(f'webExecute.py "{str}"')
 def prErr(err):
     """
     print Errors
     """
-    print(">>> "+Fore.RED+err+Fore.RESET)
-    print(">>> "+Fore.RED+"Abort Flag Set"+Fore.RESET,flush=True)
+    str = ">>> "+Fore.RED+err+Fore.RESET
+    print(str)
+    os.system(f'webExecute.py "{str}"')
+
+    str = ">>> "+Fore.RED+"Abort Flag Set"+Fore.RESET
+    print(str,flush=True)
+    os.system(f'webExecute.py "{str}"')
+
     traceback.print_stack()
     abort_flag(1)
-    playsound("error.wav")
+    playsound("../error.wav")
     exit()
 def prAnn(ann):
     """
     print Announcements
     """
-    print(">>> "+Fore.LIGHTCYAN_EX + ann + Fore.RESET,flush=True)
+    str = ">>> "+Fore.LIGHTCYAN_EX + ann + Fore.RESET
+    print(str,flush=True)
+    os.system(f'webExecute.py "{str}"')
 
 def prSub(sub):
     """
     print Subsystem Output
     """
-    print(Fore.LIGHTBLUE_EX + sub + Fore.RESET,flush=True)
+    str = Fore.LIGHTBLUE_EX + sub + Fore.RESET
+    print(str,flush=True)
+    os.system(f'webExecute.py "{str}"')
 
 def is_abort():
     if os.path.isfile("/tmp/abort.flag"):
@@ -430,7 +444,7 @@ def wait_for_server():
         except:
             pass
         prAnn(f"Waiting for http://127.0.0.1:8188/ - SERVER STATE: {state}")
-        time.sleep(1)
+        time.sleep(5)
         if f"{state}" == "<Response [200]>":
             state = True
 
