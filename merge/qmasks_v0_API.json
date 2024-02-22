@@ -1,7 +1,7 @@
 {
   "2": {
     "inputs": {
-      "ckpt_name": "15/526mixV145_v145.safetensors"
+      "ckpt_name": "15/cineDiffusion_v3.safetensors"
     },
     "class_type": "CheckpointLoaderSimple",
     "_meta": {
@@ -232,7 +232,7 @@
   },
   "81": {
     "inputs": {
-      "add_noise": "enable",
+      "add_noise": "disable",
       "noise_seed": 17,
       "steps": 20,
       "cfg": 7,
