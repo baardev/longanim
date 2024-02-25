@@ -7,7 +7,7 @@ import sys
 from glob import glob
 import tempfile as tmp
 import shutil
-from colorama import init, Fore
+from colorama import init, Fore, Back
 import subprocess
 import uuid
 import json
@@ -18,8 +18,16 @@ import time
 import re
 import traceback
 #from playsound import playsound
+from datetime import datetime
+from inspect import getframeinfo, stack
+import inspect
+from pathlib import Path
+from pprint import pprint
+import psutil
+import signal
 
-init()
+# init()
+
 server_address = "127.0.0.1:8188"
 client_id = str(uuid.uuid4())
 def find_in_json(prompt, findkey):
@@ -87,6 +95,8 @@ def prunlive(cmd, **kwargs):
             print(Fore.RED, end="")
             sys.stdout.write(line.decode("utf-8"))
             print(Fore.RESET, end="")
+    return process.pid
+
 def get_timestamp():
     current_GMT = time.gmtime()
     time_stamp = calendar.timegm(current_GMT)
@@ -121,11 +131,12 @@ def testpath(str):
     if not os.path.exists(str):
         os.mkdir(str)
     return str
-def get_sorted_files(spec):
+def get_sorted_files(spec,**kwargs):
     """
     return a sorted list of filenames
     """
-    files = glob(spec)
+    recursive = tryit(kwargs,"recursive",False)
+    files = glob(spec,recursive=recursive)
     files = sorted(files)
     return files
 def get_video_frames(video, config, **kwargs):
@@ -238,10 +249,12 @@ def wait_until_finished(prompt_id):
         time.sleep(5)
     print("\n")
     return True
-def save_prompt(prompt,str,n):
+def save_prompt(prompt,**kwargs):
+    location=tryit(kwargs,"location","/tmp/saved_prompt.json")
     data = json.dumps(prompt, indent=4)
-    with open(f"/home/jw/src/ComfyUI/output/__{str}_{n}.json", "w") as f: #JWFIX
+    with open(location, "w") as f: #JWFIX
         f.write(data)
+    f.close()
 def save_workflow(output_dir,settings_dir,fileid):
     newdir = f"{output_dir}/{fileid}"
     #! this dir should never already exist, so no need to check
@@ -340,51 +353,192 @@ def flatten_json(text):
     j = json.loads(text)
     jflat = json.dumps(j)
     return jflat
-def prCmd(cmd):
+
+def socket_msg(str):
+    try:
+        os.system(f'webExecute.py "{str}"')
+    except:
+        pass
+
+
+prIndents = {
+    'mergerun':'',
+    'qmasks_v0': '\t',
+    'interpolate_v0':'\t\t',
+}
+indents = ""
+def callername():
+    caller_path = Path(inspect.stack()[1][1]).name
+
+    pprint(inspect.stack())
+    return caller_path.name
+
+    # caller = getframeinfo(stack()[1][0])
+    # return f"{caller.filename}|{caller.lineno}"
+
+def prCmd(txt,**kwargs):
     """
     print Commands
     """
-    str = ">>> "+Fore.LIGHTCYAN_EX+cmd+Fore.RESET
-    print(str,flush=True)
-    os.system(f'webExecute.py "{str}"')
-def prInfo(info):
+    end = tryit(kwargs,"end","\n")
+
+    callerframerecord = inspect.stack()[1]
+    frame = callerframerecord[0]
+    tinfo = inspect.getframeinfo(frame)
+    file = split_path(tinfo.filename)['nameonly']  # __FILE__     -> Test.py
+    func = tinfo.function  # __FUNCTION__ -> Main
+    line = tinfo.lineno
+    global indents
+    try:
+        indents = prIndents[file]
+    except:
+        pass
+
+    d = f"|cmd|{file}::{line}|"
+    f = Fore.LIGHTCYAN_EX
+    t = txt
+    u = Fore.RESET
+    str = indents+d+f+t+u
+
+    print(str,flush=True,end=end)
+    socket_msg(str)
+def prInfo(txt,**kwargs):
     """
     print Information
     """
-    str = ">>> "+Fore.LIGHTMAGENTA_EX+info+Fore.RESET
-    print(str,flush=True)
-    os.system(f'webExecute.py "{str}"')
-def prErr(err):
+    end = tryit(kwargs,"end","\n")
+
+    callerframerecord = inspect.stack()[1]
+    frame = callerframerecord[0]
+    tinfo = inspect.getframeinfo(frame)
+    file = split_path(tinfo.filename)['nameonly']  # __FILE__     -> Test.py
+    func = tinfo.function  # __FUNCTION__ -> Main
+    line = tinfo.lineno
+    global indents
+
+    try:
+        indents = prIndents[file]
+    except:
+        pass
+
+    d = f"|inf|{file}::{line}|"
+    f = Fore.LIGHTMAGENTA_EX
+    t = txt
+    u = Fore.RESET
+    str = indents+d+f+t+u
+
+    print(str,flush=True,end=end)
+    socket_msg(str)
+def prErr(txt,**kwargs):
     """
     print Errors
     """
-    str = ">>> "+Fore.RED+err+Fore.RESET
-    print(str)
-    os.system(f'webExecute.py "{str}"')
+    end = tryit(kwargs,"end","\n")
 
-    str = ">>> "+Fore.RED+"Abort Flag Set"+Fore.RESET
-    print(str,flush=True)
-    os.system(f'webExecute.py "{str}"')
+    callerframerecord = inspect.stack()[1]
+    frame = callerframerecord[0]
+    tinfo = inspect.getframeinfo(frame)
+    file = split_path(tinfo.filename)['nameonly']  # __FILE__     -> Test.py
+    func = tinfo.function  # __FUNCTION__ -> Main
+    line = tinfo.lineno
+    global indents
 
-    traceback.print_stack()
-    abort_flag(1)
+    try:
+        indents = prIndents[file]
+    except:
+        pass
+
+    d = f"|err|{file}::{line}|"
+    f = Back.RED+Fore.BLACK
+    t = txt+" ABORT FLAG SET"
+    u = Fore.RESET+Back.RESET
+    str = indents+d+f+t+u
+
+    print(str, flush=True,end=end)
+    socket_msg(str)
+
     playsound("../error.wav")
     exit()
-def prAnn(ann):
+def prAnn(txt,**kwargs):
     """
     print Announcements
     """
-    str = ">>> "+Fore.LIGHTCYAN_EX + ann + Fore.RESET
-    print(str,flush=True)
-    os.system(f'webExecute.py "{str}"')
+    end = tryit(kwargs,"end","\n")
 
-def prSub(sub):
+    callerframerecord = inspect.stack()[1]
+    frame = callerframerecord[0]
+    tinfo = inspect.getframeinfo(frame)
+    file = split_path(tinfo.filename)['nameonly']  # __FILE__     -> Test.py
+    func = tinfo.function  # __FUNCTION__ -> Main
+    line = tinfo.lineno
+    global indents
+
+    try:
+        indents = prIndents[file]
+    except:
+        pass
+
+    d = f"|ann|{file}::{line}|"
+    f = Fore.BLACK+Back.LIGHTMAGENTA_EX
+    t = txt
+    u = Fore.RESET+Back.RESET
+    str = indents+d+f+t+u
+
+    print(str,flush=True,end=end)
+    socket_msg(str)
+
+def prSub(txt,**kwargs):
     """
     print Subsystem Output
     """
-    str = Fore.LIGHTBLUE_EX + sub + Fore.RESET
-    print(str,flush=True)
-    os.system(f'webExecute.py "{str}"')
+    end = tryit(kwargs, "end", "\n")
+    callerframerecord = inspect.stack()[1]
+    frame = callerframerecord[0]
+    tinfo = inspect.getframeinfo(frame)
+    file = split_path(tinfo.filename)['nameonly']  # __FILE__     -> Test.py
+    func = tinfo.function  # __FUNCTION__ -> Main
+    line = tinfo.lineno
+    global indents
+
+    try:
+        indents = prIndents[file]
+    except:
+        pass
+
+    d = f"|sub|{file}::{line}|"
+    f = Fore.LIGHTBLUE_EX
+    t = txt
+    u = Fore.RESET
+    str = indents+d+f+t+u
+
+    print(str,flush=True,end=end)
+    socket_msg(str)
+
+def cycle(data):
+    imax = 0.5
+    cdata = []
+    for d in data:
+        dif = imax - abs(d - imax)
+        cdata.append(f"{dif:.2f}")
+    return [float(i)*2 for i in cdata]
+def killproc(arg):
+    def is_process_running(pid):
+        """Check if a process is running by pid."""
+        for proc in psutil.process_iter():
+            try:
+                if proc.pid == pid:
+                    return True
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                pass
+        return False
+    for proc in psutil.process_iter():
+        if len(proc.cmdline()) > 1:
+            running = proc.cmdline()[1]
+            if running.find(arg) != -1:
+                os.kill(proc.pid,signal.SIGHUP)
+                while is_process_running(proc.pid):
+                    time.sleep(1)
+                return True
 
 def is_abort():
     if os.path.isfile("/tmp/abort.flag"):
@@ -437,16 +591,52 @@ def upscale_v(outdir,config):
     prunlive(cmd)
 def wait_for_server():
     state = False
+    secs = 0
     while state != True:
         try:
             state = requests.head("http://127.0.0.1:8188/")
             # state = urllib.request.urlopen("http://127.0.0.1:8188/").getcode()
         except:
             pass
-        prAnn(f"Waiting for http://127.0.0.1:8188/ - SERVER STATE: {state}")
-        time.sleep(5)
+        str = Back.MAGENTA+Fore.YELLOW+f"|{secs}| Waiting for http://127.0.0.1:8188/ - SERVER STATE: {state}"+Back.RESET+Fore.RESET
+        print(str,end="\r",flush=True)
+        socket_msg(str)
+        time.sleep(1)
+        secs += 1
+        if secs > 60:
+            prErr("Timed out after 60 secs")
         if f"{state}" == "<Response [200]>":
             state = True
+    print("")
 
+def get_secs():
+    now = datetime.now()
+    midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    seconds = (now - midnight).seconds
+    return(seconds)
+def wait_for_glob(spec,**kwargs):
+    quiet = tryit(kwargs,"quiet",False)
+    found = False
+    secs = 0
+    while found == False:
+        files = glob(spec)
+        if len(files) > 0:
+            found = True
+            if quiet == False:
+                print(f"Found [{spec}]")
+        else:
+            if quiet == False:
+                str = Back.BLUE + Fore.YELLOW + f"|{secs}| Waiting for [{spec}" + Back.RESET + Fore.RESET
+                print(str, end="\r", flush=True)
+                socket_msg(str)
 
+        time.sleep(1)
+        secs +=1
+    print("")
+def makelist(target,project):
+    ft = open(target,"w")
+    files = get_sorted_files(f"stage_2/{project}/**/*0000?.mp4",recursive=True)
+    for file in files:
+        ft.write(f"file '/home/jw/store/src/longanim/merge/{file}'\n")
+    ft.close()
 

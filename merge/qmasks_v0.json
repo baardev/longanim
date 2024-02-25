@@ -87,40 +87,6 @@
       "bgcolor": "#335"
     },
     {
-      "id": 10,
-      "type": "IPAdapterModelLoader",
-      "pos": [
-        -2100,
-        375
-      ],
-      "size": {
-        "0": 315,
-        "1": 58
-      },
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "IPADAPTER",
-          "type": "IPADAPTER",
-          "links": [
-            10,
-            14
-          ],
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "IPAdapterModelLoader"
-      },
-      "widgets_values": [
-        "ip-adapter-plus_sd15.safetensors"
-      ],
-      "color": "#233",
-      "bgcolor": "#355"
-    },
-    {
       "id": 11,
       "type": "CLIPVisionLoader",
       "pos": [
@@ -132,7 +98,7 @@
         "1": 58
       },
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "outputs": [
         {
@@ -155,137 +121,18 @@
       "bgcolor": "#355"
     },
     {
-      "id": 74,
-      "type": "ADE_AnimateDiffLoaderWithContext",
-      "pos": [
-        0,
-        -75
-      ],
-      "size": {
-        "0": 315,
-        "1": 230
-      },
-      "flags": {},
-      "order": 13,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": null
-        },
-        {
-          "name": "context_options",
-          "type": "CONTEXT_OPTIONS",
-          "link": 22
-        },
-        {
-          "name": "motion_lora",
-          "type": "MOTION_LORA",
-          "link": null
-        },
-        {
-          "name": "ad_settings",
-          "type": "AD_SETTINGS",
-          "link": null
-        },
-        {
-          "name": "sample_settings",
-          "type": "SAMPLE_SETTINGS",
-          "link": null
-        },
-        {
-          "name": "ad_keyframes",
-          "type": "AD_KEYFRAMES",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [],
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ADE_AnimateDiffLoaderWithContext"
-      },
-      "widgets_values": [
-        "XL/hotshotxl_mm_v1.pth",
-        "autoselect",
-        1,
-        true
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 75,
-      "type": "ADE_LoopedUniformContextOptions",
-      "pos": [
-        -450,
-        -75
-      ],
-      "size": {
-        "0": 317.4000244140625,
-        "1": 246
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "prev_context",
-          "type": "CONTEXT_OPTIONS",
-          "link": null
-        },
-        {
-          "name": "view_opts",
-          "type": "VIEW_OPTS",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONTEXT_OPTS",
-          "type": "CONTEXT_OPTIONS",
-          "links": [
-            22
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ADE_LoopedUniformContextOptions"
-      },
-      "widgets_values": [
-        16,
-        1,
-        4,
-        false,
-        "pyramid",
-        false,
-        0,
-        1
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 78,
       "type": "ControlNetLoader",
       "pos": [
-        -1135.0862581795218,
-        1519.2101050242686
+        -3392.877486207021,
+        2316.6652642453732
       ],
       "size": {
         "0": 315,
         "1": 58
       },
       "flags": {},
-      "order": 3,
+      "order": 1,
       "mode": 4,
       "outputs": [
         {
@@ -309,15 +156,15 @@
       "id": 76,
       "type": "VHS_LoadImages",
       "pos": [
-        -1135.0862581795218,
-        1669.2101050242686
+        -3392.877486207021,
+        2466.6652642453746
       ],
       "size": [
         225,
         225
       ],
       "flags": {},
-      "order": 4,
+      "order": 2,
       "mode": 4,
       "outputs": [
         {
@@ -364,98 +211,18 @@
       }
     },
     {
-      "id": 27,
-      "type": "LoadImage",
-      "pos": [
-        -2100,
-        75
-      ],
-      "size": {
-        "0": 300,
-        "1": 300
-      },
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            18
-          ],
-          "shape": 3
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "100 (2).png",
-        "image"
-      ],
-      "color": "#233",
-      "bgcolor": "#355"
-    },
-    {
-      "id": 12,
-      "type": "LoadImage",
-      "pos": [
-        -2100,
-        750
-      ],
-      "size": {
-        "0": 300,
-        "1": 300
-      },
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            9
-          ],
-          "shape": 3
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "125.png",
-        "image"
-      ],
-      "color": "#233",
-      "bgcolor": "#355"
-    },
-    {
       "id": 79,
       "type": "LoadImage",
       "pos": [
-        -825,
-        1575
+        -3082.791228027499,
+        2372.4551592211055
       ],
       "size": {
         "0": 300,
         "1": 300
       },
       "flags": {},
-      "order": 7,
+      "order": 3,
       "mode": 4,
       "outputs": [
         {
@@ -486,15 +253,15 @@
       "id": 77,
       "type": "ControlNetApplyAdvanced",
       "pos": [
-        -760.0862581795218,
-        1519.2101050242686
+        -3017.877486207021,
+        2316.6652642453732
       ],
       "size": {
         "0": 315,
         "1": 166
       },
       "flags": {},
-      "order": 16,
+      "order": 13,
       "mode": 4,
       "inputs": [
         {
@@ -540,39 +307,6 @@
       "widgets_values": [
         1,
         0,
-        1
-      ]
-    },
-    {
-      "id": 3,
-      "type": "EmptyLatentImage",
-      "pos": [
-        -375,
-        675
-      ],
-      "size": {
-        "0": 315,
-        "1": 106
-      },
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            37
-          ],
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "EmptyLatentImage"
-      },
-      "widgets_values": [
-        960,
-        544,
         1
       ]
     },
@@ -678,8 +412,8 @@
         1,
         false
       ],
-      "color": "#232",
-      "bgcolor": "#353"
+      "color": "#323",
+      "bgcolor": "#535"
     },
     {
       "id": 6,
@@ -728,10 +462,10 @@
         975,
         450
       ],
-      "size": [
-        900,
-        600
-      ],
+      "size": {
+        "0": 900,
+        "1": 600
+      },
       "flags": {},
       "order": 23,
       "mode": 0,
@@ -745,86 +479,137 @@
       "properties": {},
       "widgets_values": [
         "1.0_0.0"
-      ]
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
     },
     {
-      "id": 51,
-      "type": "IPAdapterApply",
+      "id": 10,
+      "type": "IPAdapterModelLoader",
       "pos": [
-        -1125,
-        600
+        -2100,
+        375
       ],
       "size": {
         "0": 315,
-        "1": 258
+        "1": 58
       },
       "flags": {},
-      "order": 19,
+      "order": 4,
       "mode": 0,
-      "inputs": [
-        {
-          "name": "ipadapter",
-          "type": "IPADAPTER",
-          "link": 14
-        },
-        {
-          "name": "clip_vision",
-          "type": "CLIP_VISION",
-          "link": 15
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 16
-        },
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 17
-        },
-        {
-          "name": "attn_mask",
-          "type": "MASK",
-          "link": 33
-        }
-      ],
       "outputs": [
         {
-          "name": "MODEL",
-          "type": "MODEL",
+          "name": "IPADAPTER",
+          "type": "IPADAPTER",
           "links": [
-            13
+            10,
+            14
           ],
           "shape": 3
         }
       ],
       "properties": {
-        "Node name for S&R": "IPAdapterApply"
+        "Node name for S&R": "IPAdapterModelLoader"
       },
       "widgets_values": [
-        0.5,
-        0,
-        "channel penalty",
-        0,
-        1,
-        false
+        "ip-adapter-plus_sd15.safetensors"
       ],
-      "color": "#232",
-      "bgcolor": "#353"
+      "color": "#233",
+      "bgcolor": "#355"
     },
     {
-      "id": 80,
-      "type": "LoadImageMask",
+      "id": 27,
+      "type": "LoadImage",
       "pos": [
-        -1650,
-        300
+        -2100,
+        75
       ],
       "size": [
         300,
         300
       ],
       "flags": {},
-      "order": 9,
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            18
+          ],
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "02.png",
+        "image"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 12,
+      "type": "LoadImage",
+      "pos": [
+        -2100,
+        750
+      ],
+      "size": [
+        300,
+        300
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ],
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "01.png",
+        "image"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 80,
+      "type": "LoadImageMask",
+      "pos": [
+        -2700,
+        450
+      ],
+      "size": [
+        300,
+        300
+      ],
+      "flags": {},
+      "order": 7,
       "mode": 0,
       "outputs": [
         {
@@ -842,121 +627,144 @@
         "Node name for S&R": "LoadImageMask"
       },
       "widgets_values": [
-        "mask2 (1).png",
+        "bigcircle.png",
         "red",
         "image"
       ]
     },
     {
-      "id": 5,
-      "type": "CLIPTextEncode",
+      "id": 74,
+      "type": "ADE_AnimateDiffLoaderWithContext",
       "pos": [
-        -1125,
-        975
+        675,
+        -600
       ],
       "size": {
-        "0": 300,
-        "1": 76
+        "0": 315,
+        "1": 230
       },
       "flags": {},
-      "order": 18,
-      "mode": 0,
+      "order": 16,
+      "mode": 4,
       "inputs": [
         {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 6
-        }
-      ],
-      "outputs": [
+          "name": "model",
+          "type": "MODEL",
+          "link": null
+        },
         {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            41
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "on the beach, photorealistic, UHD, 8k, detailed"
-      ]
-    },
-    {
-      "id": 83,
-      "type": "HighRes-Fix Script",
-      "pos": [
-        -225,
-        900
-      ],
-      "size": [
-        300,
-        225
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
+          "name": "context_options",
+          "type": "CONTEXT_OPTIONS",
+          "link": 22
+        },
         {
-          "name": "script",
-          "type": "SCRIPT",
+          "name": "motion_lora",
+          "type": "MOTION_LORA",
+          "link": null
+        },
+        {
+          "name": "ad_settings",
+          "type": "AD_SETTINGS",
+          "link": null
+        },
+        {
+          "name": "sample_settings",
+          "type": "SAMPLE_SETTINGS",
+          "link": null
+        },
+        {
+          "name": "ad_keyframes",
+          "type": "AD_KEYFRAMES",
           "link": null
         }
       ],
       "outputs": [
         {
-          "name": "SCRIPT",
-          "type": "SCRIPT",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ADE_AnimateDiffLoaderWithContext"
+      },
+      "widgets_values": [
+        "XL/hotshotxl_mm_v1.pth",
+        "autoselect",
+        1,
+        true
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 75,
+      "type": "ADE_LoopedUniformContextOptions",
+      "pos": [
+        225,
+        -825
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 246
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "prev_context",
+          "type": "CONTEXT_OPTIONS",
+          "link": null
+        },
+        {
+          "name": "view_opts",
+          "type": "VIEW_OPTS",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONTEXT_OPTS",
+          "type": "CONTEXT_OPTIONS",
           "links": [
-            44
+            22
           ],
           "shape": 3,
           "slot_index": 0
         }
       ],
       "properties": {
-        "Node name for S&R": "HighRes-Fix Script"
+        "Node name for S&R": "ADE_LoopedUniformContextOptions"
       },
       "widgets_values": [
-        "latent",
-        "(use same)",
-        "nearest-exact",
-        "4x-AnimeSharp.pth",
-        1.25,
-        true,
-        -1,
-        null,
-        19,
+        16,
         1,
-        1,
+        4,
         false,
-        "control_v11f1p_sd15_depth.pth",
-        1,
-        "Zoe-DepthMapPreprocessor",
-        true
+        "pyramid",
+        false,
+        0,
+        1
       ],
-      "color": "#443322",
-      "bgcolor": "#665533",
-      "shape": 1
+      "color": "#432",
+      "bgcolor": "#653"
     },
     {
       "id": 67,
       "type": "ControlNetLoaderAdvanced",
       "pos": [
-        -375,
-        -450
+        -225,
+        -825
       ],
       "size": {
         "0": 367.79998779296875,
         "1": 58
       },
       "flags": {},
-      "order": 11,
-      "mode": 0,
+      "order": 9,
+      "mode": 4,
       "inputs": [
         {
           "name": "timestep_keyframe",
@@ -983,13 +791,13 @@
       "id": 81,
       "type": "KSampler Adv. (Efficient)",
       "pos": [
-        300,
+        225,
         600
       ],
-      "size": [
-        300,
-        600
-      ],
+      "size": {
+        "0": 300,
+        "1": 600
+      },
       "flags": {},
       "order": 21,
       "mode": 0,
@@ -1101,7 +909,7 @@
         "1": 98
       },
       "flags": {},
-      "order": 12,
+      "order": 10,
       "mode": 0,
       "outputs": [
         {
@@ -1134,10 +942,208 @@
         "Node name for S&R": "CheckpointLoaderSimple"
       },
       "widgets_values": [
-        "15/cineDiffusion_v3.safetensors"
+        "15/Deliberate_v2.safetensors"
       ],
       "color": "#233",
       "bgcolor": "#355"
+    },
+    {
+      "id": 83,
+      "type": "HighRes-Fix Script",
+      "pos": [
+        -150,
+        975
+      ],
+      "size": [
+        300,
+        225
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SCRIPT",
+          "type": "SCRIPT",
+          "links": [
+            44
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "HighRes-Fix Script"
+      },
+      "widgets_values": [
+        "latent",
+        "(use same)",
+        "nearest-exact",
+        "4x-AnimeSharp.pth",
+        1.25,
+        true,
+        -1,
+        null,
+        19,
+        1,
+        1,
+        false,
+        "control_v11f1p_sd15_depth.pth",
+        1,
+        "Zoe-DepthMapPreprocessor",
+        true
+      ],
+      "color": "#443322",
+      "bgcolor": "#665533",
+      "shape": 1
+    },
+    {
+      "id": 5,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -1125,
+        975
+      ],
+      "size": {
+        "0": 300,
+        "1": 76
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            41
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "on the beach, photorealistic, UHD, 8k, detailed"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 3,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -375,
+        600
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            37
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        960,
+        544,
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 51,
+      "type": "IPAdapterApply",
+      "pos": [
+        -1125,
+        600
+      ],
+      "size": {
+        "0": 315,
+        "1": 258
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 14
+        },
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 15
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 16
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 17
+        },
+        {
+          "name": "attn_mask",
+          "type": "MASK",
+          "link": 33
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            13
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "IPAdapterApply"
+      },
+      "widgets_values": [
+        0.5,
+        0,
+        "channel penalty",
+        0,
+        1,
+        false
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
     }
   ],
   "links": [
@@ -1346,8 +1352,8 @@
     {
       "title": "Group",
       "bounding": [
-        -1208,
-        1383,
+        -3466,
+        2180,
         822,
         549
       ],

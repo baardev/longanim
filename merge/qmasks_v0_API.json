@@ -1,7 +1,7 @@
 {
   "2": {
     "inputs": {
-      "ckpt_name": "15/cineDiffusion_v3.safetensors"
+      "ckpt_name": "15/Deliberate_v2.safetensors"
     },
     "class_type": "CheckpointLoaderSimple",
     "_meta": {
@@ -81,7 +81,7 @@
   },
   "12": {
     "inputs": {
-      "image": "125.png",
+      "image": "01.png",
       "upload": "image"
     },
     "class_type": "LoadImage",
@@ -106,7 +106,7 @@
   },
   "27": {
     "inputs": {
-      "image": "100 (2).png",
+      "image": "02.png",
       "upload": "image"
     },
     "class_type": "LoadImage",
@@ -210,18 +210,9 @@
       "title": "Save Image"
     }
   },
-  "67": {
-    "inputs": {
-      "control_net_name": "control_hed-fp16.safetensors"
-    },
-    "class_type": "ControlNetLoaderAdvanced",
-    "_meta": {
-      "title": "Load Advanced ControlNet Model 🛂🅐🅒🅝"
-    }
-  },
   "80": {
     "inputs": {
-      "image": "mask2 (1).png",
+      "image": "bigcircle.png",
       "channel": "red",
       "upload": "image"
     },

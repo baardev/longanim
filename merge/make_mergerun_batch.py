@@ -1,5 +1,6 @@
 #!/bin/env python
 import sys
+import os
 from glob import glob
 import long_anim_lib as p
 from collections import deque
@@ -40,23 +41,27 @@ def left_rotate_array(arr, d):
     arr = reverse(start, end, arr)
     return arr
 
-res = sys.argv[1]
-project = sys.argv[2]
-parts = res.split(":")
-W = parts[0]
-H = parts[1]
-
+# res = sys.argv[1]
+# project = sys.argv[2]
+# parts = res.split(":")
+# W = parts[0]
+# H = parts[1]
+#
 # files = p.get_sorted_files("images/*png")
 files = p.get_sorted_files("*png")
 files2 = files.copy()
 files2 = left_rotate_array(files2, 1)
+print("../cleantargets.py")
 
-for i in range(len(files)):
-
-
+c = 1
+tot = len(files)
+for i in range(tot):
     j = i % len(files)
     i1 = files[j]
     i2 = files2[j]
 
+    print(f"../mergerun.py -c {c}:{tot} -f {p.split_path(files[j])['nameonly']} -t {p.split_path(files2[j])['nameonly']}")
+    c +=1
+print("../post.py")
 
-    print(f"../MERGERUN -f {p.split_path(files[j])['nameonly']} -t {p.split_path(files2[j])['nameonly']} -w {W} -h {H} -p story_1")
+

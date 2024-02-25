@@ -23,6 +23,7 @@ source /home/jw/miniforge3/etc/profile.d/conda.sh
 conda activate ainodes
 
 GPUMEMCLEAR
+sleep 2
 
 cd /home/jw/src/ComfyUI
 
@@ -34,5 +35,5 @@ echo "--------------------------------------------------------------------------
 echo "python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr}"
 echo "------------------------------------------------------------------------------"
 
-python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr}
+python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr} 2>&1 > /tmp/START.log
 

@@ -12,19 +12,39 @@ init()
 argv = sys.argv[1:]
 try:
     opts, args = getopt.getopt(
-        argv, "hf:",
+        argv, "hf:t:",
         [   'help',
-                    'file=',
+            'file=',
+            'type=',
+
             ],
     )
 except Exception as e:
     print(str(e))
 
-filename = "/home/jw/store/src/longanim/merge/qmasks_v0_API.json"
+
+def getNamebyId(id, ary):
+    for e in WF_data['nodes']:
+        # print(e['id'],"\n")
+        if int(e['id']) == int(id):
+            return e['type']
+
+
+input_filename = "/home/jw/store/src/longanim/merge/qmasks_v0.json"
+
 for opt, arg in opts:
     if opt in ("-h", "--help"):p.showhelp()
-    if opt in ("-f", "--file"):filename = arg
+    if opt in ("-f", "--file"):input_filename = arg
 
+parts = p.split_path(input_filename)
+if input_filename.find("API") != -1 :
+    #! this is an API file
+    API_filename = input_filename
+    x = parts['nameonly'].replace("_API","")
+    WF_filename = f"{parts['dirname']}/{x}.json"
+else:
+    WF_filename = input_filename
+    API_filename = f"{parts['dirname']}/{parts['nameonly']}_API.json"
 
 names = {
     '1': 'KSampler',
@@ -53,29 +73,56 @@ names = {
     '83': 'Highres Fix Script',
 }
 
+#! workflow exists
 
+p.prInfo(f"Workfile: [{WF_filename}]")
+p.prInfo(f"API file: [{API_filename}]")
 
+if os.path.isfile(API_filename):
+    with open(API_filename,"r") as f:
+        rd = f.read()
+    API_data = json.loads(rd)
 
+    if os.path.isfile(WF_filename):
+        with open(input_filename,"r") as f:
+            rd = f.read()
+        WF_data = json.loads(rd)
+        for d in API_data:
+            print(f"\'{d}_{getNamebyId(d,WF_data)}\': '{d}',")
+    else:
+        # for d in API_data:
+        #     lev1 = Fore.LIGHTYELLOW_EX+f"['{d}']"+Fore.RESET
+        #     print(f"'{d}':'',")
 
-p.prInfo(f"[{filename}]")
+        for d in API_data:
+            lev1 = Fore.LIGHTYELLOW_EX+f"['{d}']"+Fore.RESET
+            try:
+                print(f"'{d}':{Fore.LIGHTRED_EX}'{names[d]}',{Fore.RESET}")
+                for e in API_data[d]['inputs']:
+                    lev2 = f"['inputs']"+ Fore.LIGHTCYAN_EX + f"['{e}']" + Fore.RESET
+                    lev2val = API_data[d]['inputs'][e]
+                    pre = f"{lev1}{lev2}"
+                    print(f"\t{pre:70s} = {lev2val}")
+            except:
+                print(f"Add [{d}] to 'names' ")
+    #! for just teh keys
+#     for d in data:
+#         lev1 = Fore.LIGHTYELLOW_EX+f"['{d}']"+Fore.RESET
+#         print(f"'{d}':'',")
+#
+    for d in API_data:
+        lev1 = Fore.LIGHTYELLOW_EX+f"['{d}']"+Fore.RESET
+        try:
+            print(f"'{d}':{Fore.LIGHTRED_EX}'{names[d]}',{Fore.RESET}")
+            for e in API_data[d]['inputs']:
+                lev2 = f"['inputs']"+ Fore.LIGHTCYAN_EX + f"['{e}']" + Fore.RESET
+                lev2val = API_data[d]['inputs'][e]
+                pre = f"{lev1}{lev2}"
+                print(f"\t{pre:70s} = {lev2val}")
+        except:
+            print(f"Add [{d}] to 'names' ")
 
-with open(filename,"r") as f:
-    rd = f.read()
-data = json.loads(rd)
-
-#! for just teh keys
-for d in data:
-    lev1 = Fore.LIGHTYELLOW_EX+f"['{d}']"+Fore.RESET
-    print(f"'{d}':'',")
-
-for d in data:
-    lev1 = Fore.LIGHTYELLOW_EX+f"['{d}']"+Fore.RESET
-    try:
-        print(f"'{d}':{Fore.LIGHTRED_EX}'{names[d]}',{Fore.RESET}")
-        for e in data[d]['inputs']:
-            lev2 = f"['inputs']"+ Fore.LIGHTCYAN_EX + f"['{e}']" + Fore.RESET
-            lev2val = data[d]['inputs'][e]
-            pre = f"{lev1}{lev2}"
-            print(f"\t{pre:70s} = {lev2val}")
-    except:
-        print(f"Add [{d}] to 'names' ")
+# else:
+#
+#     for e in API_data['nodes']:
+#         print(e['id'],"\n")

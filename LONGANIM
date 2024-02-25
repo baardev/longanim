@@ -8,8 +8,8 @@ rm /tmp/abort.flag
 
 #NAME="spagvik"
 #CFG="/home/jw/src/sdc/settings/COMFY/${NAME}"
-NAME="flowers"
-CFG="/home/jw/src/sdc/settings/COMFY/${NAME}"
+NAME="boat"
+CFG="/home/jw/store/src/longanim/PROJECTS/${NAME}"
 VER=`./getcval.py -c ${CFG} -k version`
 
 prep () {
@@ -34,7 +34,7 @@ while getopts 'N:PAM' option ; do
     case "${option}" in
     N)
       NAME=${OPTARG}
-      CFG="/home/jw/src/sdc/settings/COMFY/${NAME}"
+      CFG="/home/jw/store/src/longanim/PROJECTS/${NAME}"
       VER=`./getcval.py -c ${CFG} -k version`
       ;;
     P) prep  ;;
