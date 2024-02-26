@@ -1,6 +1,6 @@
 {
-  "last_node_id": 219,
-  "last_link_id": 393,
+  "last_node_id": 249,
+  "last_link_id": 425,
   "nodes": [
     {
       "id": 138,
@@ -16,7 +16,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 44,
+      "order": 55,
       "mode": 4,
       "inputs": [
         {
@@ -47,66 +47,10 @@
       ]
     },
     {
-      "id": 152,
-      "type": "ConcatStringSingle",
-      "pos": [
-        4764.129426369411,
-        887.4599456243236
-      ],
-      "size": {
-        "0": 243.60000610351562,
-        "1": 54
-      },
-      "flags": {
-        "collapsed": false
-      },
-      "order": 130,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "string_a",
-          "type": "STRING",
-          "link": 304,
-          "widget": {
-            "name": "string_a"
-          }
-        },
-        {
-          "name": "string_b",
-          "type": "STRING",
-          "link": 265,
-          "widget": {
-            "name": "string_b"
-          },
-          "slot_index": 1
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": [
-            267
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ConcatStringSingle"
-      },
-      "widgets_values": [
-        "",
-        ""
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 34,
       "type": "ConcatStringSingle",
       "pos": [
-        3287.8019483311696,
+        3308.5744196469977,
         898.6511677111491
       ],
       "size": {
@@ -116,8 +60,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 122,
-      "mode": 0,
+      "order": 132,
+      "mode": 4,
       "inputs": [
         {
           "name": "string_a",
@@ -162,8 +106,8 @@
       "id": 27,
       "type": "Zoe-DepthMapPreprocessor",
       "pos": [
-        2976.339907017666,
-        1024.1685544097493
+        2997.1123783334942,
+        1028.523048672915
       ],
       "size": {
         "0": 210,
@@ -172,8 +116,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 80,
-      "mode": 0,
+      "order": 91,
+      "mode": 4,
       "inputs": [
         {
           "name": "image",
@@ -207,8 +151,8 @@
       "id": 94,
       "type": "Simple String",
       "pos": [
-        742.175294559067,
-        779.771505868229
+        769.6877807087245,
+        780.1167268508235
       ],
       "size": {
         "0": 210,
@@ -218,7 +162,7 @@
         "collapsed": false
       },
       "order": 0,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -244,8 +188,8 @@
       "id": 44,
       "type": "Text",
       "pos": [
-        1700,
-        775
+        1741.5449426316563,
+        779.3544942631656
       ],
       "size": {
         "0": 210,
@@ -255,7 +199,7 @@
         "collapsed": false
       },
       "order": 1,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -281,8 +225,8 @@
       "id": 60,
       "type": "Simple String",
       "pos": [
-        1375,
-        775
+        1412.1904483684907,
+        779.3544942631656
       ],
       "size": {
         "0": 210,
@@ -292,7 +236,7 @@
         "collapsed": false
       },
       "order": 2,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -318,8 +262,8 @@
       "id": 46,
       "type": "Simple String",
       "pos": [
-        1075,
-        775
+        1099.0222340206283,
+        781.3591309034513
       ],
       "size": {
         "0": 210,
@@ -329,7 +273,7 @@
         "collapsed": false
       },
       "order": 3,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -355,8 +299,8 @@
       "id": 29,
       "type": "Simple String",
       "pos": [
-        2025,
-        775
+        2058.835954105325,
+        779.3544942631656
       ],
       "size": {
         "0": 210,
@@ -366,7 +310,7 @@
         "collapsed": false
       },
       "order": 4,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -392,8 +336,8 @@
       "id": 33,
       "type": "Simple String",
       "pos": [
-        2347.0773522243016,
-        774.1634496263234
+        2372.2043178032955,
+        769.8089553631578
       ],
       "size": {
         "0": 210,
@@ -403,7 +347,7 @@
         "collapsed": false
       },
       "order": 5,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -429,8 +373,8 @@
       "id": 68,
       "type": "Simple String",
       "pos": [
-        2650,
-        775
+        2670.772471315828,
+        770.6455057368344
       ],
       "size": {
         "0": 210,
@@ -440,7 +384,7 @@
         "collapsed": false
       },
       "order": 6,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -466,8 +410,8 @@
       "id": 31,
       "type": "Simple String",
       "pos": [
-        2975,
-        775
+        2995.772471315828,
+        779.3544942631656
       ],
       "size": {
         "0": 210,
@@ -477,7 +421,7 @@
         "collapsed": false
       },
       "order": 7,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -503,7 +447,7 @@
       "id": 35,
       "type": "Simple String",
       "pos": [
-        3300,
+        3320.772471315828,
         775
       ],
       "size": {
@@ -514,7 +458,7 @@
         "collapsed": false
       },
       "order": 8,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -540,8 +484,8 @@
       "id": 75,
       "type": "Simple String",
       "pos": [
-        4490.840509845348,
-        753.8301929760933
+        3675.714128528046,
+        762.5391815024245
       ],
       "size": {
         "0": 210,
@@ -551,7 +495,7 @@
         "collapsed": false
       },
       "order": 9,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -577,8 +521,8 @@
       "id": 153,
       "type": "Simple String",
       "pos": [
-        4826.817008018736,
-        751.1620434779023
+        4012.690626701434,
+        746.8075492147369
       ],
       "size": {
         "0": 210,
@@ -588,7 +532,7 @@
         "collapsed": false
       },
       "order": 10,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -614,8 +558,8 @@
       "id": 82,
       "type": "Simple String",
       "pos": [
-        5173.522606917103,
-        761.2259873258238
+        4304.787800178637,
+        749.1625045363269
       ],
       "size": {
         "0": 210,
@@ -651,8 +595,8 @@
       "id": 81,
       "type": "ConcatStringSingle",
       "pos": [
-        5173.522606917103,
-        886.2259873258238
+        4304.787800178637,
+        874.1625045363269
       ],
       "size": {
         "0": 243.60000610351562,
@@ -661,7 +605,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 133,
+      "order": 146,
       "mode": 0,
       "inputs": [
         {
@@ -708,8 +652,8 @@
       "id": 74,
       "type": "ConcatStringSingle",
       "pos": [
-        4465.840509845348,
-        878.8301929760933
+        3650.714128528046,
+        887.5391815024245
       ],
       "size": {
         "0": 243.60000610351562,
@@ -718,8 +662,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 127,
-      "mode": 0,
+      "order": 139,
+      "mode": 4,
       "inputs": [
         {
           "name": "string_a",
@@ -765,8 +709,8 @@
       "id": 30,
       "type": "ConcatStringSingle",
       "pos": [
-        2950,
-        900
+        2970.772471315828,
+        904.3544942631656
       ],
       "size": {
         "0": 243.60000610351562,
@@ -775,8 +719,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 115,
-      "mode": 0,
+      "order": 124,
+      "mode": 4,
       "inputs": [
         {
           "name": "string_a",
@@ -821,8 +765,8 @@
       "id": 67,
       "type": "ConcatStringSingle",
       "pos": [
-        2625,
-        900
+        2645.772471315828,
+        895.6455057368344
       ],
       "size": {
         "0": 243.60000610351562,
@@ -831,8 +775,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 108,
-      "mode": 0,
+      "order": 117,
+      "mode": 4,
       "inputs": [
         {
           "name": "string_a",
@@ -877,8 +821,8 @@
       "id": 28,
       "type": "ConcatStringSingle",
       "pos": [
-        2000,
-        900
+        2033.835954105325,
+        904.3544942631656
       ],
       "size": {
         "0": 243.60000610351562,
@@ -887,8 +831,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 90,
-      "mode": 0,
+      "order": 101,
+      "mode": 4,
       "inputs": [
         {
           "name": "string_a",
@@ -933,8 +877,8 @@
       "id": 43,
       "type": "ConcatStringSingle",
       "pos": [
-        1675,
-        900
+        1716.5449426316563,
+        904.3544942631656
       ],
       "size": {
         "0": 250,
@@ -943,8 +887,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 83,
-      "mode": 0,
+      "order": 94,
+      "mode": 4,
       "inputs": [
         {
           "name": "string_a",
@@ -989,8 +933,8 @@
       "id": 59,
       "type": "ConcatStringSingle",
       "pos": [
-        1375,
-        900
+        1412.1904483684907,
+        904.3544942631656
       ],
       "size": {
         "0": 243.60000610351562,
@@ -999,8 +943,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 75,
-      "mode": 0,
+      "order": 86,
+      "mode": 4,
       "inputs": [
         {
           "name": "string_a",
@@ -1045,8 +989,8 @@
       "id": 45,
       "type": "ConcatStringSingle",
       "pos": [
-        1050,
-        900
+        1074.0222340206283,
+        906.3591309034513
       ],
       "size": {
         "0": 250,
@@ -1055,8 +999,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 67,
-      "mode": 0,
+      "order": 78,
+      "mode": 4,
       "inputs": [
         {
           "name": "string_a",
@@ -1101,8 +1045,8 @@
       "id": 93,
       "type": "ConcatStringSingle",
       "pos": [
-        725,
-        900
+        752.5124861496575,
+        900.3452209825945
       ],
       "size": {
         "0": 243.60000610351562,
@@ -1111,8 +1055,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 61,
-      "mode": 0,
+      "order": 72,
+      "mode": 4,
       "inputs": [
         {
           "name": "string_a",
@@ -1158,8 +1102,8 @@
       "id": 56,
       "type": "ImageCompositeMasked",
       "pos": [
-        1375,
-        1025
+        1412.1904483684907,
+        1029.3544942631656
       ],
       "size": {
         "0": 225,
@@ -1168,8 +1112,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 103,
-      "mode": 0,
+      "order": 120,
+      "mode": 4,
       "inputs": [
         {
           "name": "destination",
@@ -1215,8 +1159,8 @@
       "id": 11,
       "type": "MaskToImage",
       "pos": [
-        1075,
-        1025
+        1099.0222340206283,
+        1031.3591309034512
       ],
       "size": {
         "0": 210,
@@ -1225,8 +1169,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 98,
-      "mode": 0,
+      "order": 115,
+      "mode": 4,
       "inputs": [
         {
           "name": "mask",
@@ -1257,8 +1201,8 @@
       "id": 12,
       "type": "ImageCompositeMasked",
       "pos": [
-        1700,
-        1025
+        1741.5449426316563,
+        1029.3544942631656
       ],
       "size": {
         "0": 210,
@@ -1267,8 +1211,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 105,
-      "mode": 0,
+      "order": 122,
+      "mode": 4,
       "inputs": [
         {
           "name": "destination",
@@ -1315,8 +1259,8 @@
       "id": 55,
       "type": "DWPreprocessor",
       "pos": [
-        2000,
-        1025
+        2033.835954105325,
+        1029.3544942631656
       ],
       "size": {
         "0": 250,
@@ -1325,8 +1269,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 65,
-      "mode": 0,
+      "order": 76,
+      "mode": 4,
       "inputs": [
         {
           "name": "image",
@@ -1377,8 +1321,8 @@
       "id": 25,
       "type": "LineArtPreprocessor",
       "pos": [
-        2347.0773522243016,
-        1024.1634496263234
+        2372.2043178032955,
+        1019.8089553631578
       ],
       "size": {
         "0": 220,
@@ -1387,8 +1331,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 73,
-      "mode": 0,
+      "order": 84,
+      "mode": 4,
       "inputs": [
         {
           "name": "image",
@@ -1423,8 +1367,8 @@
       "id": 64,
       "type": "ImageCompositeMasked",
       "pos": [
-        2650,
-        1025
+        2670.772471315828,
+        1020.6455057368344
       ],
       "size": {
         "0": 210,
@@ -1433,8 +1377,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 113,
-      "mode": 0,
+      "order": 129,
+      "mode": 4,
       "inputs": [
         {
           "name": "destination",
@@ -1481,8 +1425,8 @@
       "id": 141,
       "type": "EmptyImage",
       "pos": [
-        2650,
-        1250
+        2670.772471315828,
+        1245.6455057368344
       ],
       "size": {
         "0": 210,
@@ -1492,7 +1436,7 @@
         "collapsed": false
       },
       "order": 12,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "IMAGE",
@@ -1520,8 +1464,8 @@
       "id": 71,
       "type": "ImageCompositeMasked",
       "pos": [
-        4490.840509845348,
-        1003.8301929760934
+        3675.714128528046,
+        1012.5391815024246
       ],
       "size": {
         "0": 210,
@@ -1530,8 +1474,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 118,
-      "mode": 0,
+      "order": 135,
+      "mode": 4,
       "inputs": [
         {
           "name": "destination",
@@ -1578,8 +1522,8 @@
       "id": 142,
       "type": "EmptyImage",
       "pos": [
-        4490.840509845348,
-        1228.8301929760933
+        3675.714128528046,
+        1237.5391815024245
       ],
       "size": {
         "0": 210,
@@ -1589,7 +1533,7 @@
         "collapsed": false
       },
       "order": 13,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "IMAGE",
@@ -1617,8 +1561,8 @@
       "id": 32,
       "type": "ConcatStringSingle",
       "pos": [
-        2325,
-        900
+        2350.126965578994,
+        895.6455057368344
       ],
       "size": {
         "0": 250,
@@ -1627,8 +1571,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 100,
-      "mode": 0,
+      "order": 110,
+      "mode": 4,
       "inputs": [
         {
           "name": "string_a",
@@ -1673,8 +1617,8 @@
       "id": 140,
       "type": "EmptyImage",
       "pos": [
-        1375,
-        1250
+        1412.1904483684907,
+        1254.3544942631656
       ],
       "size": {
         "0": 225,
@@ -1684,7 +1628,7 @@
         "collapsed": false
       },
       "order": 14,
-      "mode": 0,
+      "mode": 4,
       "outputs": [
         {
           "name": "IMAGE",
@@ -1709,201 +1653,11 @@
       "bgcolor": "#000"
     },
     {
-      "id": 76,
-      "type": "Reroute",
-      "pos": [
-        3245.960669352045,
-        127.10718054989509
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 79,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 280
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "IMAGE",
-          "links": [
-            208,
-            276
-          ],
-          "label": "IMAGE",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 167,
-      "type": "Reroute",
-      "pos": [
-        2320.960669352046,
-        127.10718054989509
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 64,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 278
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "IMAGE",
-          "links": [
-            279,
-            281
-          ],
-          "slot_index": 0,
-          "label": "IMAGE"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 166,
-      "type": "Reroute",
-      "pos": [
-        2945.960669352047,
-        127.10718054989509
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 72,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 279
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "IMAGE",
-          "links": [
-            280,
-            282
-          ],
-          "slot_index": 0,
-          "label": "IMAGE"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 168,
-      "type": "Reroute",
-      "pos": [
-        1620.9606693520432,
-        127.10718054989509
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 52,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 388
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "IMAGE",
-          "links": [
-            285,
-            286
-          ],
-          "slot_index": 0,
-          "label": "IMAGE"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 84,
-      "type": "Reroute",
-      "pos": [
-        1970.960669352043,
-        127.10718054989509
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 58,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 285
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "IMAGE",
-          "links": [
-            278,
-            283
-          ],
-          "label": "IMAGE",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
       "id": 151,
       "type": "M-LSDPreprocessor",
       "pos": [
-        4801.817008018736,
-        1026.162043477902
+        3987.690626701435,
+        1021.8075492147364
       ],
       "size": {
         "0": 225,
@@ -1912,8 +1666,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 95,
-      "mode": 0,
+      "order": 106,
+      "mode": 4,
       "inputs": [
         {
           "name": "image",
@@ -1947,16 +1701,16 @@
       "id": 174,
       "type": "Reroute",
       "pos": [
-        1021.4919709624272,
-        278.5797032987421
+        1045.5142049830558,
+        284.9388342021932
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 60,
-      "mode": 0,
+      "order": 71,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -1988,16 +1742,16 @@
       "id": 175,
       "type": "Reroute",
       "pos": [
-        1346.491970962427,
-        278.5797032987421
+        1383.6824193309178,
+        282.93419756190775
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 68,
-      "mode": 0,
+      "order": 79,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -2026,256 +1780,10 @@
       }
     },
     {
-      "id": 176,
-      "type": "Reroute",
-      "pos": [
-        1646.491970962427,
-        278.5797032987421
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 76,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 314,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "STRING",
-          "links": [
-            297,
-            313
-          ],
-          "slot_index": 0,
-          "label": "Project"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 177,
-      "type": "Reroute",
-      "pos": [
-        1971.4919709624269,
-        278.5797032987421
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 84,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 313,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "STRING",
-          "links": [
-            298,
-            312
-          ],
-          "slot_index": 0,
-          "label": "Project"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 178,
-      "type": "Reroute",
-      "pos": [
-        2321.4919709624273,
-        278.5797032987421
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 91,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 312,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "STRING",
-          "links": [
-            299,
-            311
-          ],
-          "slot_index": 0,
-          "label": "Project"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 179,
-      "type": "Reroute",
-      "pos": [
-        2596.4919709624273,
-        278.5797032987421
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 101,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 311,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "STRING",
-          "links": [
-            300,
-            310
-          ],
-          "slot_index": 0,
-          "label": "Project"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 180,
-      "type": "Reroute",
-      "pos": [
-        2921.4919709624273,
-        278.5797032987421
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 109,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 310,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "STRING",
-          "links": [
-            301,
-            309
-          ],
-          "slot_index": 0,
-          "label": "Project"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 181,
-      "type": "Reroute",
-      "pos": [
-        3246.4919709624273,
-        278.5797032987421
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 116,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 309,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "STRING",
-          "links": [
-            302,
-            308
-          ],
-          "slot_index": 0,
-          "label": "Project"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
       "id": 26,
       "type": "HEDPreprocessor",
       "pos": [
-        3300,
+        3320.772471315828,
         1025
       ],
       "size": {
@@ -2285,8 +1793,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 87,
-      "mode": 0,
+      "order": 98,
+      "mode": 4,
       "inputs": [
         {
           "name": "image",
@@ -2323,8 +1831,8 @@
       "id": 79,
       "type": "ImageCompositeMasked",
       "pos": [
-        5198.522606917103,
-        1011.2259873258238
+        4329.787800178637,
+        999.1625045363269
       ],
       "size": {
         "0": 210,
@@ -2333,7 +1841,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 125,
+      "order": 141,
       "mode": 0,
       "inputs": [
         {
@@ -2381,16 +1889,16 @@
       "id": 197,
       "type": "Reroute",
       "pos": [
-        4801.817008018736,
-        1176.162043477902
+        3987.690626701435,
+        1171.8075492147364
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 94,
-      "mode": 0,
+      "order": 105,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -2417,16 +1925,16 @@
       "id": 13,
       "type": "VHS_VideoCombine",
       "pos": [
-        1025,
-        1450
+        1049.0222340206285,
+        1456.359130903451
       ],
       "size": [
         275,
         525
       ],
       "flags": {},
-      "order": 106,
-      "mode": 0,
+      "order": 123,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -2495,16 +2003,16 @@
       "id": 58,
       "type": "VHS_VideoCombine",
       "pos": [
-        1350,
-        1450
+        1387.1904483684907,
+        1454.3544942631656
       ],
       "size": [
         275,
         525
       ],
       "flags": {},
-      "order": 111,
-      "mode": 0,
+      "order": 127,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -2573,16 +2081,16 @@
       "id": 42,
       "type": "VHS_VideoCombine",
       "pos": [
-        1675,
-        1450
+        1716.5449426316563,
+        1454.3544942631656
       ],
       "size": [
         275,
         525
       ],
       "flags": {},
-      "order": 114,
-      "mode": 0,
+      "order": 130,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -2650,16 +2158,16 @@
       "id": 39,
       "type": "VHS_VideoCombine",
       "pos": [
-        2000,
-        1450
+        2033.835954105325,
+        1454.3544942631656
       ],
       "size": [
         275,
         525
       ],
       "flags": {},
-      "order": 99,
-      "mode": 0,
+      "order": 109,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -2727,16 +2235,16 @@
       "id": 37,
       "type": "VHS_VideoCombine",
       "pos": [
-        2325,
-        1450
+        2350.126965578994,
+        1445.6455057368344
       ],
-      "size": [
-        250,
-        500
-      ],
+      "size": {
+        "0": 250,
+        "1": 300
+      },
       "flags": {},
-      "order": 107,
-      "mode": 0,
+      "order": 116,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -2804,16 +2312,16 @@
       "id": 66,
       "type": "VHS_VideoCombine",
       "pos": [
-        2625,
-        1450
+        2645.772471315828,
+        1445.6455057368344
       ],
-      "size": [
-        275,
-        525
-      ],
+      "size": {
+        "0": 275,
+        "1": 300
+      },
       "flags": {},
-      "order": 120,
-      "mode": 0,
+      "order": 137,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -2882,16 +2390,16 @@
       "id": 36,
       "type": "VHS_VideoCombine",
       "pos": [
-        2950,
-        1450
+        2970.772471315828,
+        1454.3544942631656
       ],
-      "size": [
-        275,
-        525
-      ],
+      "size": {
+        "0": 275,
+        "1": 300
+      },
       "flags": {},
-      "order": 121,
-      "mode": 0,
+      "order": 131,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -2960,16 +2468,16 @@
       "id": 38,
       "type": "VHS_VideoCombine",
       "pos": [
-        3275,
+        3295.772471315828,
         1450
       ],
-      "size": [
-        275,
-        525
-      ],
+      "size": {
+        "0": 275,
+        "1": 300
+      },
       "flags": {},
-      "order": 126,
-      "mode": 0,
+      "order": 138,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -3037,16 +2545,16 @@
       "id": 73,
       "type": "VHS_VideoCombine",
       "pos": [
-        4465.840509845348,
-        1428.8301929760933
+        3650.714128528046,
+        1437.5391815024245
       ],
-      "size": [
-        275,
-        525
-      ],
+      "size": {
+        "0": 275,
+        "1": 300
+      },
       "flags": {},
-      "order": 129,
-      "mode": 0,
+      "order": 142,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -3115,16 +2623,16 @@
       "id": 154,
       "type": "VHS_VideoCombine",
       "pos": [
-        4756.3890252636265,
-        1436.875668644519
+        3942.262643946326,
+        1432.5211743813534
       ],
-      "size": [
-        300,
-        550
-      ],
+      "size": {
+        "0": 300,
+        "1": 300
+      },
       "flags": {},
-      "order": 132,
-      "mode": 0,
+      "order": 145,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -3193,15 +2701,15 @@
       "id": 80,
       "type": "VHS_VideoCombine",
       "pos": [
-        5160.8098534951,
-        1437.0625376995001
+        4292.075046756633,
+        1424.9990549100032
       ],
-      "size": [
-        275,
-        525
-      ],
+      "size": {
+        "0": 275,
+        "1": 300
+      },
       "flags": {},
-      "order": 134,
+      "order": 147,
       "mode": 0,
       "inputs": [
         {
@@ -3259,7 +2767,7 @@
           "hidden": false,
           "paused": false,
           "params": {
-            "filename": "cnv_fps24_fc240_ser_00001.mp4",
+            "filename": "cnv_fps24_fc240_ser_00002.mp4",
             "subfolder": "ControlNet/blade_video_full",
             "type": "output",
             "format": "video/h264-mp4"
@@ -3268,57 +2776,19 @@
       }
     },
     {
-      "id": 198,
-      "type": "Reroute",
-      "pos": [
-        699.9995117187507,
-        472.88489563312294
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 15,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "*",
-          "links": [
-            349,
-            371
-          ],
-          "label": "Audio",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
       "id": 199,
       "type": "Reroute",
       "pos": [
-        1024.9995117187507,
-        472.88489563312294
+        1049.0217457393792,
+        479.244026536574
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 20,
-      "mode": 0,
+      "order": 34,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -3347,16 +2817,16 @@
       "id": 200,
       "type": "Reroute",
       "pos": [
-        1349.9995117187514,
-        472.88489563312294
+        1387.189960087242,
+        477.23938989628857
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 23,
-      "mode": 0,
+      "order": 39,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -3382,95 +2852,19 @@
       }
     },
     {
-      "id": 201,
-      "type": "Reroute",
-      "pos": [
-        1674.9995117187514,
-        472.88489563312294
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 28,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 369
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "*",
-          "links": [
-            352,
-            368
-          ],
-          "label": "Audio",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 202,
-      "type": "Reroute",
-      "pos": [
-        1999.9995117187514,
-        472.88489563312294
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 34,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 368
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "*",
-          "links": [
-            353,
-            367
-          ],
-          "label": "Audio",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
       "id": 203,
       "type": "Reroute",
       "pos": [
-        2324.9995117187505,
-        472.88489563312294
+        2350.1264772977443,
+        468.5304013699573
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 51,
-      "mode": 0,
+      "order": 68,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -3499,16 +2893,16 @@
       "id": 204,
       "type": "Reroute",
       "pos": [
-        2624.9995117187505,
-        472.88489563312294
+        2645.7719830345786,
+        468.5304013699573
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 57,
-      "mode": 0,
+      "order": 74,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -3534,48 +2928,10 @@
       }
     },
     {
-      "id": 205,
-      "type": "Reroute",
-      "pos": [
-        2924.9995117187505,
-        472.88489563312294
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 63,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 365
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "*",
-          "links": [
-            356,
-            364
-          ],
-          "label": "Audio",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
       "id": 206,
       "type": "Reroute",
       "pos": [
-        3274.9995117187505,
+        3295.7719830345786,
         472.88489563312294
       ],
       "size": [
@@ -3583,8 +2939,8 @@
         26
       ],
       "flags": {},
-      "order": 71,
-      "mode": 0,
+      "order": 89,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -3610,375 +2966,6 @@
       }
     },
     {
-      "id": 86,
-      "type": "Reroute",
-      "pos": [
-        696.4919709624272,
-        278.5797032987421
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 55,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 392,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "STRING",
-          "links": [
-            317,
-            318
-          ],
-          "label": "Project",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 196,
-      "type": "Reroute",
-      "pos": [
-        999.7278519834083,
-        -36.485139237816966
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 50,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 343,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "INT",
-          "links": [
-            331,
-            332
-          ],
-          "slot_index": 0,
-          "label": "Rate"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 186,
-      "type": "Reroute",
-      "pos": [
-        1324.7278519834126,
-        -36.485139237816966
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 56,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 332,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "INT",
-          "links": [
-            321,
-            333
-          ],
-          "slot_index": 0,
-          "label": "Rate"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 195,
-      "type": "Reroute",
-      "pos": [
-        1624.727851983412,
-        -36.485139237816966
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 62,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 333,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "INT",
-          "links": [
-            330,
-            334
-          ],
-          "slot_index": 0,
-          "label": "Rate"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 194,
-      "type": "Reroute",
-      "pos": [
-        1949.727851983411,
-        -36.485139237816966
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 70,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 334,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "INT",
-          "links": [
-            329,
-            335
-          ],
-          "slot_index": 0,
-          "label": "Rate"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 193,
-      "type": "Reroute",
-      "pos": [
-        2299.727851983415,
-        -36.485139237816966
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 77,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 335,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "INT",
-          "links": [
-            328,
-            336
-          ],
-          "slot_index": 0,
-          "label": "Rate"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 192,
-      "type": "Reroute",
-      "pos": [
-        2574.727851983415,
-        -36.485139237816966
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 85,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 336,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "INT",
-          "links": [
-            327,
-            337
-          ],
-          "slot_index": 0,
-          "label": "Rate"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 191,
-      "type": "Reroute",
-      "pos": [
-        2899.7278519834163,
-        -36.485139237816966
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 92,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 337,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "INT",
-          "links": [
-            326,
-            338
-          ],
-          "slot_index": 0,
-          "label": "Rate"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 190,
-      "type": "Reroute",
-      "pos": [
-        3224.727851983404,
-        -36.485139237816966
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 102,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 338,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "INT",
-          "links": [
-            325,
-            339
-          ],
-          "slot_index": 0,
-          "label": "Rate"
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
       "id": 149,
       "type": "MaskFromColor+",
       "pos": [
@@ -3992,7 +2979,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 48,
+      "order": 59,
       "mode": 0,
       "inputs": [
         {
@@ -4038,7 +3025,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 37,
+      "order": 48,
       "mode": 0,
       "inputs": [
         {
@@ -4083,7 +3070,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 39,
+      "order": 50,
       "mode": 4,
       "inputs": [
         {
@@ -4126,7 +3113,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 38,
+      "order": 49,
       "mode": 4,
       "inputs": [
         {
@@ -4169,7 +3156,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 41,
+      "order": 52,
       "mode": 4,
       "inputs": [
         {
@@ -4212,7 +3199,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 40,
+      "order": 51,
       "mode": 4,
       "inputs": [
         {
@@ -4255,7 +3242,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 42,
+      "order": 53,
       "mode": 4,
       "inputs": [
         {
@@ -4299,7 +3286,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 43,
+      "order": 54,
       "mode": 4,
       "inputs": [
         {
@@ -4343,7 +3330,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 45,
+      "order": 56,
       "mode": 0,
       "inputs": [
         {
@@ -4389,7 +3376,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 46,
+      "order": 57,
       "mode": 0,
       "inputs": [
         {
@@ -4435,7 +3422,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 47,
+      "order": 58,
       "mode": 0,
       "inputs": [
         {
@@ -4481,7 +3468,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 36,
+      "order": 47,
       "mode": 0,
       "inputs": [
         {
@@ -4508,7 +3495,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 53,
+      "order": 64,
       "mode": 0,
       "inputs": [
         {
@@ -4559,7 +3546,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 54,
+      "order": 65,
       "mode": 0,
       "inputs": [
         {
@@ -4610,7 +3597,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 59,
+      "order": 70,
       "mode": 0,
       "inputs": [
         {
@@ -4661,7 +3648,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 66,
+      "order": 77,
       "mode": 0,
       "inputs": [
         {
@@ -4699,46 +3686,6 @@
       ]
     },
     {
-      "id": 113,
-      "type": "InvertMask",
-      "pos": [
-        457.1413876206951,
-        -1254.0168659657663
-      ],
-      "size": {
-        "0": 140,
-        "1": 30
-      },
-      "flags": {
-        "collapsed": false
-      },
-      "order": 74,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "mask",
-          "type": "MASK",
-          "link": 257,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": [
-            187,
-            375
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "InvertMask"
-      }
-    },
-    {
       "id": 126,
       "type": "MaskPreview+",
       "pos": [
@@ -4752,7 +3699,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 81,
+      "order": 92,
       "mode": 0,
       "inputs": [
         {
@@ -4767,98 +3714,19 @@
       }
     },
     {
-      "id": 87,
-      "type": "Reroute",
-      "pos": [
-        674.7278519834075,
-        -36.485139237816966
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 33,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 374,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "INT",
-          "links": [
-            200,
-            343
-          ],
-          "label": "Rate",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 117,
-      "type": "Reroute",
-      "pos": [
-        2588.4383160284906,
-        -226.1091557686295
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 104,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 189
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "MASK",
-          "links": [
-            291,
-            293
-          ],
-          "label": "InvertM",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
       "id": 115,
       "type": "Reroute",
       "pos": [
-        1338.43831602849,
-        -226.1091557686295
+        1375.6287643969806,
+        -221.75466150546384
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 97,
-      "mode": 0,
+      "order": 114,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -4887,16 +3755,16 @@
       "id": 114,
       "type": "Reroute",
       "pos": [
-        1013.4383160284918,
-        -226.1091557686295
+        1037.4605500491205,
+        -219.75002486517835
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 89,
-      "mode": 0,
+      "order": 108,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -4926,16 +3794,16 @@
       "id": 92,
       "type": "VHS_VideoCombine",
       "pos": [
-        700,
-        1450
+        727.5124861496575,
+        1450.3452209825948
       ],
-      "size": [
-        275,
-        525
-      ],
+      "size": {
+        "0": 275,
+        "1": 300
+      },
       "flags": {},
-      "order": 69,
-      "mode": 0,
+      "order": 80,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -5001,41 +3869,6 @@
       }
     },
     {
-      "id": 161,
-      "type": "Note Plus (mtb)",
-      "pos": {
-        "0": 2175,
-        "1": -1875,
-        "2": 0,
-        "3": 0,
-        "4": 0,
-        "5": 0,
-        "6": 0,
-        "7": 0,
-        "8": 0,
-        "9": 0
-      },
-      "size": {
-        "0": 600,
-        "1": 275
-      },
-      "flags": {},
-      "order": 16,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "Note+ (mtb)",
-      "properties": {},
-      "widgets_values": [
-        "###### FILENAME: \n#controlnets.json\n- output: ControlNet/blade\\_video_full/*.mp4\n\n<br>\n\n###### LOCATION:\n## /home/jw/store/src/longanim/PROJECTS/boat/\n\n<br>\n\n###### REFERENCES:\n- ComfyUI ControlNet Video Builder with Masking\n- https://civitai.com/models/263839/comfyui-controlnet-video-builder-with-masking",
-        "markdown",
-        ""
-      ],
-      "color": "#222",
-      "bgcolor": "#000",
-      "shape": 1
-    },
-    {
       "id": 5,
       "type": "OneFormer-COCO-SemSegPreprocessor",
       "pos": [
@@ -5049,7 +3882,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 30,
+      "order": 41,
       "mode": 0,
       "inputs": [
         {
@@ -5109,7 +3942,7 @@
         "1": 625
       },
       "flags": {},
-      "order": 17,
+      "order": 15,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -5123,207 +3956,6 @@
       "color": "#223",
       "bgcolor": "#335",
       "shape": 1
-    },
-    {
-      "id": 215,
-      "type": "Reroute",
-      "pos": [
-        739.558963565234,
-        126.46668481689524
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 35,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 387
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "IMAGE",
-          "links": [
-            386,
-            388
-          ],
-          "label": "IMAGE",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 219,
-      "type": "Reroute",
-      "pos": [
-        575,
-        275
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 49,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 393,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "STRING",
-          "links": [
-            392
-          ],
-          "label": "Project",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 4,
-      "type": "Reroute",
-      "pos": [
-        575,
-        125
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 29,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 381,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "IMAGE",
-          "links": [
-            387
-          ],
-          "label": "IMAGE",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 210,
-      "type": "Reroute",
-      "pos": [
-        575,
-        -50
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 27,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 384,
-          "widget": {
-            "name": "value"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "INT",
-          "links": [
-            374
-          ],
-          "label": "Rate",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 211,
-      "type": "Reroute",
-      "pos": [
-        575,
-        -225
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 82,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 375
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "MASK",
-          "links": [
-            376
-          ],
-          "label": "InvertIM",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#322",
-      "bgcolor": "#533"
     },
     {
       "id": 1,
@@ -5340,7 +3972,7 @@
         "collapsed": false,
         "pinned": false
       },
-      "order": 18,
+      "order": 16,
       "mode": 0,
       "outputs": [
         {
@@ -5377,7 +4009,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 25,
+      "order": 36,
       "mode": 0,
       "inputs": [
         {
@@ -5442,7 +4074,7 @@
         26
       ],
       "flags": {},
-      "order": 22,
+      "order": 33,
       "mode": 0,
       "inputs": [
         {
@@ -5484,7 +4116,7 @@
         26
       ],
       "flags": {},
-      "order": 24,
+      "order": 35,
       "mode": 0,
       "inputs": [
         {
@@ -5524,7 +4156,7 @@
         26
       ],
       "flags": {},
-      "order": 31,
+      "order": 42,
       "mode": 0,
       "inputs": [
         {
@@ -5566,7 +4198,7 @@
         26
       ],
       "flags": {},
-      "order": 26,
+      "order": 37,
       "mode": 0,
       "inputs": [
         {
@@ -5594,43 +4226,6 @@
       "bgcolor": "#533"
     },
     {
-      "id": 155,
-      "type": "Reroute",
-      "pos": [
-        575,
-        475
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 32,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 378
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "VHS_AUDIO",
-          "links": [],
-          "label": "Audio",
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      },
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
       "id": 14,
       "type": "Int",
       "pos": [
@@ -5642,7 +4237,7 @@
         "1": 60
       },
       "flags": {},
-      "order": 19,
+      "order": 17,
       "mode": 0,
       "outputs": [
         {
@@ -5674,14 +4269,14 @@
         -1108.5294100901672,
         97.38637018489295
       ],
-      "size": [
-        350,
-        553.9999961853027
-      ],
+      "size": {
+        "0": 350,
+        "1": 250
+      },
       "flags": {
         "collapsed": false
       },
-      "order": 21,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
@@ -5757,16 +4352,16 @@
       "id": 163,
       "type": "Reroute",
       "pos": [
-        4799.529864521236,
-        108.02365707587072
+        3985.4034832039356,
+        103.66916281270505
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 88,
-      "mode": 0,
+      "order": 99,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -5796,16 +4391,16 @@
       "id": 183,
       "type": "Reroute",
       "pos": [
-        4799.529864521236,
-        258.02365707587074
+        3985.4034832039356,
+        253.66916281270508
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 128,
-      "mode": 0,
+      "order": 140,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -5837,15 +4432,15 @@
       "id": 169,
       "type": "Reroute",
       "pos": [
-        5160.8098534951,
-        -237.93746230050002
+        4292.075046756633,
+        -250.00094508999697
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 119,
+      "order": 136,
       "mode": 0,
       "inputs": [
         {
@@ -5874,15 +4469,15 @@
       "id": 189,
       "type": "Reroute",
       "pos": [
-        5160.8098534951,
-        -37.937462300499995
+        4292.075046756633,
+        -50.00094508999693
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 124,
+      "order": 134,
       "mode": 0,
       "inputs": [
         {
@@ -5914,15 +4509,15 @@
       "id": 162,
       "type": "Reroute",
       "pos": [
-        5160.8098534951,
-        112.0625376995
+        4292.075046756633,
+        99.99905491000307
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 96,
+      "order": 107,
       "mode": 0,
       "inputs": [
         {
@@ -5951,15 +4546,15 @@
       "id": 184,
       "type": "Reroute",
       "pos": [
-        5160.8098534951,
-        287.06253769950007
+        4292.075046756633,
+        274.9990549100031
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 131,
+      "order": 144,
       "mode": 0,
       "inputs": [
         {
@@ -5991,15 +4586,15 @@
       "id": 209,
       "type": "Reroute",
       "pos": [
-        5135.8098534951,
-        462.06253769950007
+        4267.075046756633,
+        449.9990549100031
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 93,
+      "order": 113,
       "mode": 0,
       "inputs": [
         {
@@ -6027,16 +4622,16 @@
       "id": 208,
       "type": "Reroute",
       "pos": [
-        4788.434500932053,
-        454.5000603192001
+        3974.3081196147527,
+        450.14556605603445
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 86,
-      "mode": 0,
+      "order": 104,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -6065,16 +4660,16 @@
       "id": 188,
       "type": "Reroute",
       "pos": [
-        4813.434500932053,
-        -45.499939680799976
+        3999.3081196147523,
+        -49.854433943965624
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 117,
-      "mode": 0,
+      "order": 126,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -6106,16 +4701,16 @@
       "id": 170,
       "type": "Reroute",
       "pos": [
-        4813.434500932053,
-        -245.49993968080003
+        3999.3081196147523,
+        -249.85443394396574
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 112,
-      "mode": 0,
+      "order": 128,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -6144,16 +4739,16 @@
       "id": 187,
       "type": "Reroute",
       "pos": [
-        4453.6830662479015,
-        -45.499939680800004
+        3638.5566849305997,
+        -36.7909511544687
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 110,
-      "mode": 0,
+      "order": 119,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -6185,16 +4780,16 @@
       "id": 182,
       "type": "Reroute",
       "pos": [
-        4453.6830662479015,
-        254.50006031920003
+        3638.5566849305997,
+        263.20904884553136
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 123,
-      "mode": 0,
+      "order": 133,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -6226,16 +4821,16 @@
       "id": 207,
       "type": "Reroute",
       "pos": [
-        4453.6830662479015,
-        454.5000603192
+        3638.5566849305997,
+        463.2090488455313
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 78,
-      "mode": 0,
+      "order": 97,
+      "mode": 4,
       "inputs": [
         {
           "name": "",
@@ -6259,6 +4854,1868 @@
         "showOutputText": false,
         "horizontal": false
       }
+    },
+    {
+      "id": 190,
+      "type": "Reroute",
+      "pos": [
+        3295.772471315828,
+        -50
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 112,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 338,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            325,
+            339
+          ],
+          "slot_index": 0,
+          "label": "Rate"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 76,
+      "type": "Reroute",
+      "pos": [
+        3295.772471315828,
+        125
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 90,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 280
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            208,
+            276
+          ],
+          "label": "IMAGE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 181,
+      "type": "Reroute",
+      "pos": [
+        3295.772471315828,
+        275
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 125,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 309,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "STRING",
+          "links": [
+            302,
+            308
+          ],
+          "slot_index": 0,
+          "label": "Project"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 205,
+      "type": "Reroute",
+      "pos": [
+        2970.772471315828,
+        479.35449426316563
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 82,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 365
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "*",
+          "links": [
+            356,
+            364
+          ],
+          "label": "Audio",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 180,
+      "type": "Reroute",
+      "pos": [
+        2970.772471315828,
+        279.35449426316563
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 118,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 310,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "STRING",
+          "links": [
+            301,
+            309
+          ],
+          "slot_index": 0,
+          "label": "Project"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 166,
+      "type": "Reroute",
+      "pos": [
+        2970.772471315828,
+        129.35449426316566
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 83,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 279
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            280,
+            282
+          ],
+          "slot_index": 0,
+          "label": "IMAGE"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 191,
+      "type": "Reroute",
+      "pos": [
+        2970.772471315828,
+        -45.64550573683435
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 103,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 337,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            326,
+            338
+          ],
+          "slot_index": 0,
+          "label": "Rate"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 192,
+      "type": "Reroute",
+      "pos": [
+        2645.772471315828,
+        -54.35449426316565
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 96,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 336,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            327,
+            337
+          ],
+          "slot_index": 0,
+          "label": "Rate"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 179,
+      "type": "Reroute",
+      "pos": [
+        2670.772471315828,
+        270.64550573683437
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 111,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 311,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "STRING",
+          "links": [
+            300,
+            310
+          ],
+          "slot_index": 0,
+          "label": "Project"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 178,
+      "type": "Reroute",
+      "pos": [
+        2350.126965578994,
+        270.64550573683437
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 102,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 312,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "STRING",
+          "links": [
+            299,
+            311
+          ],
+          "slot_index": 0,
+          "label": "Project"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 167,
+      "type": "Reroute",
+      "pos": [
+        2350.126965578994,
+        120.64550573683437
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 75,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 278
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            279,
+            281
+          ],
+          "slot_index": 0,
+          "label": "IMAGE"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 193,
+      "type": "Reroute",
+      "pos": [
+        2350.126965578994,
+        -54.35449426316565
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 88,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 335,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            328,
+            336
+          ],
+          "slot_index": 0,
+          "label": "Rate"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 194,
+      "type": "Reroute",
+      "pos": [
+        2033.835954105325,
+        -45.645505736834345
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 81,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 334,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            329,
+            335
+          ],
+          "slot_index": 0,
+          "label": "Rate"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 84,
+      "type": "Reroute",
+      "pos": [
+        2033.835954105325,
+        129.35449426316566
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 69,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 285
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            278,
+            283
+          ],
+          "label": "IMAGE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 177,
+      "type": "Reroute",
+      "pos": [
+        2033.835954105325,
+        279.3544942631657
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 95,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 313,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "STRING",
+          "links": [
+            298,
+            312
+          ],
+          "slot_index": 0,
+          "label": "Project"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 202,
+      "type": "Reroute",
+      "pos": [
+        2033.835954105325,
+        479.3544942631657
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 62,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 368
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "*",
+          "links": [
+            353,
+            367
+          ],
+          "label": "Audio",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 195,
+      "type": "Reroute",
+      "pos": [
+        1716.5449426316563,
+        -45.64550573683435
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 73,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 333,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            330,
+            334
+          ],
+          "slot_index": 0,
+          "label": "Rate"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 168,
+      "type": "Reroute",
+      "pos": [
+        1716.5449426316563,
+        129.35449426316566
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 63,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 388
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            285,
+            286
+          ],
+          "slot_index": 0,
+          "label": "IMAGE"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 176,
+      "type": "Reroute",
+      "pos": [
+        1716.5449426316563,
+        279.35449426316563
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 87,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 314,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "STRING",
+          "links": [
+            297,
+            313
+          ],
+          "slot_index": 0,
+          "label": "Project"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 201,
+      "type": "Reroute",
+      "pos": [
+        1716.5449426316563,
+        479.35449426316563
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 45,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 369
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "*",
+          "links": [
+            352,
+            368
+          ],
+          "label": "Audio",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 186,
+      "type": "Reroute",
+      "pos": [
+        1387.1904483684907,
+        -45.64550573683435
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 67,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 332,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            321,
+            333
+          ],
+          "slot_index": 0,
+          "label": "Rate"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 196,
+      "type": "Reroute",
+      "pos": [
+        1066.5449426316563,
+        -54.35449426316566
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 61,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 343,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            331,
+            332
+          ],
+          "slot_index": 0,
+          "label": "Rate"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 87,
+      "type": "Reroute",
+      "pos": [
+        750.5078623159752,
+        -29.227528684171755
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 44,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 374,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            200,
+            343
+          ],
+          "label": "Rate",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 215,
+      "type": "Reroute",
+      "pos": [
+        750.5078623159752,
+        120.77247131582824
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 46,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 387
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            386,
+            388
+          ],
+          "label": "IMAGE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 86,
+      "type": "Reroute",
+      "pos": [
+        750.5078623159752,
+        295.77247131582817
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 66,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 392,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "STRING",
+          "links": [
+            317,
+            318
+          ],
+          "label": "Project",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 198,
+      "type": "Reroute",
+      "pos": [
+        750.5078623159752,
+        470.77247131582817
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "*",
+          "links": [
+            349,
+            371
+          ],
+          "label": "Audio",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 211,
+      "type": "Reroute",
+      "pos": [
+        750,
+        -225
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 100,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 412
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MASK",
+          "links": [
+            376
+          ],
+          "label": "InvertIM",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 117,
+      "type": "Reroute",
+      "pos": [
+        2650,
+        -225
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 121,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 189
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MASK",
+          "links": [
+            291,
+            293
+          ],
+          "label": "InvertM",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 220,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 750,
+        "1": -525,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **ORIGINAL**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 221,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 1100,
+        "1": -525,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **INV. MASK**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 222,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 1425,
+        "1": -525,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **LINEART**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 223,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 1725,
+        "1": -525,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 225,
+        "1": 75
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **COMP. MASK ?**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 224,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 2075,
+        "1": -500,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **DWPOSE**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 225,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 2375,
+        "1": -500,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **LINEART**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 226,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 3000,
+        "1": -500,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **DEPTH MAP**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 227,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 2675,
+        "1": -500,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 225,
+        "1": 75
+      },
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **DEPTH MAP BLK**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 228,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 3325,
+        "1": -500,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **SOFT EDGE**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 229,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 3675,
+        "1": -475,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 225,
+        "1": 75
+      },
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **SOFT EDGE BLK**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 152,
+      "type": "ConcatStringSingle",
+      "pos": [
+        4000,
+        875
+      ],
+      "size": {
+        "0": 243.60000610351562,
+        "1": 54
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 143,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "string_a",
+          "type": "STRING",
+          "link": 304,
+          "widget": {
+            "name": "string_a"
+          }
+        },
+        {
+          "name": "string_b",
+          "type": "STRING",
+          "link": 265,
+          "widget": {
+            "name": "string_b"
+          },
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            267
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConcatStringSingle"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 230,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 4000,
+        "1": -475,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 225,
+        "1": 75
+      },
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **M-LSD**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 231,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 4325,
+        "1": -475,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 225,
+        "1": 75
+      },
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "# **SOFT EDGE RAW**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 4,
+      "type": "Reroute",
+      "pos": [
+        500,
+        100
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 381,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            387
+          ],
+          "label": "IMAGE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 210,
+      "type": "Reroute",
+      "pos": [
+        500,
+        -50
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 384,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            374
+          ],
+          "label": "Rate",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 219,
+      "type": "Reroute",
+      "pos": [
+        500,
+        275
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 60,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 393,
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "STRING",
+          "links": [
+            392
+          ],
+          "label": "Project",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 155,
+      "type": "Reroute",
+      "pos": [
+        500,
+        450
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 378
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VHS_AUDIO",
+          "links": [],
+          "label": "Audio",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 113,
+      "type": "InvertMask",
+      "pos": [
+        457.1413876206951,
+        -1254.0168659657663
+      ],
+      "size": {
+        "0": 140,
+        "1": 30
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 85,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 257,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            187,
+            413
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "InvertMask"
+      }
+    },
+    {
+      "id": 248,
+      "type": "Reroute",
+      "pos": [
+        500,
+        -225
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 93,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 413
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MASK",
+          "links": [
+            412
+          ],
+          "slot_index": 0,
+          "label": "InvertIM"
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 161,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 2175,
+        "1": -1875,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 650,
+        "1": 350
+      },
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "###### FILENAME: \n#controlnets.json\n- output: ControlNet/blade\\_video_full/*.mp4\n\n<br>\n\n###### DESC:\n## Make videos of CNs.  Similato to **1_prep.json**, which has more options and CNs\n\n<br>\n\n###### LOCATION:\n## /home/jw/store/src/longanim/PROJECTS/boat/\n\n<br>\n\n###### REFERENCES:\n- ComfyUI ControlNet Video Builder with Masking\n- https://civitai.com/models/263839/comfyui-controlnet-video-builder-with-masking",
+        "markdown",
+        ""
+      ],
+      "color": "#222",
+      "bgcolor": "#000",
+      "shape": 1
     }
   ],
   "links": [
@@ -7575,14 +8032,6 @@
       "*"
     ],
     [
-      375,
-      113,
-      0,
-      211,
-      0,
-      "*"
-    ],
-    [
       376,
       211,
       0,
@@ -7693,117 +8142,25 @@
       219,
       0,
       "*"
+    ],
+    [
+      412,
+      248,
+      0,
+      211,
+      0,
+      "*"
+    ],
+    [
+      413,
+      113,
+      0,
+      248,
+      0,
+      "*"
     ]
   ],
   "groups": [
-    {
-      "title": "Group",
-      "bounding": [
-        3252,
-        678,
-        312,
-        1326
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "locked": false
-    },
-    {
-      "title": "Group",
-      "bounding": [
-        2607,
-        677,
-        304,
-        1325
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "locked": false
-    },
-    {
-      "title": "Group",
-      "bounding": [
-        2924,
-        677,
-        316,
-        1325
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "locked": false
-    },
-    {
-      "title": "Group",
-      "bounding": [
-        1343,
-        678,
-        303,
-        1324
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "locked": false
-    },
-    {
-      "title": "Group",
-      "bounding": [
-        2307,
-        679,
-        284,
-        1326
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "locked": false
-    },
-    {
-      "title": "Group",
-      "bounding": [
-        1970,
-        679,
-        320,
-        1325
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "locked": false
-    },
-    {
-      "title": "Group",
-      "bounding": [
-        1660,
-        678,
-        296,
-        1325
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "locked": false
-    },
-    {
-      "title": "Group",
-      "bounding": [
-        1018,
-        679,
-        306,
-        1327
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "locked": false
-    },
-    {
-      "title": "Group",
-      "bounding": [
-        689,
-        678,
-        311,
-        1324
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "locked": false
-    },
     {
       "title": "AUDIO",
       "bounding": [
@@ -7891,8 +8248,8 @@
     {
       "title": "Group",
       "bounding": [
-        4788,
-        -535,
+        3974,
+        -539,
         276,
         2524
       ],
@@ -7903,8 +8260,8 @@
     {
       "title": "Group",
       "bounding": [
-        4444,
-        -529,
+        3628,
+        -520,
         307,
         2507
       ],
@@ -7915,10 +8272,118 @@
     {
       "title": "Group",
       "bounding": [
-        5143,
-        -533,
+        4274,
+        -545,
         311,
         2507
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "ORIGINAL",
+      "bounding": [
+        702,
+        -570,
+        321,
+        2576
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Group",
+      "bounding": [
+        1040,
+        -564,
+        307,
+        2562
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Group",
+      "bounding": [
+        1370,
+        -601,
+        300,
+        2610
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Group",
+      "bounding": [
+        1696,
+        -594,
+        286,
+        2593
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Group",
+      "bounding": [
+        2013,
+        -590,
+        307,
+        2602
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Group",
+      "bounding": [
+        2342,
+        -602,
+        262,
+        2603
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Group",
+      "bounding": [
+        2638,
+        -595,
+        287,
+        2593
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Group",
+      "bounding": [
+        2957,
+        -583,
+        296,
+        2602
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Group",
+      "bounding": [
+        3274,
+        -584,
+        331,
+        2579
       ],
       "color": "#3f789e",
       "font_size": 24,
