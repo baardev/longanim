@@ -12,4 +12,4 @@ conda activate Rife
 
 ./inference_realesrgan.py -s ${SCALE} -n RealESRGAN_x${SCALE}plus -i ${FILE} -o ${OUTDIR} #2>&1 >> /tmp/UPSCALE.log
 
-
+echo ${OUTDIR}

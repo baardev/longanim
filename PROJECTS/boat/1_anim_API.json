@@ -1,0 +1,556 @@
+{
+  "3": {
+    "inputs": {
+      "text": "a cat wearing a bikini on a beach under a clear blue sky",
+      "clip": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "4": {
+    "inputs": {
+      "stop_at_clip_layer": -1,
+      "clip": [
+        "22",
+        1
+      ]
+    },
+    "class_type": "CLIPSetLastLayer",
+    "_meta": {
+      "title": "CLIP Set Last Layer"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "watermark, woman, logo, text, signature, copyright, writing, letters,low quality, artifacts, cropped, bad art, poorly drawn, lowres,simple, pixelated, grain, noise, blurry, ugly\n",
+      "clip": [
+        "22",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "9": {
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "batch_size": 48
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "14": {
+    "inputs": {
+      "seed": 1,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.27,
+      "model": [
+        "20",
+        0
+      ],
+      "positive": [
+        "136",
+        0
+      ],
+      "negative": [
+        "136",
+        1
+      ],
+      "latent_image": [
+        "177",
+        3
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler Upscale (More Details)"
+    }
+  },
+  "15": {
+    "inputs": {
+      "samples": [
+        "14",
+        0
+      ],
+      "vae": [
+        "177",
+        4
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "20": {
+    "inputs": {
+      "model_name": "v3_sd15_mm.ckpt",
+      "beta_schedule": "sqrt_linear (AnimateDiff)",
+      "motion_scale": 1,
+      "apply_v2_models_properly": false,
+      "model": [
+        "37",
+        0
+      ],
+      "context_options": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "ADE_AnimateDiffLoaderWithContext",
+    "_meta": {
+      "title": "AnimateDiff Loader [Legacy] 🎭🅐🅓①"
+    }
+  },
+  "22": {
+    "inputs": {
+      "ckpt_name": "15/anythingV3_fp16.ckpt"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "25": {
+    "inputs": {
+      "context_length": 16,
+      "context_stride": 1,
+      "context_overlap": 4,
+      "context_schedule": "uniform",
+      "closed_loop": false,
+      "fuse_method": "flat",
+      "use_on_equal_length": false,
+      "start_percent": 0,
+      "guarantee_steps": 1
+    },
+    "class_type": "ADE_AnimateDiffUniformContextOptions",
+    "_meta": {
+      "title": "Context Options◆Looped Uniform 🎭🅐🅓"
+    }
+  },
+  "30": {
+    "inputs": {
+      "image": "IMAGE02.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "36": {
+    "inputs": {
+      "ipadapter_file": "ip-adapter-plus_sd15.bin"
+    },
+    "class_type": "IPAdapterModelLoader",
+    "_meta": {
+      "title": "Load IPAdapter Model"
+    }
+  },
+  "37": {
+    "inputs": {
+      "weight": 1.21,
+      "noise": 0,
+      "weight_type": "channel penalty",
+      "start_at": 0,
+      "end_at": 1,
+      "unfold_batch": false,
+      "ipadapter": [
+        "36",
+        0
+      ],
+      "clip_vision": [
+        "38",
+        0
+      ],
+      "image": [
+        "175",
+        0
+      ],
+      "model": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "IPAdapterApply",
+    "_meta": {
+      "title": "Apply IPAdapter"
+    }
+  },
+  "38": {
+    "inputs": {
+      "clip_name": "sd15model.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "119": {
+    "inputs": {
+      "frame_rate": 8,
+      "loop_count": 0,
+      "filename_prefix": "OUTPUTVIDEONAME",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 20,
+      "save_metadata": false,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "160",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "24FPS 🎥🅥🅗🅢"
+    }
+  },
+  "136": {
+    "inputs": {
+      "strength": 1,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "control_net": [
+        "139",
+        0
+      ],
+      "image": [
+        "137",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "137": {
+    "inputs": {
+      "directory": "POSE_00",
+      "image_load_cap": 48,
+      "skip_first_images": 0,
+      "select_every_nth": 1
+    },
+    "class_type": "VHS_LoadImages",
+    "_meta": {
+      "title": "Load Images (Upload) 🎥🅥🅗🅢"
+    }
+  },
+  "139": {
+    "inputs": {
+      "control_net_name": "control_v11p_sd15_openpose.pth"
+    },
+    "class_type": "ControlNetLoaderAdvanced",
+    "_meta": {
+      "title": "Load Advanced ControlNet Model 🛂🅐🅒🅝"
+    }
+  },
+  "159": {
+    "inputs": {
+      "film_model": "Style"
+    },
+    "class_type": "Load Film Model (mtb)",
+    "_meta": {
+      "title": "Load Film Model (mtb)"
+    }
+  },
+  "160": {
+    "inputs": {
+      "interpolate": 1,
+      "images": [
+        "15",
+        0
+      ],
+      "film_model": [
+        "159",
+        0
+      ]
+    },
+    "class_type": "Film Interpolation (mtb)",
+    "_meta": {
+      "title": "Film Interpolation (mtb)"
+    }
+  },
+  "166": {
+    "inputs": {
+      "image": "IMAGE01.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "175": {
+    "inputs": {
+      "image1": [
+        "30",
+        0
+      ],
+      "image2": [
+        "166",
+        0
+      ]
+    },
+    "class_type": "Make Image Batch",
+    "_meta": {
+      "title": "Make Image Batch"
+    }
+  },
+  "177": {
+    "inputs": {
+      "add_noise": "disable",
+      "noise_seed": 1,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "start_at_step": 0,
+      "end_at_step": 10000,
+      "return_with_leftover_noise": "disable",
+      "preview_method": "auto",
+      "vae_decode": "true",
+      "model": [
+        "20",
+        0
+      ],
+      "positive": [
+        "136",
+        0
+      ],
+      "negative": [
+        "136",
+        1
+      ],
+      "latent_image": [
+        "9",
+        0
+      ],
+      "optional_vae": [
+        "184",
+        2
+      ],
+      "script": [
+        "206",
+        0
+      ]
+    },
+    "class_type": "KSampler Adv. (Efficient)",
+    "_meta": {
+      "title": "KSampler Adv. (Efficient)"
+    }
+  },
+  "183": {
+    "inputs": {
+      "samples": [
+        "177",
+        3
+      ],
+      "vae": [
+        "177",
+        4
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "184": {
+    "inputs": {
+      "ckpt_name": "15/anythingV3_fp16.ckpt"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "187": {
+    "inputs": {
+      "add_noise": "disable",
+      "noise_seed": 0,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "start_at_step": 0,
+      "end_at_step": 10000,
+      "return_with_leftover_noise": "disable",
+      "preview_method": "auto",
+      "vae_decode": "true",
+      "model": [
+        "184",
+        0
+      ],
+      "positive": [
+        "136",
+        0
+      ],
+      "negative": [
+        "136",
+        1
+      ],
+      "latent_image": [
+        "192",
+        0
+      ],
+      "optional_vae": [
+        "184",
+        2
+      ],
+      "script": [
+        "203",
+        0
+      ]
+    },
+    "class_type": "KSampler Adv. (Efficient)",
+    "_meta": {
+      "title": "KSampler Adv. (Efficient)"
+    }
+  },
+  "192": {
+    "inputs": {
+      "width": 616,
+      "height": 512,
+      "batch_size": 48
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "195": {
+    "inputs": {
+      "samples": [
+        "187",
+        3
+      ],
+      "vae": [
+        "187",
+        4
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "196": {
+    "inputs": {
+      "samples": [
+        "192",
+        0
+      ],
+      "vae": [
+        "184",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "198": {
+    "inputs": {
+      "images": [
+        "195",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "203": {
+    "inputs": {
+      "upscale_type": "latent",
+      "hires_ckpt_name": "(use same)",
+      "latent_upscaler": "nearest-exact",
+      "pixel_upscaler": "4x-AnimeSharp.pth",
+      "upscale_by": 1.25,
+      "use_same_seed": true,
+      "seed": -1,
+      "hires_steps": 12,
+      "denoise": 0.56,
+      "iterations": 1,
+      "use_controlnet": false,
+      "control_net_name": "control_hed-fp16.safetensors",
+      "strength": 1,
+      "preprocessor": "none",
+      "preprocessor_imgs": false
+    },
+    "class_type": "HighRes-Fix Script",
+    "_meta": {
+      "title": "HighRes-Fix Script"
+    }
+  },
+  "206": {
+    "inputs": {
+      "upscale_type": "latent",
+      "hires_ckpt_name": "(use same)",
+      "latent_upscaler": "nearest-exact",
+      "pixel_upscaler": "4x-AnimeSharp.pth",
+      "upscale_by": 1.41,
+      "use_same_seed": false,
+      "seed": 249609020636792,
+      "hires_steps": 27,
+      "denoise": 0.61,
+      "iterations": 1,
+      "use_controlnet": false,
+      "control_net_name": "control_v11p_sd15_openpose.pth",
+      "strength": 1,
+      "preprocessor": "none",
+      "preprocessor_imgs": false
+    },
+    "class_type": "HighRes-Fix Script",
+    "_meta": {
+      "title": "HighRes-Fix Script"
+    }
+  },
+  "207": {
+    "inputs": {
+      "frame_rate": 46,
+      "loop_count": 0,
+      "filename_prefix": "OUTPUTVIDEONAME",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 20,
+      "save_metadata": false,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "183",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "24FPS 🎥🅥🅗🅢"
+    }
+  }
+}

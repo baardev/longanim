@@ -1,0 +1,77 @@
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"1-Startat=0_Endat=1.0"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./1-Startat=0_Endat=1.0.mp4 -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmptfdcazf_.mp4; 
+mv /tmp/tmptfdcazf_.mp4 1-Startat=0_Endat=1.0.mp4; 
+echo "----[LABEL] 1-Startat=0_Endat=1.0.mp4-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"5-Startat=0_Endat=0.8"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./5-Startat=0_Endat=0.8.mp4 -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmprmnuzqpn.mp4; 
+mv /tmp/tmprmnuzqpn.mp4 5-Startat=0_Endat=0.8.mp4; 
+echo "----[LABEL] 5-Startat=0_Endat=0.8.mp4-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"3-Startat=0_Endat=0.4"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./3-Startat=0_Endat=0.4.mp4 -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmpev3u2qw5.mp4; 
+mv /tmp/tmpev3u2qw5.mp4 3-Startat=0_Endat=0.4.mp4; 
+echo "----[LABEL] 3-Startat=0_Endat=0.4.mp4-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"2-Startat=0_Endat=0.2"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./2-Startat=0_Endat=0.2.mp4 -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmpt_v6cknz.mp4; 
+mv /tmp/tmpt_v6cknz.mp4 2-Startat=0_Endat=0.2.mp4; 
+echo "----[LABEL] 2-Startat=0_Endat=0.2.mp4-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"4-Startat=0_Endat=0.6"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./4-Startat=0_Endat=0.6.mp4 -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmpogwplwoj.mp4; 
+mv /tmp/tmpogwplwoj.mp4 4-Startat=0_Endat=0.6.mp4; 
+echo "----[LABEL] 4-Startat=0_Endat=0.6.mp4-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"safe"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./safe -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmpg69oae0w.mp4; 
+mv /tmp/tmpg69oae0w.mp4 safe; 
+echo "----[LABEL] safe-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"safe"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./safe -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmpurettziw.mp4; 
+mv /tmp/tmpurettziw.mp4 safe; 
+echo "----[LABEL] safe-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"safe"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./safe -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmplihuvcho.mp4; 
+mv /tmp/tmplihuvcho.mp4 safe; 
+echo "----[LABEL] safe-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"safe"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./safe -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmpeso37pfo.mp4; 
+mv /tmp/tmpeso37pfo.mp4 safe; 
+echo "----[LABEL] safe-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"safe"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./safe -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmpwf611jiv.mp4; 
+mv /tmp/tmpwf611jiv.mp4 safe; 
+echo "----[LABEL] safe-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"safe"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./safe -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmp9cic1ild.mp4; 
+mv /tmp/tmp9cic1ild.mp4 safe; 
+echo "----[LABEL] safe-------------------------------------"
+
+ffmpeg -y -loglevel warning -i 1-Startat=0_Endat=1.0.mp4 -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmptfdcazf_.mp4; mv /tmp/tmptfdcazf_.mp4 1-Startat=0_Endat=1.0.mp4
+echo "----[BORDER] 1-Startat=0_Endat=1.0.mp4 -------------------------------------"
+ffmpeg -y -loglevel warning -i 5-Startat=0_Endat=0.8.mp4 -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmprmnuzqpn.mp4; mv /tmp/tmprmnuzqpn.mp4 5-Startat=0_Endat=0.8.mp4
+echo "----[BORDER] 5-Startat=0_Endat=0.8.mp4 -------------------------------------"
+ffmpeg -y -loglevel warning -i 3-Startat=0_Endat=0.4.mp4 -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmpev3u2qw5.mp4; mv /tmp/tmpev3u2qw5.mp4 3-Startat=0_Endat=0.4.mp4
+echo "----[BORDER] 3-Startat=0_Endat=0.4.mp4 -------------------------------------"
+ffmpeg -y -loglevel warning -i 2-Startat=0_Endat=0.2.mp4 -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmpt_v6cknz.mp4; mv /tmp/tmpt_v6cknz.mp4 2-Startat=0_Endat=0.2.mp4
+echo "----[BORDER] 2-Startat=0_Endat=0.2.mp4 -------------------------------------"
+ffmpeg -y -loglevel warning -i 4-Startat=0_Endat=0.6.mp4 -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmpogwplwoj.mp4; mv /tmp/tmpogwplwoj.mp4 4-Startat=0_Endat=0.6.mp4
+echo "----[BORDER] 4-Startat=0_Endat=0.6.mp4 -------------------------------------"
+ffmpeg -y -loglevel warning -i safe -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmpg69oae0w.mp4; mv /tmp/tmpg69oae0w.mp4 safe
+echo "----[BORDER] safe -------------------------------------"
+ffmpeg -y -loglevel warning -i safe -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmpurettziw.mp4; mv /tmp/tmpurettziw.mp4 safe
+echo "----[BORDER] safe -------------------------------------"
+ffmpeg -y -loglevel warning -i safe -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmplihuvcho.mp4; mv /tmp/tmplihuvcho.mp4 safe
+echo "----[BORDER] safe -------------------------------------"
+ffmpeg -y -loglevel warning -i safe -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmpeso37pfo.mp4; mv /tmp/tmpeso37pfo.mp4 safe
+echo "----[BORDER] safe -------------------------------------"
+ffmpeg -y -loglevel warning -i safe -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmpwf611jiv.mp4; mv /tmp/tmpwf611jiv.mp4 safe
+echo "----[BORDER] safe -------------------------------------"
+ffmpeg -y -loglevel warning -i safe -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmp9cic1ild.mp4; mv /tmp/tmp9cic1ild.mp4 safe
+echo "----[BORDER] safe -------------------------------------"

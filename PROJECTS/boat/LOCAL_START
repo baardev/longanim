@@ -1,0 +1,5 @@
+#!/bin/bash
+
+~/src/longanim/START \
+-i /home/jw/src/longanim/merge/IMAGES \
+-o /home/jw/src/longanim/merge/stage_1/TEST/01_02 2>&1 >> /home/jw/src/longanim/merge/stage_1/TEST/START.log &

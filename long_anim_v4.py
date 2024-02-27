@@ -162,6 +162,8 @@ if __name__ == "__main__":
     if stage == "prep":
         #! restart server here as prep does not to to restart in the loop, like admin
         p.prInfo("Restarting Server")
+        p.prAnn(f"Killing server in {__file__}")
+        p.killproc("main.py")
         cmd = f"./START  -i {input_dir} -o {output_dir} {hideSTDOUT} &"
         p.prCmd(cmd)
         os.system(cmd)

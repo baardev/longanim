@@ -31,9 +31,10 @@ prep_template_name= "1_prep_API.json"
 
 video =             "longann.mp4"  # prefixed by '<x>x<y>_'
 IP_images = [
-            "hotfurry_",  #suffixed by '_<x>x<y>'
-#            "spagmon",
-            "hotfurry_2",
+            "01",  #suffixed by '_<x>x<y>'
+            "02",
+            # "hotfurry_",  #suffixed by '_<x>x<y>'
+            # "hotfurry_2",
             ]
 
 [specs]
@@ -71,5 +72,5 @@ upscale              = 4 # 2 or 4 only
 # Any CN listed here assumes there is already a collection of frames in the input folder
 
 # cnets = ["HED","POSE","SEG","DEPTH"]
-cnets = ["DEPTH"]
+cnets = ["POSE"]
 # cnets = ["HED"]

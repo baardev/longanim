@@ -1,0 +1,35 @@
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"3-StartAt=0.0_Endat=0.6"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./3-StartAt=0.0_Endat=0.6.mp4 -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmp7g2zfsmh.mp4; 
+mv /tmp/tmp7g2zfsmh.mp4 3-StartAt=0.0_Endat=0.6.mp4; 
+echo "----[LABEL] 3-StartAt=0.0_Endat=0.6.mp4-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"5-StartAt=0.0_Endat=1.0"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./5-StartAt=0.0_Endat=1.0.mp4 -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmpvqd3p0o2.mp4; 
+mv /tmp/tmpvqd3p0o2.mp4 5-StartAt=0.0_Endat=1.0.mp4; 
+echo "----[LABEL] 5-StartAt=0.0_Endat=1.0.mp4-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"1-StartAt=0.0_Endat=0.2"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./1-StartAt=0.0_Endat=0.2.mp4 -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmp7u9vv2xb.mp4; 
+mv /tmp/tmp7u9vv2xb.mp4 1-StartAt=0.0_Endat=0.2.mp4; 
+echo "----[LABEL] 1-StartAt=0.0_Endat=0.2.mp4-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"4-StartAt=0.0_Endat=0.8"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./4-StartAt=0.0_Endat=0.8.mp4 -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmpusv3v6_0.mp4; 
+mv /tmp/tmpusv3v6_0.mp4 4-StartAt=0.0_Endat=0.8.mp4; 
+echo "----[LABEL] 4-StartAt=0.0_Endat=0.8.mp4-------------------------------------"
+
+magick -background darkgray -fill black -pointsize 25 -gravity center  -font Carlito-Regular -size 512x25  label:"2-StartAt=0.0_Endat=0.4"   /tmp/label.png; 
+ffmpeg  -y -loglevel warning -i ./2-StartAt=0.0_Endat=0.4.mp4 -i /tmp/label.png -filter_complex "[0:v][1:v] overlay=0:0" -pix_fmt yuv420p -c:a copy /tmp/tmp90nexc0w.mp4; 
+mv /tmp/tmp90nexc0w.mp4 2-StartAt=0.0_Endat=0.4.mp4; 
+echo "----[LABEL] 2-StartAt=0.0_Endat=0.4.mp4-------------------------------------"
+
+ffmpeg -y -loglevel warning -i 3-StartAt=0.0_Endat=0.6.mp4 -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmp7g2zfsmh.mp4; mv /tmp/tmp7g2zfsmh.mp4 3-StartAt=0.0_Endat=0.6.mp4
+echo "----[BORDER] 3-StartAt=0.0_Endat=0.6.mp4 -------------------------------------"
+ffmpeg -y -loglevel warning -i 5-StartAt=0.0_Endat=1.0.mp4 -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmpvqd3p0o2.mp4; mv /tmp/tmpvqd3p0o2.mp4 5-StartAt=0.0_Endat=1.0.mp4
+echo "----[BORDER] 5-StartAt=0.0_Endat=1.0.mp4 -------------------------------------"
+ffmpeg -y -loglevel warning -i 1-StartAt=0.0_Endat=0.2.mp4 -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmp7u9vv2xb.mp4; mv /tmp/tmp7u9vv2xb.mp4 1-StartAt=0.0_Endat=0.2.mp4
+echo "----[BORDER] 1-StartAt=0.0_Endat=0.2.mp4 -------------------------------------"
+ffmpeg -y -loglevel warning -i 4-StartAt=0.0_Endat=0.8.mp4 -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmpusv3v6_0.mp4; mv /tmp/tmpusv3v6_0.mp4 4-StartAt=0.0_Endat=0.8.mp4
+echo "----[BORDER] 4-StartAt=0.0_Endat=0.8.mp4 -------------------------------------"
+ffmpeg -y -loglevel warning -i 2-StartAt=0.0_Endat=0.4.mp4 -vf drawbox=x=0:y=0:w=in_w:h=512:color=black /tmp/tmp90nexc0w.mp4; mv /tmp/tmp90nexc0w.mp4 2-StartAt=0.0_Endat=0.4.mp4
+echo "----[BORDER] 2-StartAt=0.0_Endat=0.4.mp4 -------------------------------------"

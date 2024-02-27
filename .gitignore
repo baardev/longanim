@@ -9,3 +9,7 @@ __pycache__/
 archive
 images*
 *BAK
+*.jpg
+*.jpeg
+Thumbs*
+DEADJOE
