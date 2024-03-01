@@ -52,7 +52,7 @@ Run
 ```bash
 ./LONGANIM -P
 ```
-### WARNING: This WIPES OUT EVERYTHING in `/fstmp` AND `PROJECTS/boat/outfile_512`
+### WARNING: '-P' This WIPES OUT EVERYTHING in `/fstmp` AND `PROJECTS/boat/outfile_512`
 This will create folder in `PROJECTS/boat/output_512` named 
 ```bash
 ann_8fps_POZE_00
@@ -64,6 +64,8 @@ These folder contain the preprocessed CN images that are used as inoput for `1_a
 Symlink or rename these folders to just `POSE_??`, as that is what `1_anim.json` is looking for.
 
 edit `PROJECTS/boat/1_anim.json` and adjust settings
+
+There MUST be two fiels in the inoput directory (which in this case is also the output directory", named `IMAGE01.png`, and `IMAGE02.png`.  They are jus there to allow stubs in the fields which will get replaced.
 
 Run
 
