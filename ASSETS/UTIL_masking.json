@@ -1,0 +1,1118 @@
+{
+    "last_node_id": 38,
+    "last_link_id": 35,
+    "nodes": [
+        {
+            "id": 13,
+            "type": "MaskToImage",
+            "pos": [
+                -3050,
+                -700
+            ],
+            "size": {
+                "0": 210,
+                "1": 26
+            },
+            "flags": {},
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "mask",
+                    "type": "MASK",
+                    "link": 12
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        18
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "MaskToImage"
+            }
+        },
+        {
+            "id": 14,
+            "type": "MaskToImage",
+            "pos": [
+                -2650,
+                -700
+            ],
+            "size": {
+                "0": 210,
+                "1": 26
+            },
+            "flags": {},
+            "order": 8,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "mask",
+                    "type": "MASK",
+                    "link": 11
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        19
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "MaskToImage"
+            }
+        },
+        {
+            "id": 15,
+            "type": "MaskToImage",
+            "pos": [
+                -2250,
+                -700
+            ],
+            "size": {
+                "0": 210,
+                "1": 26
+            },
+            "flags": {},
+            "order": 10,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "mask",
+                    "type": "MASK",
+                    "link": 10
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        20
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "MaskToImage"
+            }
+        },
+        {
+            "id": 10,
+            "type": "ImageToMask",
+            "pos": [
+                -3100,
+                -800
+            ],
+            "size": {
+                "0": 315,
+                "1": 58
+            },
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "link": 7
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": [
+                        12,
+                        22
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ImageToMask"
+            },
+            "widgets_values": [
+                "red"
+            ]
+        },
+        {
+            "id": 12,
+            "type": "ImageToMask",
+            "pos": [
+                -2700,
+                -800
+            ],
+            "size": {
+                "0": 315,
+                "1": 58
+            },
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "link": 8
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": [
+                        11,
+                        23
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ImageToMask"
+            },
+            "widgets_values": [
+                "green"
+            ]
+        },
+        {
+            "id": 11,
+            "type": "ImageToMask",
+            "pos": [
+                -2300,
+                -800
+            ],
+            "size": {
+                "0": 315,
+                "1": 58
+            },
+            "flags": {},
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "link": 9
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": [
+                        10,
+                        24
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ImageToMask"
+            },
+            "widgets_values": [
+                "blue"
+            ]
+        },
+        {
+            "id": 26,
+            "type": "MaskComposite",
+            "pos": [
+                -1725,
+                -900
+            ],
+            "size": {
+                "0": 315,
+                "1": 126
+            },
+            "flags": {},
+            "order": 13,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "destination",
+                    "type": "MASK",
+                    "link": 31
+                },
+                {
+                    "name": "source",
+                    "type": "MASK",
+                    "link": 32
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": [
+                        29,
+                        33
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "MaskComposite"
+            },
+            "widgets_values": [
+                0,
+                0,
+                "multiply"
+            ]
+        },
+        {
+            "id": 30,
+            "type": "MaskToImage",
+            "pos": [
+                -1675,
+                -725
+            ],
+            "size": {
+                "0": 210,
+                "1": 26
+            },
+            "flags": {},
+            "order": 16,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "mask",
+                    "type": "MASK",
+                    "link": 29
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        30
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "MaskToImage"
+            }
+        },
+        {
+            "id": 27,
+            "type": "Reroute",
+            "pos": [
+                -1925,
+                -1000
+            ],
+            "size": [
+                75,
+                26
+            ],
+            "flags": {},
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "*",
+                    "link": 22
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "MASK",
+                    "links": [
+                        31,
+                        32
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "showOutputText": false,
+                "horizontal": false
+            }
+        },
+        {
+            "id": 29,
+            "type": "Reroute",
+            "pos": [
+                -1925,
+                -950
+            ],
+            "size": [
+                75,
+                26
+            ],
+            "flags": {},
+            "order": 9,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "*",
+                    "link": 23
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "MASK",
+                    "links": null
+                }
+            ],
+            "properties": {
+                "showOutputText": false,
+                "horizontal": false
+            }
+        },
+        {
+            "id": 28,
+            "type": "Reroute",
+            "pos": [
+                -1925,
+                -900
+            ],
+            "size": [
+                75,
+                26
+            ],
+            "flags": {},
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "",
+                    "type": "*",
+                    "link": 24
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "MASK",
+                    "links": [],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "showOutputText": false,
+                "horizontal": false
+            }
+        },
+        {
+            "id": 32,
+            "type": "ToBinaryMask",
+            "pos": [
+                -1250,
+                -900
+            ],
+            "size": {
+                "0": 315,
+                "1": 58
+            },
+            "flags": {},
+            "order": 17,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "mask",
+                    "type": "MASK",
+                    "link": 33
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": [
+                        34
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ToBinaryMask"
+            },
+            "widgets_values": [
+                20
+            ]
+        },
+        {
+            "id": 33,
+            "type": "MaskToImage",
+            "pos": [
+                -1200,
+                -725
+            ],
+            "size": {
+                "0": 210,
+                "1": 26
+            },
+            "flags": {},
+            "order": 19,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "mask",
+                    "type": "MASK",
+                    "link": 34
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        35
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "MaskToImage"
+            }
+        },
+        {
+            "id": 1,
+            "type": "VHS_LoadVideo",
+            "pos": [
+                -3550,
+                -600
+            ],
+            "size": [
+                325,
+                250
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "batch_manager",
+                    "type": "VHS_BatchManager",
+                    "link": null
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        7,
+                        8,
+                        9
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                },
+                {
+                    "name": "frame_count",
+                    "type": "INT",
+                    "links": null,
+                    "shape": 3
+                },
+                {
+                    "name": "audio",
+                    "type": "VHS_AUDIO",
+                    "links": null,
+                    "shape": 3
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VHS_LoadVideo"
+            },
+            "widgets_values": {
+                "video": "512x512_ann.mp4",
+                "force_rate": 8,
+                "force_size": "Disabled",
+                "custom_width": 512,
+                "custom_height": 512,
+                "frame_load_cap": 0,
+                "skip_first_frames": 0,
+                "select_every_nth": 1,
+                "choose video to upload": "image",
+                "videopreview": {
+                    "hidden": false,
+                    "paused": false,
+                    "params": {
+                        "frame_load_cap": 0,
+                        "skip_first_frames": 0,
+                        "force_rate": 8,
+                        "filename": "512x512_ann.mp4",
+                        "type": "input",
+                        "format": "video/mp4",
+                        "select_every_nth": 1
+                    }
+                }
+            }
+        },
+        {
+            "id": 23,
+            "type": "VHS_VideoCombine",
+            "pos": [
+                -3125,
+                -625
+            ],
+            "size": [
+                325,
+                300
+            ],
+            "flags": {},
+            "order": 12,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 18
+                },
+                {
+                    "name": "audio",
+                    "type": "VHS_AUDIO",
+                    "link": null
+                },
+                {
+                    "name": "batch_manager",
+                    "type": "VHS_BatchManager",
+                    "link": null
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "Filenames",
+                    "type": "VHS_FILENAMES",
+                    "links": null,
+                    "shape": 3
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VHS_VideoCombine"
+            },
+            "widgets_values": {
+                "frame_rate": 8,
+                "loop_count": 0,
+                "filename_prefix": "mask_red",
+                "format": "video/h265-mp4",
+                "pix_fmt": "yuv420p10le",
+                "crf": 22,
+                "save_metadata": true,
+                "pingpong": false,
+                "save_output": true,
+                "videopreview": {
+                    "hidden": false,
+                    "paused": false,
+                    "params": {
+                        "filename": "mask_red_00001.mp4",
+                        "subfolder": "",
+                        "type": "output",
+                        "format": "video/h265-mp4"
+                    }
+                }
+            }
+        },
+        {
+            "id": 24,
+            "type": "VHS_VideoCombine",
+            "pos": [
+                -2725,
+                -625
+            ],
+            "size": [
+                325,
+                300
+            ],
+            "flags": {},
+            "order": 14,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 19
+                },
+                {
+                    "name": "audio",
+                    "type": "VHS_AUDIO",
+                    "link": null
+                },
+                {
+                    "name": "batch_manager",
+                    "type": "VHS_BatchManager",
+                    "link": null
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "Filenames",
+                    "type": "VHS_FILENAMES",
+                    "links": null,
+                    "shape": 3
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VHS_VideoCombine"
+            },
+            "widgets_values": {
+                "frame_rate": 8,
+                "loop_count": 0,
+                "filename_prefix": "mask_green",
+                "format": "video/h265-mp4",
+                "pix_fmt": "yuv420p10le",
+                "crf": 22,
+                "save_metadata": true,
+                "pingpong": false,
+                "save_output": true,
+                "videopreview": {
+                    "hidden": false,
+                    "paused": false,
+                    "params": {
+                        "filename": "mask_green_00001.mp4",
+                        "subfolder": "",
+                        "type": "output",
+                        "format": "video/h265-mp4"
+                    }
+                }
+            }
+        },
+        {
+            "id": 25,
+            "type": "VHS_VideoCombine",
+            "pos": [
+                -2325,
+                -625
+            ],
+            "size": [
+                325,
+                300
+            ],
+            "flags": {},
+            "order": 15,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 20
+                },
+                {
+                    "name": "audio",
+                    "type": "VHS_AUDIO",
+                    "link": null
+                },
+                {
+                    "name": "batch_manager",
+                    "type": "VHS_BatchManager",
+                    "link": null
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "Filenames",
+                    "type": "VHS_FILENAMES",
+                    "links": null,
+                    "shape": 3
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VHS_VideoCombine"
+            },
+            "widgets_values": {
+                "frame_rate": 8,
+                "loop_count": 0,
+                "filename_prefix": "mask_blue",
+                "format": "video/h265-mp4",
+                "pix_fmt": "yuv420p10le",
+                "crf": 22,
+                "save_metadata": true,
+                "pingpong": false,
+                "save_output": true,
+                "videopreview": {
+                    "hidden": false,
+                    "paused": false,
+                    "params": {
+                        "filename": "mask_blue_00001.mp4",
+                        "subfolder": "",
+                        "type": "output",
+                        "format": "video/h265-mp4"
+                    }
+                }
+            }
+        },
+        {
+            "id": 31,
+            "type": "VHS_VideoCombine",
+            "pos": [
+                -1725,
+                -650
+            ],
+            "size": [
+                325,
+                300
+            ],
+            "flags": {},
+            "order": 18,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 30
+                },
+                {
+                    "name": "audio",
+                    "type": "VHS_AUDIO",
+                    "link": null
+                },
+                {
+                    "name": "batch_manager",
+                    "type": "VHS_BatchManager",
+                    "link": null
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "Filenames",
+                    "type": "VHS_FILENAMES",
+                    "links": null,
+                    "shape": 3
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VHS_VideoCombine"
+            },
+            "widgets_values": {
+                "frame_rate": 8,
+                "loop_count": 0,
+                "filename_prefix": "mask_comp",
+                "format": "video/h264-mp4",
+                "pix_fmt": "yuv420p",
+                "crf": 19,
+                "save_metadata": true,
+                "pingpong": false,
+                "save_output": true,
+                "videopreview": {
+                    "hidden": false,
+                    "paused": false,
+                    "params": {
+                        "filename": "mask_comp_00001.mp4",
+                        "subfolder": "",
+                        "type": "output",
+                        "format": "video/h264-mp4"
+                    }
+                }
+            }
+        },
+        {
+            "id": 34,
+            "type": "VHS_VideoCombine",
+            "pos": [
+                -1275,
+                -650
+            ],
+            "size": [
+                325,
+                300
+            ],
+            "flags": {},
+            "order": 20,
+            "mode": 0,
+            "inputs": [
+                {
+                    "name": "images",
+                    "type": "IMAGE",
+                    "link": 35
+                },
+                {
+                    "name": "audio",
+                    "type": "VHS_AUDIO",
+                    "link": null
+                },
+                {
+                    "name": "batch_manager",
+                    "type": "VHS_BatchManager",
+                    "link": null
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "Filenames",
+                    "type": "VHS_FILENAMES",
+                    "links": null,
+                    "shape": 3
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VHS_VideoCombine"
+            },
+            "widgets_values": {
+                "frame_rate": 8,
+                "loop_count": 0,
+                "filename_prefix": "mask_binary",
+                "format": "video/h264-mp4",
+                "pix_fmt": "yuv420p",
+                "crf": 19,
+                "save_metadata": true,
+                "pingpong": false,
+                "save_output": true,
+                "videopreview": {
+                    "hidden": false,
+                    "paused": false,
+                    "params": {
+                        "filename": "mask_binary_00001.mp4",
+                        "subfolder": "",
+                        "type": "output",
+                        "format": "video/h264-mp4"
+                    }
+                }
+            }
+        },
+        {
+            "id": 36,
+            "type": "Note Plus (mtb)",
+            "pos": {
+                "0": -2075,
+                "1": -1175,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 375,
+                "1": 150
+            },
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [],
+            "title": "Note+ (mtb)",
+            "properties": {},
+            "widgets_values": [
+                "# MIXING: \n\n##These are reroutes for R, G, B masks (top to bottom)",
+                "markdown",
+                ""
+            ],
+            "color": "#432",
+            "bgcolor": "#653",
+            "shape": 1
+        },
+        {
+            "id": 38,
+            "type": "Note Plus (mtb)",
+            "pos": {
+                "0": -2925,
+                "1": -1475,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0
+            },
+            "size": {
+                "0": 600,
+                "1": 375
+            },
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [],
+            "title": "Note+ (mtb)",
+            "properties": {},
+            "widgets_values": [
+                "# FILENAME: [./ASSETS/UTIL\\_masking.json]\n\n<br>\n\n###### DESC:\nCreates a RT mask of the source video based on the RGB channels. This has been superceeded by 'matting.json', which does teh same things but in a few nodes.\n\n<br>\n\n###### REFERENCES:\n- ComfyUI Tutorial - Automatic Subject Masking via COCOSemSeg\n- https://www.youtube.com/watch?v=ySoIptW2huI",
+                "markdown",
+                ""
+            ],
+            "color": "#222",
+            "bgcolor": "#000",
+            "shape": 1
+        }
+    ],
+    "links": [
+        [
+            7,
+            1,
+            0,
+            10,
+            0,
+            "IMAGE"
+        ],
+        [
+            8,
+            1,
+            0,
+            12,
+            0,
+            "IMAGE"
+        ],
+        [
+            9,
+            1,
+            0,
+            11,
+            0,
+            "IMAGE"
+        ],
+        [
+            10,
+            11,
+            0,
+            15,
+            0,
+            "MASK"
+        ],
+        [
+            11,
+            12,
+            0,
+            14,
+            0,
+            "MASK"
+        ],
+        [
+            12,
+            10,
+            0,
+            13,
+            0,
+            "MASK"
+        ],
+        [
+            18,
+            13,
+            0,
+            23,
+            0,
+            "IMAGE"
+        ],
+        [
+            19,
+            14,
+            0,
+            24,
+            0,
+            "IMAGE"
+        ],
+        [
+            20,
+            15,
+            0,
+            25,
+            0,
+            "IMAGE"
+        ],
+        [
+            22,
+            10,
+            0,
+            27,
+            0,
+            "*"
+        ],
+        [
+            23,
+            12,
+            0,
+            29,
+            0,
+            "*"
+        ],
+        [
+            24,
+            11,
+            0,
+            28,
+            0,
+            "*"
+        ],
+        [
+            29,
+            26,
+            0,
+            30,
+            0,
+            "MASK"
+        ],
+        [
+            30,
+            30,
+            0,
+            31,
+            0,
+            "IMAGE"
+        ],
+        [
+            31,
+            27,
+            0,
+            26,
+            0,
+            "MASK"
+        ],
+        [
+            32,
+            27,
+            0,
+            26,
+            1,
+            "MASK"
+        ],
+        [
+            33,
+            26,
+            0,
+            32,
+            0,
+            "MASK"
+        ],
+        [
+            34,
+            32,
+            0,
+            33,
+            0,
+            "MASK"
+        ],
+        [
+            35,
+            33,
+            0,
+            34,
+            0,
+            "IMAGE"
+        ]
+    ],
+    "groups": [],
+    "config": {},
+    "extra": {},
+    "version": 0.4
+}

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+~/src/longanim/START  \
+-i /home/jw/store/src/longanim/PROJECTS/jm/input_486 \
+-o /home/jw/store/src/longanim/PROJECTS/jm/output_486
+

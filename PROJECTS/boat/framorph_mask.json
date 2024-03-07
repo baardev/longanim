@@ -1823,7 +1823,7 @@
             "title": "Note+ (mtb)",
             "properties": {},
             "widgets_values": [
-                "#FILENAME: [./PROJECTS/boat/framorph_mask.json]\n<hr>\n\n###### DESC:\nThis is a copy to merge's '**qmasks\\_v0.json**'.\nAttempts to create a morphed form from 2 images, then fit that form into a mask created in RT from a video using IPAdaptor 'attention masking'\n\nThe idea is that this can create individual frames for each mask frames from the videl which can then be interpolated using 'longanim/merge' to create a more organic and realistic movements.\n\n<br>\n\n###### REFERENCES:\n- Attention Masking with IPAdapter and ComfyUI\n- https://www.youtube.com/watch?v=vqG1VXKteQg\n<hr>\n### **THIS IS TEMPLATE-COMPATIBLE WITH THE MERGE CODE.**",
+                "#FILENAME: [./PROJECTS/boat/framorph\\_mask.json]\n<hr>\n\n###### DESC:\nThis is a copy to merge's '**qmasks\\_v0.json**'.\nAttempts to create a morphed form from 2 images, then fit that form into a mask created in RT from a video using IPAdaptor 'attention masking'\n\nThe idea is that this can create individual frames for each mask frames from the videl which can then be interpolated using 'longanim/merge' to create a more organic and realistic movements.\n\n<br>\n\n###### REFERENCES:\n- Attention Masking with IPAdapter and ComfyUI\n- https://www.youtube.com/watch?v=vqG1VXKteQg\n<hr>\n### **THIS IS TEMPLATE-COMPATIBLE WITH THE MERGE CODE.**",
                 "markdown",
                 ""
             ],

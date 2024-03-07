@@ -58,44 +58,49 @@ except Exception as e:
     exit()
 
 search = r"FILENAME:.*\[.*\]"
-replace = rf"FILENAME: [{file}]"
+efile = file.replace("_","\_")
+replace = rf"FILENAME: [{efile}]"
 
-for els in prompt_obj['nodes']:
-    if els['type'] == "Note" or els['type'] == "Note Plus (mtb)":
-        lines = els['widgets_values']
-        for i in range(len(lines)):
-            fnd = lines[i].find("FILENAME:")
-            if fnd != -1:
-                newstr = re.sub(search, replace, lines[i])
-                # print(f"\tSRC:[{file}|")
-                # print("\tORG:|"+Fore.WHITE+ f"{str.encode(lines[i])}|" + Fore.RESET)
-                # print("\tNEW:|"+Fore.LIGHTWHITE_EX + f"{str.encode(newstr)}|" + Fore.RESET)
-                if lines[i] == newstr:
-                    #! line is unchanged
-                    if newstr.find("[") == -1:
-                        #! NODE found, but not  not '['
-                        print(Fore.MAGENTA+f"{file:40s}"+Fore.LIGHTMAGENTA_EX+"Probably improper formatting ('[')"+Fore.RESET)
+try:
+    for els in prompt_obj['nodes']:
+        if els['type'] == "Note" or els['type'] == "Note Plus (mtb)":
+            lines = els['widgets_values']
+            for i in range(len(lines)):
+                fnd = lines[i].find("FILENAME:")
+                if fnd != -1:
+                    newstr = re.sub(search, replace, lines[i])
+                    # print(f"\tSRC:[{file}|")
+                    # print("\tORG:|"+Fore.WHITE+ f"{str.encode(lines[i])}|" + Fore.RESET)
+                    # print("\tNEW:|"+Fore.LIGHTWHITE_EX + f"{str.encode(newstr)}|" + Fore.RESET)
+                    if lines[i] == newstr:
+                        #! line is unchanged
+                        if newstr.find("[") == -1:
+                            #! NODE found, but not  not '['
+                            print(Fore.MAGENTA+f"{file:40s}"+Fore.LIGHTMAGENTA_EX+"Probably improper formatting ('[')"+Fore.RESET)
+                        else:
+                            #! NODE found, '[' found, but lines unchanged
+                            # print(Fore.YELLOW+f"{file:40s}"+Fore.LIGHTYELLOW_EX+"Already Updated"+Fore.RESET)
+                            pass
                     else:
-                        #! NODE found, '[' found, but lines unchanged
-                        # print(Fore.YELLOW+f"{file:40s}"+Fore.LIGHTYELLOW_EX+"Already Updated"+Fore.RESET)
-                        pass
-                else:
-                    # ! line has changed
-                    print(Fore.GREEN + f"{file:40s}" + Fore.LIGHTGREEN_EX + "Line Updated" + Fore.RESET)
-                    lines[i] = newstr
-                    testfile = "/tmp/test.json"
-                    #! save and reload
-                    with open(testfile, "w") as f:
-                        json.dump(prompt_obj, f, indent=4)
-
-                    try:
-                        with open(testfile, "r") as f:
-                            prompt_obj = json.load(f)
-                        #! it's OK, so save
-                        with open(file, "w") as f:
+                        # ! line has changed
+                        print(Fore.GREEN + f"{file:40s}" + Fore.LIGHTGREEN_EX + "Line Updated" + Fore.RESET)
+                        lines[i] = newstr
+                        testfile = "/tmp/test.json"
+                        #! save and reload
+                        with open(testfile, "w") as f:
                             json.dump(prompt_obj, f, indent=4)
 
-                    except Exception as e:
-                        print(Fore.RED + f"{file:40s}" + Fore.LIGHTRED_EX + "CORRUPTED!!" + Fore.RESET)
-                        exit()
+                        try:
+                            with open(testfile, "r") as f:
+                                prompt_obj = json.load(f)
+                            #! it's OK, so save
+                            with open(file, "w") as f:
+                                json.dump(prompt_obj, f, indent=4)
+
+                        except Exception as e:
+                            print(Fore.RED + f"{file:40s}" + Fore.LIGHTRED_EX + "CORRUPTED!!" + Fore.RESET)
+                            exit()
+except Exception as e:
+    print(Fore.RED + f"{file:40s}" + Fore.LIGHTRED_EX + "Missing 'nodes'!!" + Fore.RESET)
+    print(e)
 

@@ -386,3 +386,155 @@ Notes:
   - `interp_v0.json`, `interp_v0_API.json`
   - `LOCAL_START`
     - This starts the ComfyUI server using the projects input/output folders
+
+
+
+
+
+# WORKFLOW RULES
+
+## colors
+
+- Setters: red
+- Getters: green
+- Blocks: yellow
+- Bus: black
+- Comments: blue
+- UE: purple
+- Logic: cyan 
+
+## shapes
+
+- Default: rounded
+- Prompts: square
+- Bus: square
+- Comments: square
+
+## Groups
+
+- Default: light blue
+
+- subfunctions: green
+
+- Commants: black
+
+  
+
+# PROCESS
+
+- Move to workign root folder:
+```bash
+cd ~/src/longanim/PROJECTS/sphere
+```
+- **`ytgrab`** video  vname
+- Extract audio with:
+```bash
+ffmpeg -i ~/Videos/v_name.mp4 -vn -ar 44100 -ac 2 -ab 192k -f wav ~/Videos/v_name.wav
+```
+
+- open **`~/Videos/v_name.mp4`** in Resolve.  
+
+- Edit and save as MOV as **`~/Videos/name_1920x1080.mov`**
+
+- Convert to MP4 with:
+```bash
+HandBrakeCLI -i ~/Videos/v_name.mov -o ~/Videos/v_name_1920x1080.mp4  -e nvenc_h265
+```
+
+- Resize with:
+```bash
+ffmpeg -i ~/Videos/name_1920x1080.mp4  -c:v libx264 -t 15 -pix_fmt yuv420p -vf scale=486:864 ~/Videos/name_486x864.mp4 
+```
+
+- Extract frames with:  (needed for making controlnets?)
+```bash
+mkdir /xfstmp/name_486x864_8fps
+
+ffmpeg -y -loglevel warning -i ~/Videos/name_486x864.mp4  -r 8/1 /xfstmp/name_486x864_8fps/%04d.png
+
+#Either check "Load_Video::force_rate=8" or change the src rate to match FPS as well
+ffmpeg -y -loglevel warning -hwaccel cuda  -i ~/Videos/name_486x864.mp4 -crf 20 -vf "minterpolate=fps=8:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1" input_486/name_486x864_8fps.mp4
+
+```
+
+## Start ComfyUI
+
+- Make input/output dirs if necessary.
+- Start Comfy with **`./486x864_LOCAL_START`**.
+
+- Create necessary workflows
+
+```bash
+cp 540x960_dubstep_MAKE_CN.json 486x864_swing_MAKE_CN.json
+cp 540x960_dubstep_MAKE_HUMAN_MASK.json 486x864_swing_MAKE_HUMAN_MASK.json
+cp 540x960_dubstep_MAKE_VIDEO.json 486x864_swing_MAKE_VIDEO.json
+```
+## Make Controlnets
+
+Load and edit **`486x864_name_MAKE_CN.json`** edit accordingly *(looks in **`/xfstmp`** folder for video)*
+
+- Check update **`Rate`**, **`Subject`**, **`Width`**, **`Height`** at least.
+- Submit query
+
+- Move output files to input dir, and copy video source to input dir.
+```bash
+mv output_486/celine_486x864_8fps_POSE_ZZ.mp4 input_486  #file
+mv output_486/celine_486x864_8fps_POSE_ZZ input_486  #folder
+```
+## Make Human Mask
+
+- cope original video to inout folder:
+
+```bash
+cp ~/Videos/name_486x864.mp4  input_486 # needs to be in input_dir for masking
+```
+Edit **`486x864_name_MAKE_HUMAN_MASK.json`** accordingly
+
+- Check update **`Frame Rate`** update **`Load_Video::video`** amd **`VideoCombine::filename`** field at least.
+- Submit query
+
+Save prefix as  **`name_HUMAN_MASK_486x864`**
+
+- This create two files in the output folder, 
+- **`swing_HUMAN_MASK_486x864_00001.mp4`**
+- **`swing_HUMAN_MASK_486x864_00001-audio.mp4`** 
+- Remove the **`00001`** parts and move just the video file (no sound) them both to the input folder
+
+```bash
+cd output_486
+rename _00001 '' *
+mv celine_HUMAN_MASK_486x864_8fps.mp4 ../input_486
+cd ..
+```
+
+# Fixing Bad Masks
+
+If the generated masks suck, create a mask with RunwayML, download it and save it as 
+the orioginal name used previouslu, **`~/Videos/name_486x864.mp4`** and rerun the CN workflow.
+
+The copy that same file to the inpout folded, but with tha adeed “_8fps” (makign sure teh video IS 8 fps of the “force rate is on”)  or reinterpolate the video 
+
+```bash
+cp  ~/Videos/name_486x864.mp4  input_486/name_486x864_8fps.mp4
+
+or 
+
+ffmpeg -y -loglevel warning -hwaccel cuda  -i ~/Videos/name_486x864.mp4 -crf 20 -vf "minterpolate=fps=8:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1" input_486/name_486x864_8fps.mp4
+```
+
+Remerber to copy ove rthe files from outout to infut folder
+
+
+
+## Make Video
+
+- Load and edit **`name_MAKE_VIDEO.json`** accordingly.
+  - Load new mask file.
+  - Load new CN file.
+  - Check **`DIMS`**, **`FRAME RATE`**, **`TEXTPROMPT`**, **`BATCH_SIZE`**, **`TITLE`**, at least.
+  - Copy over any necessary images to the input folder
+  - If using IP MORPH or IP STACK:
+    - Style the character with two 486x864 images in the input folder
+    - 
+    Submit query.
+

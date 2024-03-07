@@ -3650,7 +3650,7 @@
             "title": "Note+ (mtb)",
             "properties": {},
             "widgets_values": [
-                "#FILENAME: [./PROJECTS/boat/vt_most_stable.json]\n<hr>\n\n###### DESC:\nAttempts to make a specific character follow the movement of video using IPAdaptor 'attention masking' and POSE ControlNet.\n\n<br>\n\n###### REFERENCES:\n- Attention Masking with IPAdapter and ComfyUI\n- https://www.youtube.com/watch?v=vqG1VXKteQg",
+                "#FILENAME: [./PROJECTS/boat/vt\\_most\\_stable.json]\n<hr>\n\n###### DESC:\nAttempts to make a specific character follow the movement of video using IPAdaptor 'attention masking' and POSE ControlNet.\n\n<br>\n\n###### REFERENCES:\n- Attention Masking with IPAdapter and ComfyUI\n- https://www.youtube.com/watch?v=vqG1VXKteQg",
                 "markdown",
                 ""
             ],

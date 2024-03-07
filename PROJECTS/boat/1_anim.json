@@ -4042,7 +4042,7 @@
             "title": "Note+ (mtb)",
             "properties": {},
             "widgets_values": [
-                "#FILENAME: [./PROJECTS/boat/1_anim.json]\n<hr>\n\n###### DESC:\nThis is a copy of the animation template for 'longanim', which makes individual frames that get merged.  'framorph_masks.json' is probably a better approach.\n\n",
+                "#FILENAME: [./PROJECTS/boat/1\\_anim.json]\n<hr>\n\n###### DESC:\nThis is a copy of the animation template for 'longanim', which makes individual frames that get merged.  'framorph_masks.json' is probably a better approach.\n\n",
                 "markdown",
                 ""
             ],

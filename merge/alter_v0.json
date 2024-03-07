@@ -1347,7 +1347,7 @@
             "title": "Note+ (mtb)",
             "properties": {},
             "widgets_values": [
-                "# FILENAME: [./merge/alter_v0.json]\n<hr>\n\n",
+                "# FILENAME: [./merge/alter\\_v0.json]\n<hr>\n\n",
                 "markdown",
                 ""
             ],

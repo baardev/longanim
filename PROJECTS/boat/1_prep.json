@@ -7795,7 +7795,7 @@
             "title": "Note+ (mtb)",
             "properties": {},
             "widgets_values": [
-                "#FILENAME: [./PROJECTS/boat/1_prep.json]\n<hr>\n\n###### DESC:\nUses existing frames to create a video if a CN\n\nCopy of the original 'longanim' version. Creates ControlNet preprocessed videos of a specific video for use in **'1\\_anim.json'**.  `controlnets.json' might be a better option'.  MUST BE EXPRTED AS **'1\\_prep\\_api.json'** TO WORK.\n\n<br>\n###### REFERENCES:\n",
+                "#FILENAME: [./PROJECTS/boat/1\\_prep.json]\n<hr>\n\n###### DESC:\nUses existing frames to create a video if a CN\n\nCopy of the original 'longanim' version. Creates ControlNet preprocessed videos of a specific video for use in **'1\\_anim.json'**.  `controlnets.json' might be a better option'.  MUST BE EXPRTED AS **'1\\_prep\\_api.json'** TO WORK.\n\n<br>\n###### REFERENCES:\n",
                 "markdown",
                 ""
             ],

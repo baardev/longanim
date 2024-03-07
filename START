@@ -35,5 +35,7 @@ echo "--------------------------------------------------------------------------
 echo "python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr}"
 echo "------------------------------------------------------------------------------"
 
+export NUMEXPR_MAX_THREADS=128
+
 python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr} 2>&1 > /tmp/START.log
 

@@ -1172,7 +1172,7 @@
             "title": "Note+ (mtb)",
             "properties": {},
             "widgets_values": [
-                "# FILENAME: [./merge/qmasks_v0.json]\n<hr>\n\n",
+                "# FILENAME: [./merge/qmasks\\_v0.json]\n<hr>\n\n",
                 "markdown",
                 ""
             ],

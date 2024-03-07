@@ -14,6 +14,8 @@ export PATH="$PYTHON_SCRIPTS_DIR:$PYTHON_LIB_DIR:$PYTHON_DIR:$PATH"
 
 cd ~/src/rife
 
+echo "./interpolate.py --input ${INPUT_FILE_LOC} --output ${OUTPUT_FILE_LOC} --buffer 0 --multi ${INTERPX} --change 0.01 --model rife/flownet-v46.pkl"
+
 ./interpolate.py \
 --input ${INPUT_FILE_LOC} \
 --output ${OUTPUT_FILE_LOC} \
