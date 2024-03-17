@@ -465,7 +465,7 @@ ffmpeg -y -loglevel warning -hwaccel cuda  -i ~/Videos/name_486x864.mp4 -crf 20 
 - Create necessary workflows
 
 ```bash
-cp 540x960_dubstep_MAKE_CN.json 486x864_swing_MAKE_CN.json
+cp ASSETS/UTIL_MAKE_CN.json 486x864_swing_MAKE_CN.json
 cp 540x960_dubstep_MAKE_HUMAN_MASK.json 486x864_swing_MAKE_HUMAN_MASK.json
 cp 540x960_dubstep_MAKE_VIDEO.json 486x864_swing_MAKE_VIDEO.json
 ```
@@ -538,3 +538,404 @@ Remerber to copy ove rthe files from outout to infut folder
     - 
     Submit query.
 
+
+
+
+
+# OpenToonz processing
+
+### Set vars
+
+```bash
+export OTVID="/home/jw/Desktop/wimg.mp4"
+export INPUTDIR="/home/jw/src/longanim/PROJECTS/waterboy/input_512"
+export POSEDIR="hl_486x864_8fps_POSE_ZZ"
+```
+
+
+
+### ~~To scale scale down from default 1920x1080  ONLY IF necessary~~
+
+```bash
+# scale for 512x512
+ffmpeg -y -loglevel warning -i ${OTVID} -filter:v scale=-1:512 -c:a copy /fstmp/s1scale.mp4
+# and crop
+ffmpeg -y -loglevel warning -i /fstmp/s1scale.mp4 -vf "crop=512:512:0:0" /fstmp/s1cropped.mp4
+
+#If no scalign needed, just copy
+cp ${OTVID} /fstmp/s1cropped.mp4
+
+####
+# for single image
+ffmpeg -y -loglevel warning -i ${OTVID} -r 8/1 ${INPUTDIR}/pose_%04d.png
+
+# OR  for video
+#clean first
+333
+
+# for simgle image
+mogrify -channel RGB -negate ${INPUTDIR}/${POSEDIR}/pose_0001.png 
+
+
+333
+# !! ONLY IF NECESSARY... add this for 486x864
+mogrify -resize 486x864 -background black -gravity center -extent 486x864 ${INPUTDIR}/${POSEDIR}/pose*.png
+
+333
+# clean target dir
+rm -rf /xfstmp/hl_486x864_8fps/*  2>&1 > /dev/null
+# cp tp /xfstmp if necessary (for making new CNs, such as DENSEPOSE)
+cp ${INPUTDIR}/${POSEDIR}/*.png /xfstmp/hl_486x864_8fps
+```
+### Extract start here
+
+```bash
+export SCENE="aniani"
+export DIMS="486x864_8fps"
+export PROJECT="aniani"
+export POSEDIR="aniani_486x864_8fps_POSE_ZZ"
+
+# clean target dir
+
+/bin/rm -rf /home/jw/src/longanim/PROJECTS/${PROJECT}/input/${SCENE}_${DIMS}_POSE_ZZ/*  2>&1 > /dev/null
+
+# extract to folder |input|
+ffmpeg -y -loglevel warning -i /home/jw/Desktop/${SCENE}.mp4 -r 8/1 /home/jw/src/longanim/PROJECTS/${SCENE}/input/${SCENE}_${DIMS}_POSE_ZZ/pose_%04d.png
+
+# invert
+mogrify -channel RGB -negate /home/jw/src/longanim/PROJECTS/${SCENE}/input/${SCENE}_${DIMS}_POSE_ZZ/pose*.png
+
+# create new video of frames to |input|
+ffmpeg -y -loglevel warning \
+	-framerate 8 \
+	-pattern_type glob -i "/home/jw/src/longanim/PROJECTS/${SCENE}/input/${SCENE}_${DIMS}_POSE_ZZ/pose*.png" \
+	-c:v libx264 \
+	-pix_fmt yuv420p \
+	/home/jw/src/longanim/PROJECTS/${SCENE}/input/${SCENE}_${DIMS}_POSE_ZZ.mp4
+
+# npw exists 
+# 	=> /home/jw/src/longanim/PROJECTS/aniani/input/aniani_486x864_8fps_POSE_ZZ
+# 	=> /home/jw/src/longanim/PROJECTS/aniani/input/aniani_486x864_8fps_POSE_ZZ.mp4
+
+# NEXT: run "MAKE_BLUR_MASK_FROM_POSE.json"
+```
+
+# Conda for comfyui (CUDA 11.8 & 12.1)
+
+from link https://www.reddit.com/r/comfyui/comments/17abmwp/comfyui_needs_cuda_121/
+
+Tensorflow fpr pip  https://www.tensorflow.org/install/pip
+
+
+
+- NVIDIA® GPU drivers version 450.80.02 or higher. (https://www.nvidia.com/download/index.aspx?lang=en-us)
+  - (Debian 12)  This downloads a .run file, but when running it, it complains that the driver have already been instatted, and also suggests using the .deb package instead.  I assume it is referring to one of the two following .deb install
+
+- CUDA® Toolkit 11.8.  (https://developer.nvidia.com/cuda-toolkit-archive)
+```bash
+# Debian 12
+wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-debian11-11-8-local_11.8.0-520.61.05-1_amd64.deb
+sudo dpkg -i cuda-repo-debian11-11-8-local_11.8.0-520.61.05-1_amd64.deb
+sudo cp /var/cuda-repo-debian11-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo add-apt-repository contrib
+sudo apt-get update
+sudo apt-get -y install cuda
+
+export PATH="/usr/local/cuda-11.8/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH"
+```
+
+
+- cuDNN SDK 8.6.0. (https://developer.nvidia.com/cudnn)
+```bash
+# Debian 12
+wget https://developer.download.nvidia.com/compute/cudnn/9.0.0/local_installers/cudnn-local-repo-debian11-9.0.0_1.0-1_amd64.deb
+sudo dpkg -i cudnn-local-repo-debian11-9.0.0_1.0-1_amd64.deb
+sudo cp /var/cuda-repo-debian11-9-0-local/cudnn-*-keyring.gpg /usr/share/keyrings/
+sudo add-apt-repository contrib
+sudo apt-get update
+sudo apt-get -y install cudnn
+# To install for CUDA 11, install the CUDA 11 specific package:
+sudo apt-get -y install cudnn-cuda-11
+# To install for CUDA 12, install the CUDA 12 specific package:
+sudo apt-get -y install cudnn-cuda-12
+```
+
+
+- TensorRT (https://docs.nvidia.com/deeplearning/tensorrt/archives/index.html#trt_7)
+
+~~Download CUDA 11.8 from Arch Archive:  https://archive.archlinux.org/packages/c/cuda/cuda-11.8.0-1-x86_64.pkg.tar.zs~~
+
+Step by step instruction how to install CUDA 11 Ubuntu 20.04
+
+- https://gist.github.com/ksopyla/bf74e8ce2683460d8de6e0dc389fc7f5
+
+```
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+export CUDA_HOME=/usr/local/cuda
+export PATH="/usr/local/cuda/bin:$PATH"
+```
+
+
+
+
+
+Check system CUDA installed: 
+
+```bash
+# Arch
+pacman -Q|grep cuda
+pip list|grep -i cuda
+
+# Debian
+apt list --installed|grep -i cuda
+```
+
+
+
+pip list|grep -i cuda
+
+
+```bash
+conda create --name comfy
+conda activate comfy
+conda update -n base -c conda-forge conda
+conda config --append channels nvidia
+conda config --append channels conda-forge
+conda config --append channels defaults
+conda config --append channels anaconda
+conda install pip
+
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+#pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+cd ~/src/ComfyUI
+
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -r requirements.txt
+python -m pip install h5py
+python -m pip install impact
+python -m pip install opencv-python 
+python -m pip install evalidate 
+python -m pip install numba 
+python -m pip install numexpr 
+python -m pip install addict 
+python -m pip install segment_anything 
+python -m pip install git.remote  # still can't be found
+python -m pip install piexif 
+python -m pip install realesrgan 
+python -m pip install pandas 
+python -m pip install simpleeval 
+python -m pip install yapf 
+python -m pip install scikit-image  # was skimage
+python -m pip install clip
+python -m pip install smplx
+python -m pip install trimesh
+python -m pip install pyrender
+python -m pip install shapely
+python -m pip install onnxruntime
+python -m pip install onnxruntime-gpu
+python -m pip install PyOpenGL-accelerate
+python -m pip install moviepy
+python -m pip install gray2color
+python -m pip install kornia
+
+cd ~/src/ComfyUI/custom_nodes
+git clone https://github.com/ltdrdata/ComfyUI-Manager.git
+
+
+
+```
+
+Also, read **`  /home/jw/src/ComfyUI/custom_nodes/comfy_mtb/INSTALL.nd`** to install node **`comfy_mtb`**.
+
+Additionally:
+```
+apt-get install ffmpeg-python  
+```
+or
+```
+yay -S ffmpeg-python
+```
+
+
+
+
+## Issues
+
+  - Running org CUI
+    
+    - ‘ffmpeg_bin_path’ is not set
+    
+      - ```bash
+        export ffmpeg_bin_path="/bin/ffmpeg"
+        ```
+    
+      - export ffmpeg_bin_path="/bin/ffmpeg"
+    
+    - ModuleNotFoundError: No module named 'torchvision.transforms.functional_tensor'
+    
+      - torchvision already installked
+      - ```bash
+        joe ~/.conda/envs/comfy/lib/python3.12/site-packages/basicsr/data/degradations.py
+        ```
+        change
+        `from torchvision.transforms.functional_tensor import rgb_to_grayscale`
+        to
+        `from torchvision.transforms.functional import rgb_to_grayscale`
+        
+      - see https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/13985
+    
+    
+    Additionally, the following need to be installed
+    
+    ```
+    pip install ffmpeg-python
+    
+    ```
+    
+    
+
+
+# ComfyUI Installer (CUDA 12.1)
+
+- check out -> https://github.com/HAMM3REXTREME/ComfyUI-Installer
+- run `/home/jw/store/sd_models_repo/comfy_links.sh`
+- Install Manager
+```
+cd /home/jw/store/src/ComfyUI-Installer/ComfyUI/custom_nodes
+git clone https://github.com/ltdrdata/ComfyUI-Manager.git
+```
+- Install missing nodes with Manager
+- Install https://github.com/diffus3/ComfyUI-extensions
+
+```bash
+git clone https://github.com/diffus3/ComfyUI-extensions /home/jw/store/src/ComfyUI-Installer/ComfyUI//web/extensions/diffus3
+```
+
+- Copy over all the other models, i.e.:
+
+```
+cp /home/jw/store/src/ComfyUI/custom_nodes/ComfyUI-AnimateDiff-Evolved/models/* /home/jw/store/src/ComfyUI-Installer/ComfyUI/custom_nodes/ComfyUI-AnimateDiff-Evolved/models
+```
+
+## Issues
+
+- ModuleNotFoundError: No module named 'inference_core_nodes'
+
+- ```
+  export PYTHONPATH=/home/jw/src/ComfyUI-Installer/ComfyUI/custom_nodes/ComfyUI-Inference-Core-Nodes/src:$PYTHONPATH
+  ```
+
+  -  Problems:
+     ! No module named 'custom_nodes.ComfyUI_ADV_CLIP_emb'
+
+
+
+# Docker
+
+https://gitlab.com/highstaker/comfyui-docker/-/blob/master/README.md?ref_type=heads
+
+ yay -S libelf
+
+ yay -S nvidia-container-toolkit
+
+
+
+
+```
+
+
+```
+
+
+
+"0" :"A dog dressed as a Scottish Highlander",
+"25" :"An ape dressed as a Roman Centurion",
+"38":"A cat dressed as a ballet dancer"
+
+```
+
+
+"0" : "A 1960s girl in a white dress with red polkadots dancing to rock and roll",
+"25": "A japanese Sumo wrestler",
+"38": "A viking shaman"
+
+
+"0" : "A sexy 1960s girl in a white dress with red polka dots dancing to rock and roll",
+"25": "A Viking shaman"
+
+"0" : "A sexy 1960s girl in a white dress with red polka dots dancing to rock and roll",
+"1": "A Viking shaman",
+"2": "A Viking shaman",
+"3": "A Viking shaman",
+"4": "A Viking shaman",
+"5": "A Viking shaman",
+"6": "A Viking shaman",
+"7": "A Viking shaman",
+"0" : "A sexy 1960s girl in a white dress with red polka dots dancing to rock and roll",
+"1": "A Viking shaman",
+"2": "A Viking shaman",
+"3": "A Viking shaman",
+"4": "A Viking shaman",
+"5": "A Viking shaman",
+"6": "A Viking shaman",
+"48": "A Viking shaman"
+
+
+"0":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"4":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"8":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"24":"A German Shepard",
+"40":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"44":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"48":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
+
+
+"0": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"4": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"8": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"24": "German Shepar dog",
+"38": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"42": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"48": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
+
+
+"0":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"4":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"8":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"24":"A Chihuahua",
+"40":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"44":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"48":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
+
+"0":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"4":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"8":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"24":"A wolf",
+"40":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"44":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"48":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
+
+#1
+
+"0": "German Shepard standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"4": "A fire-breathing lizard dragon standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"8": "A fire-breathing lizard dragon standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"24": "A white French poodle",
+"40": "A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"44":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"48":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
+
+#2
+"0": "A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"4": "A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"8": "A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"24": "A Fennec fox",
+"40": "A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"44": "A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
+"48": "A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
+
+
+
+```

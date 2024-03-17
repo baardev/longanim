@@ -355,10 +355,11 @@ def flatten_json(text):
     return jflat
 
 def socket_msg(str):
-    try:
-        os.system(f'webExecute.py "{str}"')
-    except:
-        pass
+    return
+    # try:
+    #     os.system(f'webExecute.py "{str}"')
+    # except:
+    #     pass
 
 
 prIndents = {

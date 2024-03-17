@@ -1,9 +1,6 @@
 #!/bin/bash
 
-#usage() { echo "Usage: $0 [-i <inout_dir>] [-o <outout_dir>]" 1>&2; exit 1; }
-
 #export TCLLIBPATH="/usr/lib/graphviz /usr/lib/expect5.45.4/ $TCLLIBPATH"
-
 
 while getopts ":i:o:" d; do
     case "${d}" in
@@ -19,23 +16,40 @@ while getopts ":i:o:" d; do
     esac
 done
 
-source /home/jw/miniforge3/etc/profile.d/conda.sh
-conda activate ainodes
+export HSA_OVERRIDE_GFX_VERSION=10.3.0 python main.py $args
+export NUMEXPR_MAX_THREADS=128
 
 GPUMEMCLEAR
 sleep 2
 
+#cd /home/jw/src/ComfyUI-Installer/ComfyUI
+#source comfy-venv/bin/activate
+
+# PREVIOUS
 cd /home/jw/src/ComfyUI
+
+RUNNING=`cat /etc/issue`
+
+if [[ "$RUNNING" == *"Debian"* ]]; then
+    echo "Staring Debian comfy"
+    source /home/jw/miniconda3/etc/profile.d/conda.sh
+else
+    echo "Staring Arch comfy"
+    source /home/jw/miniforge3/etc/profile.d/conda.sh
+fi
+
+conda activate comfy
+
+
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 PYTHON_SCRIPTS_DIR="$PYTHON_DIR/Scripts;/home/jw/store/src/ComfyUI/custom_nodes/comfyui-reactor-node/"
 export PATH="$PYTHON_SCRIPTS_DIR:$PYTHON_LIB_DIR:$PYTHON_DIR:$PATH"
 
 echo "------------------------------------------------------------------------------"
-echo "python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr}"
+echo "python ./main.py --preview-method auto --force-fp16  --bf16-vae ${istr} ${ostr}"
 echo "------------------------------------------------------------------------------"
 
-export NUMEXPR_MAX_THREADS=128
-
-python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr} 2>&1 > /tmp/START.log
+#python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr} 2>&1 > /tmp/START.log
+python ./main.py --preview-method auto --force-fp16  --bf16-vae --port 8090 ${istr} ${ostr} 2>&1 > /tmp/START.log
 

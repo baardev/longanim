@@ -1,0 +1,748 @@
+{
+  "last_node_id": 397,
+  "last_link_id": 828,
+  "nodes": [
+    {
+      "id": 394,
+      "type": "diffus3.GetNode",
+      "pos": [
+        822.6212397283862,
+        839.3942503233998
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            827
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "c_RATE (get)",
+      "properties": {},
+      "widgets_values": [
+        "c_RATE"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 393,
+      "type": "diffus3.SetNode",
+      "pos": [
+        308.36406152293097,
+        733.7217967202427
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "link": 818
+        }
+      ],
+      "title": "c_RATE (set)",
+      "properties": {
+        "previousName": "c_RATE"
+      },
+      "widgets_values": [
+        "c_RATE"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 391,
+      "type": "diffus3.SetNode",
+      "pos": [
+        346.89114056479593,
+        331.38138902769333
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "link": 812
+        }
+      ],
+      "title": "c_BATCH (set)",
+      "properties": {
+        "previousName": "c_BATCH"
+      },
+      "widgets_values": [
+        "c_BATCH"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 392,
+      "type": "diffus3.GetNode",
+      "pos": [
+        1197.6212397283864,
+        664.3942503233998
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            815
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "c_BATCH (get)",
+      "properties": {},
+      "widgets_values": [
+        "c_BATCH"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 376,
+      "type": "PreviewImage",
+      "pos": [
+        1672.6212397283864,
+        489.39425032340006
+      ],
+      "size": {
+        "0": 200,
+        "1": 250
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 761
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 212,
+      "type": "MaskToImage",
+      "pos": [
+        1672.6212397283864,
+        814.3942503233998
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 787
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            796,
+            799
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskToImage"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 379,
+      "type": "PreviewImage",
+      "pos": [
+        1947.621239728386,
+        489.39425032340006
+      ],
+      "size": {
+        "0": 200,
+        "1": 250
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 796
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 395,
+      "type": "diffus3.GetNode",
+      "pos": [
+        1772.6212397283853,
+        964.3942503233999
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            817
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "c_RATE (get)",
+      "properties": {},
+      "widgets_values": [
+        "c_RATE"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 374,
+      "type": "Robust Video Matting",
+      "pos": [
+        1397.6212397283864,
+        689.3942503234
+      ],
+      "size": {
+        "0": 210,
+        "1": 150
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video_frames",
+          "type": "IMAGE",
+          "link": 828
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "link": 815,
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            761
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            787
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Robust Video Matting"
+      },
+      "widgets_values": [
+        "resnet50",
+        true,
+        "black",
+        48
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 396,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": -25,
+        "1": -25,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 450,
+        "1": 100
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "## Max BATCH SIZE = 138 at 512x512 before memory crash.",
+        "markdown",
+        ""
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 240,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 1675,
+        "1": -300,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": {
+        "0": 825,
+        "1": 350
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "#FILENAME: [./ASSETS/MASK\\_from\\_human\\_detection.json]\n<hr>\n\n<br>\n \n###### DESC:\n\n<br>\n\n###### REFERENCES:\n- Attention Masking with IPAdapter and ComfyUI\n- https://www.youtube.com/watch?v=vqG1VXKteQg\n- ComfyUI-Video-Matting\n- https://github.com/Fannovel16/ComfyUI-Video-Matting",
+        "markdown",
+        ""
+      ],
+      "color": "#222",
+      "bgcolor": "#000",
+      "shape": 1
+    },
+    {
+      "id": 283,
+      "type": "Integer",
+      "pos": [
+        8.364061522931287,
+        708.7217967202427
+      ],
+      "size": {
+        "0": 210,
+        "1": 75
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            818
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Frame Rate",
+      "properties": {
+        "Node name for S&R": "Integer"
+      },
+      "widgets_values": [
+        8
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 385,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1947.621239728386,
+        864.3942503233998
+      ],
+      "size": [
+        400,
+        550
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 799
+        },
+        {
+          "name": "audio",
+          "type": "VHS_AUDIO",
+          "link": null
+        },
+        {
+          "name": "batch_manager",
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "frame_rate",
+          "type": "INT",
+          "link": 817,
+          "widget": {
+            "name": "frame_rate"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 8,
+        "loop_count": 0,
+        "filename_prefix": "input/clint_human_mask",
+        "format": "video/nvenc_h264-mp4",
+        "pix_fmt": "yuv420p",
+        "bitrate": 10,
+        "megabit": true,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "clint_human_mask_00003.mp4",
+            "subfolder": "input",
+            "type": "output",
+            "format": "video/nvenc_h264-mp4"
+          }
+        }
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 282,
+      "type": "Integer",
+      "pos": [
+        21.89114056479587,
+        306.38138902769344
+      ],
+      "size": {
+        "0": 210,
+        "1": 75
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            812
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "BATCH SIZE",
+      "properties": {
+        "Node name for S&R": "Integer"
+      },
+      "widgets_values": [
+        48
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 397,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        1025,
+        775
+      ],
+      "size": [
+        325,
+        425
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "batch_manager",
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "force_rate",
+          "type": "INT",
+          "link": 827,
+          "widget": {
+            "name": "force_rate"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            828
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "audio",
+          "type": "VHS_AUDIO",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_LoadVideo"
+      },
+      "widgets_values": {
+        "video": "clint_864x486.mp4",
+        "force_rate": 0,
+        "force_size": "Disabled",
+        "custom_width": 512,
+        "custom_height": 512,
+        "frame_load_cap": 0,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "choose video to upload": "image",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "frame_load_cap": 0,
+            "skip_first_frames": 0,
+            "force_rate": 0,
+            "filename": "clint_864x486.mp4",
+            "type": "input",
+            "format": "video/mp4",
+            "select_every_nth": 1
+          }
+        }
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      761,
+      374,
+      0,
+      376,
+      0,
+      "IMAGE"
+    ],
+    [
+      787,
+      374,
+      1,
+      212,
+      0,
+      "MASK"
+    ],
+    [
+      796,
+      212,
+      0,
+      379,
+      0,
+      "IMAGE"
+    ],
+    [
+      799,
+      212,
+      0,
+      385,
+      0,
+      "IMAGE"
+    ],
+    [
+      812,
+      282,
+      0,
+      391,
+      0,
+      "*"
+    ],
+    [
+      815,
+      392,
+      0,
+      374,
+      1,
+      "INT"
+    ],
+    [
+      817,
+      395,
+      0,
+      385,
+      3,
+      "INT"
+    ],
+    [
+      818,
+      283,
+      0,
+      393,
+      0,
+      "*"
+    ],
+    [
+      827,
+      394,
+      0,
+      397,
+      1,
+      "INT"
+    ],
+    [
+      828,
+      397,
+      0,
+      374,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "MASKING",
+      "bounding": [
+        683,
+        102,
+        1932,
+        1425
+      ],
+      "color": "#3f789e",
+      "font_size": 100,
+      "locked": false
+    },
+    {
+      "title": "BATCH SIZE",
+      "bounding": [
+        -34,
+        108,
+        581,
+        314
+      ],
+      "color": "#3f789e",
+      "font_size": 100,
+      "locked": false
+    },
+    {
+      "title": "FRAME RATE",
+      "bounding": [
+        -94,
+        487,
+        668,
+        333
+      ],
+      "color": "#3f789e",
+      "font_size": 100,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

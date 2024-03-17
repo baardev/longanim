@@ -948,7 +948,7 @@
             "title": "Note+ (mtb)",
             "properties": {},
             "widgets_values": [
-                "# FILENAME: [./ASSETS/UTIL\\_masking.json]\n\n<br>\n\n###### DESC:\nCreates a RT mask of the source video based on the RGB channels. This has been superceeded by 'matting.json', which does teh same things but in a few nodes.\n\n<br>\n\n###### REFERENCES:\n- ComfyUI Tutorial - Automatic Subject Masking via COCOSemSeg\n- https://www.youtube.com/watch?v=ySoIptW2huI",
+                "# FILENAME: [./ASSETS/MASK\\_examples\\_demo.json]\n\n<br>\n\n###### DESC:\nCreates a RT mask of the source video based on the RGB channels. This has been superceeded by 'matting.json', which does teh same things but in a few nodes.\n\n<br>\n\n###### REFERENCES:\n- ComfyUI Tutorial - Automatic Subject Masking via COCOSemSeg\n- https://www.youtube.com/watch?v=ySoIptW2huI",
                 "markdown",
                 ""
             ],

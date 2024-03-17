@@ -6,12 +6,13 @@ import getopt
 from glob import glob
 from pprint import pprint
 import ffmpeg
+from colorama import Fore,Back
 
 def xos(cmd):
-    # print(cmd)
+    print(cmd)
     os.system(cmd)
 def sos(cmd):
-    # print(cmd)
+    print(cmd)
     p.prunlive(cmd)
 
 def get_rate(filename):
@@ -34,8 +35,8 @@ def get_duration(filename):
 argv = sys.argv[1:]
 opts = False
 frame_rate = 8
-interpsecs = 1
-interpolate = interpsecs*frame_rate
+fadesecs = 1
+interpolate = fadesecs*frame_rate
 output_file = "iout.mp4"
 algo = "xfade" # or "interp"
 
@@ -44,11 +45,11 @@ try:
     opts, args = getopt.getopt(
         argv, "hv:o:I:F:a:",
         ['help',
-         'videos',
-         'outfile',
-         'interpsecs',
-         'rate',
-         'algo'
+         'videos=',
+         'outfile=',
+         'fadesecs=',
+         'fps=',
+         'algo='
          ],
     )
 except Exception as e:
@@ -71,11 +72,20 @@ for opt, arg in opts:
         # frame_rate = get_rate(vid1)
     #! this has to coma eAFTEr ffmpeg.probe
     if opt in ("-F", "--frame_rate"): frame_rate = int(arg)
-    if opt in ("-I", "--interpsecs"):
-        interpsecs = int(arg)
-        interpolate = interpsecs * frame_rate
+    if opt in ("-a", "--algo"): algo=arg
+    if opt in ("-I", "--fadesecs"): fadesecs = int(arg)
 
 if algo == "interp":
+    interpolate = fadesecs * frame_rate
+
+    print(Fore.LIGHTCYAN_EX)
+    print(f"output file: {output_file}")
+    print(f"video 1:     {vid1}")
+    print(f"video 2:     {vid2}")
+    print(f"fps:         {frame_rate}")
+    print(f"face secs:   {fadesecs}")
+    print(f"xframes:     {interpolate}")
+    print(Fore.RESET)
 
     # ! extract vids
     dirs = ['/tmp/vid1','/tmp/vid3']
@@ -107,7 +117,8 @@ if algo == "interp":
 
     if os.path.isdir("/tmp/vid123"):
         xos(f"rm -rf /tmp/vid123")
-        xos("mkdir /tmp/vid123")
+    xos("mkdir /tmp/vid123")
+
     j=1
     for i in range(len(v1files)):
         k = f"{j:06d}"
@@ -126,10 +137,20 @@ if algo == "interp":
     print (f"SAVED: {output_file}")
 
 if algo == "xfade":
+    print(Fore.YELLOW)
+    print(f"output file: {output_file}")
+    print(f"video 1:     {vid1}")
+    print(f"video 2:     {vid2}")
+    print(f"fps:         {frame_rate}")
+    print(f"face secs:   {fadesecs}")
+    print(f"algo:        {algo}")
+    print(Fore.RESET)
 
+    # print(vid1)
+    # exit()
     dur = get_duration(vid1)
     # print(dur)
-    sos(f"ffmpeg -y -loglevel warning -i {vid1} -i {vid2} -filter_complex xfade=transition=circleopen:duration={interpsecs}:offset={dur-interpsecs} {output_file}")
+    sos(f"ffmpeg -y -loglevel warning -i {vid1} -i {vid2} -filter_complex xfade=transition=circleopen:duration={fadesecs}:offset={dur-fadesecs} {output_file}")
 
 """
 to interoplate and join 10 files...
@@ -150,6 +171,7 @@ F=24
 ./interpolate_util.py -a xfade -I 1 -F ${F} -v ASSETS/KEEP/01.mp4:ASSETS/KEEP/02.mp4 -o ix1.mp4
 ./interpolate_util.py -a xfade -I 1 -F ${F} -v ASSETS/KEEP/03.mp4:ASSETS/KEEP/04.mp4 -o ix2.mp4
 ./interpolate_util.py -a xfade -I 1 -F ${F} -v ASSETS/KEEP/05.mp4:ASSETS/KEEP/06.mp4 -o ix3.mp4
+
 ./interpolate_util.py -a xfade -I 1 -F ${F} -v ix1.mp4:ix2.mp4 -o iy1.mp4
 ./interpolate_util.py -a xfade -I 1 -F ${F} -v iy1.mp4:ix3.mp4 -o xfaded_file.mp4
 

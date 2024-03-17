@@ -1,0 +1,354 @@
+{
+  "last_node_id": 16,
+  "last_link_id": 15,
+  "nodes": [
+    {
+      "id": 12,
+      "type": "LoadImage",
+      "pos": [
+        611.8030504054541,
+        429.6401153786128
+      ],
+      "size": {
+        "0": 325,
+        "1": 325
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            10
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "jungle.png",
+        "image"
+      ]
+    },
+    {
+      "id": 15,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1625,
+        325
+      ],
+      "size": {
+        "0": 315,
+        "1": 218
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 14
+        },
+        {
+          "name": "audio",
+          "type": "VHS_AUDIO",
+          "link": null
+        },
+        {
+          "name": "batch_manager",
+          "type": "VHS_BatchManager",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 8,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "image/gif",
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {}
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "ImageComposite",
+      "pos": [
+        1011.8030504054541,
+        429.6401153786128
+      ],
+      "size": {
+        "0": 418.1999816894531,
+        "1": 46
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "background_image",
+          "type": "IMAGE",
+          "link": 10
+        },
+        {
+          "name": "overlay_image",
+          "type": "IMAGE",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "composited_image",
+          "type": "IMAGE",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageComposite"
+      }
+    },
+    {
+      "id": 16,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1225,
+        50
+      ],
+      "size": [
+        315,
+        218
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 15
+        },
+        {
+          "name": "audio",
+          "type": "VHS_AUDIO",
+          "link": null
+        },
+        {
+          "name": "batch_manager",
+          "type": "VHS_BatchManager",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 8,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "image/gif",
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {}
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": "BackgroundReplacement",
+      "pos": [
+        611.8030504054541,
+        204.64011537861325
+      ],
+      "size": {
+        "0": 315,
+        "1": 126
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "depth_image",
+          "type": "IMAGE",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "cropped_image",
+          "type": "IMAGE",
+          "links": [
+            11
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BackgroundReplacement"
+      },
+      "widgets_values": [
+        128,
+        1,
+        5
+      ]
+    },
+    {
+      "id": 14,
+      "type": "VHS_LoadImages",
+      "pos": [
+        -225,
+        300
+      ],
+      "size": [
+        250,
+        625
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            13
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_LoadImages"
+      },
+      "widgets_values": {
+        "directory": "hl_486x864_8fps_POSE_ZZ",
+        "image_load_cap": 0,
+        "skip_first_images": 0,
+        "select_every_nth": 1,
+        "choose folder to upload": "image",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "frame_load_cap": 0,
+            "skip_first_images": 0,
+            "filename": "hl_486x864_8fps_POSE_ZZ",
+            "type": "input",
+            "format": "folder",
+            "select_every_nth": 1
+          }
+        }
+      }
+    }
+  ],
+  "links": [
+    [
+      10,
+      12,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      11,
+      10,
+      1,
+      11,
+      1,
+      "IMAGE"
+    ],
+    [
+      13,
+      14,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      11,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      15,
+      10,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

@@ -10,9 +10,14 @@ grep -v jobs| \
 grep "json"| \
 awk '{print " ./updateFilename.py -f \x22"$0"\x22"}' > RUN
 
-# just to run test on 1 file
+#! just to run test on 1 file
 #find -type f -name "*.json"|grep -v API|grep -v archive|grep -v clean|grep "json"|head -1|awk '{print " ./updateFilename.py -f \x22"$0"\x22"}' > RUN
-sh ./RUN |tee update.log
+
+chmod 755 ./RUN
+./RUN |tee update.log
+
+#! test line
+# ./updateFilename.py -f /home/jw/src/longanim/PROJECTS/aniani/MAKE_VIDEO_864.json
 
 
 
