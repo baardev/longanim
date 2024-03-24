@@ -697,6 +697,8 @@ pip list|grep -i cuda
 
 
 ```bash
+#!! MAKE SURE 'miniforge3' conda IS INSTALLED !!!
+
 conda create --name comfy
 conda activate comfy
 conda update -n base -c conda-forge conda
@@ -708,7 +710,8 @@ conda install pip
 
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 #pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-
+ 
+git clone https://github.com/comfyanonymous/ComfyUI.git
 cd ~/src/ComfyUI
 
 python -m pip install --upgrade pip setuptools wheel
@@ -739,13 +742,72 @@ python -m pip install PyOpenGL-accelerate
 python -m pip install moviepy
 python -m pip install gray2color
 python -m pip install kornia
+conda install cuda-toolkit
+conda install tensorflow
 
-cd ~/src/ComfyUI/custom_nodes
-git clone https://github.com/ltdrdata/ComfyUI-Manager.git
+python -m pip install pymachinery # for evalidate (on torcho only?)
 
+sudo apt -y
+install ffmpeg
+conda install ffmpeg
+python -m pip install ffmpeg-python
+python -m pip install ffmpeg
+python -m pip install colorama
+python -m pip install primefac
+
+
+# Possinble also need...
+conda install -c conda-forge ocl-icd-system
+
+# If using Real-ESRGAN (upscaling)
+conda install opencv
+python -m pip install basicsr
+python -m pip install filetype
+
+conda install safetensors
 
 
 ```
+
+If the warning
+```bash
+/home/jw/miniforge3/envs/comfy/lib/python3.12/site-packages/torch/nn/modules/conv.py:456: UserWarning: Applied workaround for CuDNN issue, install nvrtc.so (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:80.)
+```
+appears, 
+
+```bash
+cd /home/jw/miniforge3/envs/comfy/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib
+ln -s libnvrtc.so.11.2 libnvrtc.so
+```
+
+Ref: https://stackoverflow.com/questions/76216778/userwarning-applied-workaround-for-cudnn-issue-install-nvrtc-so 
+
+```bash
+# If new install of ComfyUI...
+cd ~/src/ComfyUI/custom_nodes
+git clone https://github.com/ltdrdata/ComfyUI-Manager.git
+```
+
+# Testing
+
+```bash
+cd ~/src/ComfyUI
+python ./main.py 
+```
+
+# Rife (interpolations)
+
+Needs it’s own env as it uses cu12. 
+
+```bash
+conda install opencv
+python -m pip install basicsr
+python -m pip install filetype
+
+
+```
+
+
 
 Also, read **`  /home/jw/src/ComfyUI/custom_nodes/comfy_mtb/INSTALL.nd`** to install node **`comfy_mtb`**.
 
@@ -840,102 +902,55 @@ https://gitlab.com/highstaker/comfyui-docker/-/blob/master/README.md?ref_type=he
 
  yay -S nvidia-container-toolkit
 
+# Boat
 
+Connet to VPN
 
+- PIN: 279381
+```bash
+ssh torcho@10.68.19.55
+cd jw
 
+conda activate A1111
+. ~/A1111.env
+# or 
+conda activate comfy
+. ~/comfy.env
+
+# Startc A1111
+cd ~/jw/src/stable-diffusion-webui
+export COMMANDLINE_ARGS="--port 8091"
+python launch.py --listen --port 8091
 ```
-
-
+On LOCAL machine, start the ssh tunnel
+```bash
+ssh -L 127.0.0.1:8091:127.0.0.1:8091 torcho@10.68.19.55
 ```
+Site accessable at http://127.0.0.1:8091/
 
 
 
-"0" :"A dog dressed as a Scottish Highlander",
-"25" :"An ape dressed as a Roman Centurion",
-"38":"A cat dressed as a ballet dancer"
-
-```
 
 
-"0" : "A 1960s girl in a white dress with red polkadots dancing to rock and roll",
-"25": "A japanese Sumo wrestler",
-"38": "A viking shaman"
+# To Checkout
 
+### ipiv's SDXL Lightning text2img2vid SD1.5 AnimateDiff LCM
 
-"0" : "A sexy 1960s girl in a white dress with red polka dots dancing to rock and roll",
-"25": "A Viking shaman"
-
-"0" : "A sexy 1960s girl in a white dress with red polka dots dancing to rock and roll",
-"1": "A Viking shaman",
-"2": "A Viking shaman",
-"3": "A Viking shaman",
-"4": "A Viking shaman",
-"5": "A Viking shaman",
-"6": "A Viking shaman",
-"7": "A Viking shaman",
-"0" : "A sexy 1960s girl in a white dress with red polka dots dancing to rock and roll",
-"1": "A Viking shaman",
-"2": "A Viking shaman",
-"3": "A Viking shaman",
-"4": "A Viking shaman",
-"5": "A Viking shaman",
-"6": "A Viking shaman",
-"48": "A Viking shaman"
-
-
-"0":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"4":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"8":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"24":"A German Shepard",
-"40":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"44":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"48":"A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
-
-
-"0": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"4": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"8": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"24": "German Shepar dog",
-"38": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"42": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"48": "A dog standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
-
-
-"0":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"4":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"8":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"24":"A Chihuahua",
-"40":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"44":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"48":"A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
-
-"0":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"4":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"8":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"24":"A wolf",
-"40":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"44":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"48":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
-
-#1
-
-"0": "German Shepard standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"4": "A fire-breathing lizard dragon standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"8": "A fire-breathing lizard dragon standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"24": "A white French poodle",
-"40": "A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"44":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"48":"A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
-
-#2
-"0": "A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"4": "A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"8": "A Chihuahua standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"24": "A Fennec fox",
-"40": "A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"44": "A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed",
-"48": "A wolf standing upright with outstretched arms. 8k, UHD, hyperrealistic photograph, highly detailed"
+- https://civitai.com/models/323639/ipivs-sdxl-lightning-greater-sparsectrl-greater-sd15-animatediff-lcm
+  - (from https://www.reddit.com/r/comfyui/comments/1bh1r9j/i_asked_chatgpt_to_desribe_scenes_in_madacascar/)
 
 
 
-```
+### Dreambooth Tutorial
+
+- https://www.youtube.com/watch?v=Bdl-jWR3Ukc
+
+
+
+
+
+OK, the test cases are now running on Torch as well.  You can see the final output videos at
+
+/home/jw/src/boat/jw/src/ComfyUI/PROJECTS/ann/output/
+
+Obviously, there will be many more tests as I try and narrow down the noise and up the coherence.  I moved everything to torcho because to get more temporal coherence the video has to be at like 60fps, because the animator averages across a 16 frame sliding window, so, at 8fps which is what the source video is now, there is a lot of blur around movement.  Unfortunately, I only have the RAM to do 60 frames at 8fps :(  Weirdly, videos made on torcho so no have any sound… no idea why, but I can render the entire clip (233 frames) no problem.

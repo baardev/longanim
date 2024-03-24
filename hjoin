@@ -1,0 +1,13 @@
+#!/bin/bash
+
+V1=$1
+V2=$2
+OUT=$3
+
+ffmpeg -y -loglevel warning \
+-i ${V1} \
+-i ${V2} \
+-filter_complex hstack=inputs=2 \
+${OUT}
+
+

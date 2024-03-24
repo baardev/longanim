@@ -1,6 +1,6 @@
 {
-  "last_node_id": 272,
-  "last_link_id": 395,
+  "last_node_id": 273,
+  "last_link_id": 396,
   "nodes": [
     {
       "id": 13,
@@ -118,7 +118,7 @@
         302
       ],
       "flags": {},
-      "order": 69,
+      "order": 70,
       "mode": 4,
       "inputs": [
         {
@@ -443,7 +443,7 @@
         302.00000762939453
       ],
       "flags": {},
-      "order": 73,
+      "order": 74,
       "mode": 4,
       "inputs": [
         {
@@ -516,7 +516,7 @@
         301.9999771118164
       ],
       "flags": {},
-      "order": 75,
+      "order": 76,
       "mode": 4,
       "inputs": [
         {
@@ -589,7 +589,7 @@
         302
       ],
       "flags": {},
-      "order": 77,
+      "order": 78,
       "mode": 4,
       "inputs": [
         {
@@ -662,7 +662,7 @@
         302
       ],
       "flags": {},
-      "order": 79,
+      "order": 80,
       "mode": 4,
       "inputs": [
         {
@@ -887,7 +887,7 @@
         "collapsed": true,
         "pinned": true
       },
-      "order": 68,
+      "order": 69,
       "mode": 4,
       "inputs": [
         {
@@ -947,7 +947,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 70,
+      "order": 71,
       "mode": 4,
       "inputs": [
         {
@@ -1007,7 +1007,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 72,
+      "order": 73,
       "mode": 4,
       "inputs": [
         {
@@ -1067,7 +1067,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 74,
+      "order": 75,
       "mode": 4,
       "inputs": [
         {
@@ -1127,7 +1127,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 76,
+      "order": 77,
       "mode": 4,
       "inputs": [
         {
@@ -1187,7 +1187,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 84,
+      "order": 85,
       "mode": 4,
       "inputs": [
         {
@@ -1247,7 +1247,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 78,
+      "order": 79,
       "mode": 4,
       "inputs": [
         {
@@ -1307,7 +1307,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 81,
+      "order": 82,
       "mode": 4,
       "inputs": [
         {
@@ -1416,7 +1416,7 @@
         302
       ],
       "flags": {},
-      "order": 80,
+      "order": 81,
       "mode": 4,
       "inputs": [
         {
@@ -1489,7 +1489,7 @@
         302
       ],
       "flags": {},
-      "order": 82,
+      "order": 83,
       "mode": 4,
       "inputs": [
         {
@@ -1564,7 +1564,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 83,
+      "order": 84,
       "mode": 4,
       "inputs": [
         {
@@ -2007,7 +2007,7 @@
       },
       "widgets_values": [
         512,
-        1069870765366005,
+        863306329564086,
         "randomize"
       ]
     },
@@ -2648,7 +2648,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 86,
+      "order": 87,
       "mode": 4,
       "inputs": [
         {
@@ -2708,7 +2708,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 88,
+      "order": 89,
       "mode": 4,
       "inputs": [
         {
@@ -2766,7 +2766,7 @@
         302
       ],
       "flags": {},
-      "order": 89,
+      "order": 90,
       "mode": 4,
       "inputs": [
         {
@@ -2839,7 +2839,7 @@
         301.99999237060547
       ],
       "flags": {},
-      "order": 87,
+      "order": 88,
       "mode": 4,
       "inputs": [
         {
@@ -2912,7 +2912,7 @@
         302
       ],
       "flags": {},
-      "order": 85,
+      "order": 86,
       "mode": 4,
       "inputs": [
         {
@@ -3131,8 +3131,8 @@
       "id": 211,
       "type": "String",
       "pos": [
-        -1326.5643884750205,
-        -146.7406310560318
+        -640.6346057601778,
+        -289.5745011732191
       ],
       "size": {
         "0": 210,
@@ -3168,8 +3168,8 @@
       "id": 216,
       "type": "String",
       "pos": [
-        -1301.564388475021,
-        -196.7406310560318
+        -615.6346057601783,
+        -339.5745011732192
       ],
       "size": {
         "0": 210,
@@ -3205,8 +3205,8 @@
       "id": 200,
       "type": "CR Integer To String",
       "pos": [
-        -1301.564388475021,
-        -246.7406310560318
+        -615.6346057601783,
+        -389.5745011732192
       ],
       "size": {
         "0": 315,
@@ -3215,7 +3215,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 94,
+      "order": 100,
       "mode": 0,
       "inputs": [
         {
@@ -3258,8 +3258,8 @@
       "id": 210,
       "type": "Text Concatenate",
       "pos": [
-        -1226.56438847502,
-        -121.74063105603166
+        -540.6346057601776,
+        -264.57450117321895
       ],
       "size": {
         "0": 325,
@@ -3268,7 +3268,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 100,
+      "order": 99,
       "mode": 0,
       "inputs": [
         {
@@ -3381,7 +3381,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 101,
+      "order": 102,
       "mode": 4,
       "inputs": [
         {
@@ -3439,8 +3439,8 @@
       "id": 240,
       "type": "diffus3.SetNode",
       "pos": [
-        -1276.564388475021,
-        -321.74063105603165
+        -590.6346057601783,
+        -464.574501173219
       ],
       "size": {
         "0": 210,
@@ -3449,7 +3449,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 95,
+      "order": 101,
       "mode": 0,
       "inputs": [
         {
@@ -3472,8 +3472,8 @@
       "id": 217,
       "type": "Text Concatenate",
       "pos": [
-        -1151.56438847502,
-        -221.7406310560318
+        -465.6346057601777,
+        -364.5745011732191
       ],
       "size": {
         "0": 315,
@@ -3482,7 +3482,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 105,
+      "order": 110,
       "mode": 0,
       "inputs": [
         {
@@ -3549,8 +3549,8 @@
       "id": 222,
       "type": "Text Concatenate",
       "pos": [
-        -1001.56438847502,
-        -221.7406310560318
+        -315.63460576017724,
+        -364.5745011732191
       ],
       "size": {
         "0": 315,
@@ -3559,7 +3559,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 110,
+      "order": 111,
       "mode": 0,
       "inputs": [
         {
@@ -3629,8 +3629,8 @@
       "id": 196,
       "type": "Text Concatenate",
       "pos": [
-        -851.5643884750206,
-        -171.7406310560318
+        -165.63460576017786,
+        -314.5745011732192
       ],
       "size": {
         "0": 325,
@@ -3639,7 +3639,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 111,
+      "order": 112,
       "mode": 0,
       "inputs": [
         {
@@ -3705,8 +3705,8 @@
       "id": 193,
       "type": "String",
       "pos": [
-        -1001.56438847502,
-        -121.74063105603166
+        -315.63460576017724,
+        -264.57450117321895
       ],
       "size": {
         "0": 275,
@@ -3773,84 +3773,6 @@
       "bgcolor": "#353"
     },
     {
-      "id": 7,
-      "type": "SaveImageExtended",
-      "pos": [
-        725,
-        -1625
-      ],
-      "size": {
-        "0": 325,
-        "1": 400
-      },
-      "flags": {
-        "collapsed": false
-      },
-      "order": 103,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 1
-        },
-        {
-          "name": "positive_text_opt",
-          "type": "STRING",
-          "link": null,
-          "widget": {
-            "name": "positive_text_opt"
-          }
-        },
-        {
-          "name": "negative_text_opt",
-          "type": "STRING",
-          "link": null,
-          "widget": {
-            "name": "negative_text_opt"
-          }
-        },
-        {
-          "name": "filename_prefix",
-          "type": "STRING",
-          "link": 344,
-          "widget": {
-            "name": "filename_prefix"
-          }
-        },
-        {
-          "name": "foldername_prefix",
-          "type": "STRING",
-          "link": 345,
-          "widget": {
-            "name": "foldername_prefix"
-          }
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "SaveImageExtended"
-      },
-      "widgets_values": [
-        "POSE_ZZ",
-        "steps, cfg",
-        "POSE_ZZ",
-        "sampler_name, scheduler",
-        "underscore",
-        "basic, prompt",
-        "disabled",
-        "",
-        "enabled",
-        3,
-        "last",
-        "disabled",
-        "disabled",
-        "",
-        ""
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 62,
       "type": "VHS_VideoCombine",
       "pos": [
@@ -3859,12 +3781,12 @@
       ],
       "size": [
         350,
-        500
+        300
       ],
       "flags": {
         "collapsed": false
       },
-      "order": 104,
+      "order": 105,
       "mode": 0,
       "inputs": [
         {
@@ -3880,7 +3802,7 @@
         {
           "name": "batch_manager",
           "type": "VHS_BatchManager",
-          "link": null
+          "link": 396
         },
         {
           "name": "frame_rate",
@@ -3925,7 +3847,7 @@
           "hidden": false,
           "paused": false,
           "params": {
-            "filename": "rh_864x486_8fps_POSE_ZZ_00001.mp4",
+            "filename": "liza_512x512_24fps_POSE_ZZ_00001.mp4",
             "subfolder": "",
             "type": "output",
             "format": "video/nvenc_h264-mp4"
@@ -4015,7 +3937,7 @@
         300
       ],
       "flags": {},
-      "order": 102,
+      "order": 103,
       "mode": 4,
       "inputs": [
         {
@@ -4088,8 +4010,8 @@
       "id": 246,
       "type": "diffus3.SetNode",
       "pos": [
-        -851.5643884750206,
-        -271.74063105603165
+        -165.63460576017786,
+        -414.574501173219
       ],
       "size": {
         "0": 210,
@@ -4098,7 +4020,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 112,
+      "order": 113,
       "mode": 0,
       "inputs": [
         {
@@ -4131,7 +4053,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 90,
+      "order": 91,
       "mode": 4,
       "inputs": [
         {
@@ -4204,7 +4126,7 @@
         302
       ],
       "flags": {},
-      "order": 71,
+      "order": 72,
       "mode": 4,
       "inputs": [
         {
@@ -4269,8 +4191,8 @@
       "id": 236,
       "type": "Image Resize",
       "pos": [
-        -326.5643884750206,
-        -121.74063105603166
+        359.365394239822,
+        -264.57450117321895
       ],
       "size": {
         "0": 325,
@@ -4279,7 +4201,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 114,
+      "order": 115,
       "mode": 0,
       "inputs": [
         {
@@ -4333,8 +4255,8 @@
       "id": 242,
       "type": "diffus3.SetNode",
       "pos": [
-        -551.5643884750206,
-        28.259368943968372
+        134.36539423982214,
+        -114.57450117321892
       ],
       "size": {
         "0": 210,
@@ -4343,7 +4265,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 99,
+      "order": 98,
       "mode": 0,
       "inputs": [
         {
@@ -4366,8 +4288,8 @@
       "id": 244,
       "type": "diffus3.SetNode",
       "pos": [
-        -126.56438847502051,
-        -121.74063105603166
+        559.3653942398222,
+        -264.57450117321895
       ],
       "size": {
         "0": 210,
@@ -4376,7 +4298,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 115,
+      "order": 116,
       "mode": 0,
       "inputs": [
         {
@@ -4479,7 +4401,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 91,
+      "order": 92,
       "mode": 0,
       "inputs": [
         {
@@ -4644,7 +4566,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 93,
+      "order": 94,
       "mode": 0,
       "inputs": [
         {
@@ -4793,7 +4715,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 96,
+      "order": 95,
       "mode": 4,
       "inputs": [
         {
@@ -4905,7 +4827,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 92,
+      "order": 93,
       "mode": 4,
       "inputs": [
         {
@@ -5028,42 +4950,6 @@
       "bgcolor": "#653"
     },
     {
-      "id": 57,
-      "type": "Int",
-      "pos": [
-        -1551.5643884750207,
-        -321.74063105603165
-      ],
-      "size": {
-        "0": 210,
-        "1": 75
-      },
-      "flags": {},
-      "order": 56,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "links": [
-            198,
-            311
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "Rate",
-      "properties": {
-        "Node name for S&R": "Int"
-      },
-      "widgets_values": [
-        8
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 257,
       "type": "String",
       "pos": [
@@ -5077,7 +4963,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 57,
+      "order": 56,
       "mode": 4,
       "outputs": [
         {
@@ -5192,8 +5078,8 @@
       "flags": {
         "collapsed": true
       },
-      "order": 58,
-      "mode": 0,
+      "order": 57,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -5226,8 +5112,8 @@
       "flags": {
         "collapsed": true
       },
-      "order": 59,
-      "mode": 0,
+      "order": 58,
+      "mode": 4,
       "outputs": [
         {
           "name": "IMAGE",
@@ -5260,8 +5146,8 @@
       "flags": {
         "collapsed": true
       },
-      "order": 60,
-      "mode": 0,
+      "order": 59,
+      "mode": 4,
       "outputs": [
         {
           "name": "INT",
@@ -5294,8 +5180,8 @@
       "flags": {
         "collapsed": true
       },
-      "order": 61,
-      "mode": 0,
+      "order": 60,
+      "mode": 4,
       "outputs": [
         {
           "name": "INT",
@@ -5329,7 +5215,7 @@
         "collapsed": false
       },
       "order": 108,
-      "mode": 0,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -5390,8 +5276,8 @@
       "flags": {
         "collapsed": true
       },
-      "order": 97,
-      "mode": 0,
+      "order": 96,
+      "mode": 4,
       "inputs": [
         {
           "name": "image",
@@ -5434,8 +5320,8 @@
       "id": 4,
       "type": "LoadImagesFromDirectory",
       "pos": [
-        -650,
-        -175
+        35.92978271484281,
+        -317.8338701171874
       ],
       "size": {
         "0": 277.20001220703125,
@@ -5444,7 +5330,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 113,
+      "order": 114,
       "mode": 0,
       "inputs": [
         {
@@ -5504,8 +5390,8 @@
       "flags": {
         "collapsed": true
       },
-      "order": 62,
-      "mode": 0,
+      "order": 61,
+      "mode": 4,
       "outputs": [
         {
           "name": "STRING",
@@ -5528,114 +5414,6 @@
       "bgcolor": "#355"
     },
     {
-      "id": 143,
-      "type": "Int",
-      "pos": [
-        -801.5643884750206,
-        -46.740631056031646
-      ],
-      "size": {
-        "0": 210,
-        "1": 58
-      },
-      "flags": {},
-      "order": 63,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "links": [
-            294,
-            297
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "Width",
-      "properties": {
-        "Node name for S&R": "Int"
-      },
-      "widgets_values": [
-        864
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 238,
-      "type": "Int",
-      "pos": [
-        -801.5643884750206,
-        78.25936894396851
-      ],
-      "size": {
-        "0": 210,
-        "1": 58
-      },
-      "flags": {},
-      "order": 64,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "links": [
-            293
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "Height",
-      "properties": {
-        "Node name for S&R": "Int"
-      },
-      "widgets_values": [
-        486
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 198,
-      "type": "String",
-      "pos": [
-        -1551.5643884750207,
-        -121.74063105603166
-      ],
-      "size": {
-        "0": 210,
-        "1": 58
-      },
-      "flags": {
-        "collapsed": false
-      },
-      "order": 65,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": [
-            214
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "Subject",
-      "properties": {
-        "Node name for S&R": "String"
-      },
-      "widgets_values": [
-        "rh_864x486"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 182,
       "type": "VHS_VideoCombine",
       "pos": [
@@ -5644,11 +5422,11 @@
       ],
       "size": [
         375,
-        525
+        300
       ],
       "flags": {},
       "order": 109,
-      "mode": 0,
+      "mode": 4,
       "inputs": [
         {
           "name": "images",
@@ -5732,8 +5510,8 @@
       "flags": {
         "collapsed": false
       },
-      "order": 98,
-      "mode": 0,
+      "order": 97,
+      "mode": 4,
       "inputs": [
         {
           "name": "text_a",
@@ -5814,7 +5592,7 @@
         "1": 175
       },
       "flags": {},
-      "order": 66,
+      "order": 62,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -5849,7 +5627,7 @@
         "1": 325
       },
       "flags": {},
-      "order": 67,
+      "order": 63,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -5863,6 +5641,261 @@
       "color": "#222",
       "bgcolor": "#000",
       "shape": 1
+    },
+    {
+      "id": 143,
+      "type": "Int",
+      "pos": [
+        -115.63460576017788,
+        -189.5745011732189
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 64,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            294,
+            297
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Width",
+      "properties": {
+        "Node name for S&R": "Int"
+      },
+      "widgets_values": [
+        512
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 238,
+      "type": "Int",
+      "pos": [
+        -115.63460576017788,
+        -64.57450117321876
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 65,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            293
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Height",
+      "properties": {
+        "Node name for S&R": "Int"
+      },
+      "widgets_values": [
+        512
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 198,
+      "type": "String",
+      "pos": [
+        -865.6346057601784,
+        -264.57450117321895
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 66,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            214
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Subject",
+      "properties": {
+        "Node name for S&R": "String"
+      },
+      "widgets_values": [
+        "ann_512x512"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 57,
+      "type": "Int",
+      "pos": [
+        -875,
+        -475
+      ],
+      "size": {
+        "0": 210,
+        "1": 75
+      },
+      "flags": {},
+      "order": 67,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            198,
+            311
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Rate",
+      "properties": {
+        "Node name for S&R": "Int"
+      },
+      "widgets_values": [
+        60
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 7,
+      "type": "SaveImageExtended",
+      "pos": [
+        750,
+        -1600
+      ],
+      "size": {
+        "0": 325,
+        "1": 400
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 104,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "positive_text_opt",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "positive_text_opt"
+          }
+        },
+        {
+          "name": "negative_text_opt",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "negative_text_opt"
+          }
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": 344,
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "name": "foldername_prefix",
+          "type": "STRING",
+          "link": 345,
+          "widget": {
+            "name": "foldername_prefix"
+          }
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImageExtended"
+      },
+      "widgets_values": [
+        "POSE_ZZ",
+        "steps, cfg",
+        "POSE_ZZ",
+        "sampler_name, scheduler",
+        "underscore",
+        "basic, prompt",
+        "disabled",
+        "",
+        "enabled",
+        3,
+        "last",
+        "disabled",
+        "disabled",
+        "",
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 273,
+      "type": "VHS_BatchManager",
+      "pos": [
+        725,
+        -1975
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 68,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VHS_BatchManager",
+          "type": "VHS_BatchManager",
+          "links": [
+            396
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_BatchManager"
+      },
+      "widgets_values": {
+        "frames_per_batch": 32,
+        "count": 0
+      }
     }
   ],
   "links": [
@@ -6441,6 +6474,14 @@
       182,
       4,
       "STRING"
+    ],
+    [
+      396,
+      273,
+      0,
+      62,
+      2,
+      "VHS_BatchManager"
     ]
   ],
   "groups": [
@@ -6651,8 +6692,8 @@
     {
       "title": "STRING BUILDER",
       "bounding": [
-        -1598,
-        -435,
+        -912,
+        -578,
         1648,
         591
       ],

@@ -28,16 +28,9 @@ sleep 2
 # PREVIOUS
 cd /home/jw/src/ComfyUI
 
-RUNNING=`cat /etc/issue`
+RUNNING=`cat /etc/issue|awk '{print $1}'`
 
-if [[ "$RUNNING" == *"Debian"* ]]; then
-    echo "Staring Debian comfy"
-    source /home/jw/miniconda3/etc/profile.d/conda.sh
-else
-    echo "Staring Arch comfy"
-    source /home/jw/miniforge3/etc/profile.d/conda.sh
-fi
-
+source /home/jw/miniforge3/etc/profile.d/conda.sh
 conda activate comfy
 
 
@@ -51,5 +44,5 @@ echo "python ./main.py --preview-method auto --force-fp16  --bf16-vae ${istr} ${
 echo "------------------------------------------------------------------------------"
 
 #python ./main.py --preview-method auto --disable-smart-memory --force-fp16  --bf16-vae ${istr} ${ostr} 2>&1 > /tmp/START.log
-python ./main.py --preview-method auto --force-fp16  --bf16-vae --port 8090 ${istr} ${ostr} 2>&1 > /tmp/START.log
+python ./main.py --preview-method auto --force-fp16  --bf16-vae --port 8090 ${istr} ${ostr} #2>&1 > /tmp/START.log
 

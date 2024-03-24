@@ -1,74 +1,7 @@
 {
-  "last_node_id": 397,
-  "last_link_id": 828,
+  "last_node_id": 405,
+  "last_link_id": 833,
   "nodes": [
-    {
-      "id": 394,
-      "type": "diffus3.GetNode",
-      "pos": [
-        822.6212397283862,
-        839.3942503233998
-      ],
-      "size": {
-        "0": 210,
-        "1": 58
-      },
-      "flags": {
-        "collapsed": true
-      },
-      "order": 0,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "links": [
-            827
-          ],
-          "slot_index": 0
-        }
-      ],
-      "title": "c_RATE (get)",
-      "properties": {},
-      "widgets_values": [
-        "c_RATE"
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 393,
-      "type": "diffus3.SetNode",
-      "pos": [
-        308.36406152293097,
-        733.7217967202427
-      ],
-      "size": {
-        "0": 210,
-        "1": 58
-      },
-      "flags": {
-        "collapsed": true
-      },
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "link": 818
-        }
-      ],
-      "title": "c_RATE (set)",
-      "properties": {
-        "previousName": "c_RATE"
-      },
-      "widgets_values": [
-        "c_RATE"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
     {
       "id": 391,
       "type": "diffus3.SetNode",
@@ -83,7 +16,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 9,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -116,7 +49,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "outputs": [
         {
@@ -137,31 +70,6 @@
       "bgcolor": "#353"
     },
     {
-      "id": 376,
-      "type": "PreviewImage",
-      "pos": [
-        1672.6212397283864,
-        489.39425032340006
-      ],
-      "size": {
-        "0": 200,
-        "1": 250
-      },
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 761
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      }
-    },
-    {
       "id": 212,
       "type": "MaskToImage",
       "pos": [
@@ -175,7 +83,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 12,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -203,33 +111,6 @@
       "bgcolor": "#653"
     },
     {
-      "id": 379,
-      "type": "PreviewImage",
-      "pos": [
-        1947.621239728386,
-        489.39425032340006
-      ],
-      "size": {
-        "0": 200,
-        "1": 250
-      },
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 796
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      },
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 395,
       "type": "diffus3.GetNode",
       "pos": [
@@ -243,7 +124,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 2,
+      "order": 1,
       "mode": 0,
       "outputs": [
         {
@@ -275,7 +156,7 @@
         "1": 150
       },
       "flags": {},
-      "order": 10,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -318,7 +199,7 @@
       "widgets_values": [
         "resnet50",
         true,
-        "black",
+        "green",
         48
       ],
       "color": "#432",
@@ -344,7 +225,7 @@
         "1": 100
       },
       "flags": {},
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -379,7 +260,7 @@
         "1": 350
       },
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -395,17 +276,130 @@
       "shape": 1
     },
     {
-      "id": 283,
-      "type": "Integer",
+      "id": 400,
+      "type": "diffus3.SetNode",
       "pos": [
-        8.364061522931287,
-        708.7217967202427
+        350,
+        450
       ],
       "size": {
         "0": 210,
-        "1": 75
+        "1": 58
       },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "link": 831
+        }
+      ],
+      "title": "frames_per_batch (set)",
+      "properties": {
+        "previousName": "frames_per_batch"
+      },
+      "widgets_values": [
+        "frames_per_batch"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 394,
+      "type": "diffus3.GetNode",
+      "pos": [
+        825,
+        850
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            827
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "c_RATE (get)",
+      "properties": {},
+      "widgets_values": [
+        "c_RATE"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 398,
+      "type": "VHS_BatchManager",
+      "pos": [
+        950,
+        450
+      ],
+      "size": [
+        325,
+        50
+      ],
       "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "frames_per_batch",
+          "type": "INT",
+          "link": 832,
+          "widget": {
+            "name": "frames_per_batch"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VHS_BatchManager",
+          "type": "VHS_BatchManager",
+          "links": [
+            829,
+            830
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_BatchManager"
+      },
+      "widgets_values": {
+        "frames_per_batch": 16,
+        "count": 10
+      }
+    },
+    {
+      "id": 401,
+      "type": "diffus3.GetNode",
+      "pos": [
+        725,
+        475
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
       "order": 5,
       "mode": 0,
       "outputs": [
@@ -413,21 +407,102 @@
           "name": "INT",
           "type": "INT",
           "links": [
-            818
+            832
           ],
-          "shape": 3,
           "slot_index": 0
         }
       ],
-      "title": "Frame Rate",
-      "properties": {
-        "Node name for S&R": "Integer"
-      },
+      "title": "frames_per_batch (get)",
+      "properties": {},
       "widgets_values": [
-        8
+        "frames_per_batch"
       ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 379,
+      "type": "PreviewImage",
+      "pos": [
+        2050,
+        475
+      ],
+      "size": [
+        250,
+        250
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 796
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 376,
+      "type": "PreviewImage",
+      "pos": [
+        1675,
+        500
+      ],
+      "size": [
+        300,
+        250
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 761
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 402,
+      "type": "diffus3.GetNode",
+      "pos": [
+        750,
+        925
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "title": "frames_per_batch (get)",
+      "properties": {},
+      "widgets_values": [
+        "frames_per_batch"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
     },
     {
       "id": 385,
@@ -438,10 +513,10 @@
       ],
       "size": [
         400,
-        550
+        700
       ],
       "flags": {},
-      "order": 14,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -457,7 +532,7 @@
         {
           "name": "batch_manager",
           "type": "VHS_BatchManager",
-          "link": null
+          "link": 830
         },
         {
           "name": "frame_rate",
@@ -482,7 +557,7 @@
       "widgets_values": {
         "frame_rate": 8,
         "loop_count": 0,
-        "filename_prefix": "input/clint_human_mask",
+        "filename_prefix": "liza_human_mask_60fps",
         "format": "video/nvenc_h264-mp4",
         "pix_fmt": "yuv420p",
         "bitrate": 10,
@@ -494,8 +569,8 @@
           "hidden": false,
           "paused": false,
           "params": {
-            "filename": "clint_human_mask_00003.mp4",
-            "subfolder": "input",
+            "filename": "liza_human_mask_60fps_00001.mp4",
+            "subfolder": "",
             "type": "output",
             "format": "video/nvenc_h264-mp4"
           }
@@ -505,18 +580,53 @@
       "bgcolor": "#653"
     },
     {
-      "id": 282,
+      "id": 399,
       "type": "Integer",
       "pos": [
-        21.89114056479587,
-        306.38138902769344
+        28,
+        422
       ],
       "size": {
         "0": 210,
         "1": 75
       },
       "flags": {},
-      "order": 6,
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            831
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "frames_per_batch",
+      "properties": {
+        "Node name for S&R": "Integer"
+      },
+      "widgets_values": [
+        64
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 282,
+      "type": "Integer",
+      "pos": [
+        25,
+        300
+      ],
+      "size": {
+        "0": 210,
+        "1": 75
+      },
+      "flags": {},
+      "order": 8,
       "mode": 0,
       "outputs": [
         {
@@ -534,30 +644,98 @@
         "Node name for S&R": "Integer"
       },
       "widgets_values": [
-        48
+        27
       ],
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 283,
+      "type": "Integer",
+      "pos": [
+        25,
+        750
+      ],
+      "size": {
+        "0": 210,
+        "1": 75
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            818
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Frame Rate",
+      "properties": {
+        "Node name for S&R": "Integer"
+      },
+      "widgets_values": [
+        60
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 393,
+      "type": "diffus3.SetNode",
+      "pos": [
+        400,
+        775
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "link": 818
+        }
+      ],
+      "title": "c_RATE (set)",
+      "properties": {
+        "previousName": "c_RATE"
+      },
+      "widgets_values": [
+        "c_RATE"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
     },
     {
       "id": 397,
       "type": "VHS_LoadVideo",
       "pos": [
         1025,
-        775
+        850
       ],
       "size": [
         325,
-        425
+        529
       ],
       "flags": {},
-      "order": 7,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
           "name": "batch_manager",
           "type": "VHS_BatchManager",
-          "link": null
+          "link": 829
         },
         {
           "name": "force_rate",
@@ -595,7 +773,7 @@
         "Node name for S&R": "VHS_LoadVideo"
       },
       "widgets_values": {
-        "video": "clint_864x486.mp4",
+        "video": "liza_512x512_60fps.mp4",
         "force_rate": 0,
         "force_size": "Disabled",
         "custom_width": 512,
@@ -611,15 +789,51 @@
             "frame_load_cap": 0,
             "skip_first_frames": 0,
             "force_rate": 0,
-            "filename": "clint_864x486.mp4",
+            "filename": "liza_512x512_60fps.mp4",
             "type": "input",
             "format": "video/mp4",
-            "select_every_nth": 1
+            "select_every_nth": 1,
+            "force_size": "Disabled"
           }
         }
       },
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 405,
+      "type": "Note Plus (mtb)",
+      "pos": {
+        "0": 0,
+        "1": 575,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "size": [
+        575,
+        75
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note+ (mtb)",
+      "properties": {},
+      "widgets_values": [
+        "## **BATCH\\_SIZE** = **&lt;TOT\\_FRAMES&gt;** / **frames\\_per\\_batch**\n",
+        "markdown",
+        ""
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
     }
   ],
   "links": [
@@ -702,6 +916,38 @@
       374,
       0,
       "IMAGE"
+    ],
+    [
+      829,
+      398,
+      0,
+      397,
+      0,
+      "VHS_BatchManager"
+    ],
+    [
+      830,
+      398,
+      0,
+      385,
+      2,
+      "VHS_BatchManager"
+    ],
+    [
+      831,
+      399,
+      0,
+      400,
+      0,
+      "*"
+    ],
+    [
+      832,
+      401,
+      0,
+      398,
+      0,
+      "INT"
     ]
   ],
   "groups": [
@@ -718,24 +964,12 @@
       "locked": false
     },
     {
-      "title": "BATCH SIZE",
+      "title": "INPUTS",
       "bounding": [
         -34,
         108,
-        581,
-        314
-      ],
-      "color": "#3f789e",
-      "font_size": 100,
-      "locked": false
-    },
-    {
-      "title": "FRAME RATE",
-      "bounding": [
-        -94,
-        487,
-        668,
-        333
+        670,
+        803
       ],
       "color": "#3f789e",
       "font_size": 100,
